@@ -58,25 +58,37 @@ mh.encode = function MultihashEncode(digest, hashfn, length) {
 
 // decode(mutlihash)
 mh.decode = function MultihashDecode(multihash) {
-  if (!(multihash instanceof Buffer))
-    throw new Error('multihash must be a Buffer');
 
-  if (multihash.length < 3)
-    throw new Error('multihash too short. must be > 3 bytes.');
-
-  if (multihash.length > 129)
-    throw new Error('multihash too long. must be < 129 bytes.');
+  var err = mh.validate(multihash)
+  if (err)
+    throw err
 
   var output = {};
   output.code = multihash[0];
   output.name = mh.codes[output.code];
   output.length = multihash[1];
   output.digest = multihash.slice(2);
-
-  if (output.digest.length != output.length)
-    throw new Error('multihash length inconsistent: ' + output);
-
   return output;
+}
+
+mh.validate = function validateMultihash(multihash) {
+
+  if (!(multihash instanceof Buffer))
+    return new Error('multihash must be a Buffer');
+
+  if (multihash.length < 3)
+    return new Error('multihash too short. must be > 3 bytes.');
+
+  if (multihash.length > 129)
+    return new Error('multihash too long. must be < 129 bytes.');
+
+  if (!mh.isAppCode(multihash[0]) && !mh.codes[multihash[0]])
+    return new Error('multihash unknown function code: 0x' + multihash[0].toString(16))
+
+  if (multihash.slice(2).length != multihash[1])
+    return new Error('multihash length inconsistent: 0x' + multihash.toString('hex'));
+
+  return false
 }
 
 mh.coerceCode = function coerceCode(hashfn) {

@@ -107,6 +107,25 @@ test('decode', function(t) {
   t.end();
 })
 
+var badTestCases = [
+  encodedBuffer(0x00, 32, '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'),
+  encodedBuffer(0x11, 21, '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'),
+  encodedBuffer(0x11, 20, '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a'),
+  encodedBuffer(0x11, 20, ''),
+  encodedBuffer(0x31, 20, '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'),
+  encodedBuffer(0x12, 32, '2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7'),
+];
+
+test('validate', function(t) {
+  for (var test in badTestCases) {
+    test = badTestCases[test];
+    console.log(multihash.validate(test))
+    t.ok(multihash.validate(test));
+  }
+  t.end();
+})
+
+
 function encodedBuffer(code, size, hex) {
   return Buffer.concat([
     new Buffer([code, size]),
