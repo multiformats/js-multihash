@@ -1,3 +1,4 @@
+var bufeq = require('buffer-equal')
 var multihash = require('./');
 var invert = require('invert-hash');
 var test = require('tape');
@@ -81,7 +82,7 @@ test('encode', function(t) {
     var r = multihash.encode.apply(this, args);
 
     var m = 'test encoding ' + test[0][1] + ' ' + hex;
-    t.ok(r >= test[1] && r <= test[1], m);
+    t.ok(bufeq(r, test[1]), m);
   }
   t.end();
 })
@@ -102,7 +103,7 @@ test('decode', function(t) {
     t.is(r.code, code, 'code is ' + code);
     t.is(r.name, name, 'name is ' + name);
     t.is(r.length, length, 'length must be ' + length);
-    t.ok(d1 <= d2 && d1 >= d2, 'digest decoding ' + test[0][0]);
+    t.ok(bufeq(d1, d2), 'digest decoding ' + test[0][0]);
   }
   t.end();
 })

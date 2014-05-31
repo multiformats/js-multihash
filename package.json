@@ -1,6 +1,6 @@
 {
   "name": "multihashes",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "multihash implementation",
   "main": "index.js",
   "scripts": {
@@ -19,7 +19,8 @@
     "url": "https://github.com/jbenet/node-multihash/issues"
   },
   "dependencies": {
-    "invert-hash": "0.0.0"
+    "invert-hash": "0.0.0",
+    "buffer-equal": "0.0.1"
   },
   "devDependencies": {
     "tape": "~2.13.1"
