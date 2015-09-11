@@ -41,7 +41,7 @@ mh.encode = function MultihashEncode(digest, hashfn, length) {
   // ensure it's a hashfunction code.
   hashfn = mh.coerceCode(hashfn);
 
-  if (!(digest instanceof Buffer))
+  if (!(Buffer.isBuffer(digest)))
     throw new Error('digest should be a Buffer');
 
   if (!length)
