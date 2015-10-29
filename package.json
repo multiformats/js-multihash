@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jbenet/node-multihash.git"
+    "url": "git://github.com/jbenet/js-multihash.git"
   },
   "keywords": [
     "multihash"
@@ -16,7 +16,7 @@
   "author": "Juan Benet <juan@benet.ai> (http://juan.benet.ai/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jbenet/node-multihash/issues"
+    "url": "https://github.com/jbenet/js-multihash/issues"
   },
   "dependencies": {
     "invert-hash": "0.0.0",

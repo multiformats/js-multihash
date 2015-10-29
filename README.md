@@ -1,4 +1,5 @@
-# node-multihash
+js-multihash
+============
 
 [multihash](//github.com/jbenet/multihash) implementation.
 
