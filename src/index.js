@@ -76,7 +76,7 @@ mh.decode = function MultihashDecode (multihash) {
 }
 
 mh.validate = function validateMultihash (multihash) {
-  if (!(multihash instanceof Buffer)) {
+  if (!(Buffer.isBuffer(multihash))) {
     return new Error('multihash must be a Buffer')
   }
 
