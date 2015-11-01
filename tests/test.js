@@ -12,6 +12,8 @@ var names = {
   'blake2s': 0x41
 }
 
+console.log('Does Buffer exist', Buffer)
+
 var codes = invert(names)
 
 // maybe a silly test, but makes it so changing
