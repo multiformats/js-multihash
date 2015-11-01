@@ -10,7 +10,7 @@
     "test:browser:q": "BROWSER_VERSION=46 BROWSER_NAME=chrome npm run test:browser"
   },
   "pre-commit": [
-    "test",
+    "test:node",
     "lint"
   ],
   "repository": {
