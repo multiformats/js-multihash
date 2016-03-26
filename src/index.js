@@ -60,7 +60,7 @@ mh.encode = function MultihashEncode (digest, hashfn, length) {
   return Buffer.concat([new Buffer([hashfn, length]), digest])
 }
 
-// decode(mutlihash)
+// decode(multihash)
 mh.decode = function MultihashDecode (multihash) {
   var err = mh.validate(multihash)
   if (err) {
