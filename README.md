@@ -1,5 +1,4 @@
-js-multihash
-============
+# js-multihash
 
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](http://ipn.io) [![](https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square)](http://webchat.freenode.net/?channels=%23ipfs) ![](https://img.shields.io/badge/coverage-%3F-yellow.svg?style=flat-square) [![Dependency Status](https://david-dm.org/jbenet/multihashes.svg?style=flat-square)](https://david-dm.org/jbenet/multihashes) [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
 
@@ -25,7 +24,7 @@ Same as in Node.js, you just have to [browserify](https://github.com/substack/js
 
 Make the [multihashes.min.js](/dist/multihashes.min.js) available through your server and load it using a normal `<script>` tag, this will export the `multihashes` constructor on the `window` object, such that:
 
-```JavaScript
+```javascript
 var multihashes = window.multihashes
 ```
 
@@ -35,7 +34,7 @@ You will need to use Node.js `Buffer` API compatible, if you are running inside 
 
 ## Usage
 
-```js
+```javascript
 > var multihash = require('multihashes')
 > var buf = new Buffer('0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33', 'hex')
 
