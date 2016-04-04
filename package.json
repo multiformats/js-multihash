@@ -1,8 +1,11 @@
 {
   "name": "multihashes",
   "version": "0.2.0",
-  "description": "multihash implementation",
+  "description": "Decode and encode multihash strings",
   "main": "src/index.js",
+  "bin": {
+    "multihash": "./bin/index.js"
+  },
   "scripts": {
     "test:node": "node tests/test.js",
     "lint": "./node_modules/.bin/standard",
@@ -32,6 +35,8 @@
     "url": "https://github.com/jbenet/js-multihash/issues"
   },
   "dependencies": {
+    "argparse": "^1.0.7",
+    "bs58": "^3.0.0",
     "buffer-equal": "0.0.1",
     "invert-hash": "0.0.0"
   },
