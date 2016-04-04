@@ -9,7 +9,7 @@
 ### In Node.js through npm
 
 ```bash
-$ npm install --save multihashes # node the name of the module is multihashes
+$ npm install --save multihashes
 ```
 
 ```javascript
