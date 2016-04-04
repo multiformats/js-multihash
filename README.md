@@ -34,6 +34,8 @@ You will need to use Node.js `Buffer` API compatible, if you are running inside 
 
 ## Usage
 
+### JavaScript
+
 ```javascript
 > var multihash = require('multihashes')
 > var buf = new Buffer('0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33', 'hex')
@@ -47,6 +49,20 @@ You will need to use Node.js `Buffer` API compatible, if you are running inside 
   name: 'sha1',
   length: 20,
   digest: <Buffer 0b ee c7 b5 ea 3f 0f db c9 5d 0d d4 7f 3c 5b c2 75 da 8a 33> }
+```
+
+### CLI
+
+Multihash comes with a CLI that's available as `multihash` (if installed with `--global`) or in `node_modules/.bin/multihash` (if installed locally).
+
+```bash
+$ multihash encode --fn sha1 --encoding hex 0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33
+11140beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33
+$ multihash decode --encoding hex 11140beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33
+{"code": 17,
+ "name": "sha1",
+ "length": 20,
+ "digest": "0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33"}
 ```
 
 ## License
