@@ -2,17 +2,21 @@
   "name": "multihashes",
   "version": "0.2.0",
   "description": "multihash implementation",
-  "main": "src/index.js",
+  "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
   "scripts": {
-    "test:node": "node tests/test.js",
-    "lint": "./node_modules/.bin/standard",
-    "test:browser": "./node_modules/.bin/zuul --browser-version $BROWSER_VERSION --browser-name $BROWSER_NAME -- tests/test.js",
-    "test:browser:q": "BROWSER_VERSION=46 BROWSER_NAME=chrome npm run test:browser",
-    "build": "./node_modules/.bin/browserify -s multihashes -e ./src/index.js | tee dist/multihashes.js | ./node_modules/.bin/uglifyjs -m > dist/multihashes.min.js"
+    "test:node": "aegir-test node",
+    "lint": "aegir-lint",
+    "test:browser": "aegir-test browser",
+    "build": "aegir-build",
+    "test": "aegir-test",
+    "release": "aegir-release",
+    "coverage": "aegir-coverage",
+    "coverage-publish": "aegir-coverage publish"
   },
   "pre-commit": [
-    "test:node",
-    "lint"
+    "lint",
+    "test"
   ],
   "standard": {
     "ignore": [
@@ -36,9 +40,10 @@
     "buffer-equal": "0.0.1"
   },
   "devDependencies": {
+    "aegir": "^2.1.1",
     "browserify": "^12.0.1",
+    "chai": "^3.5.0",
     "pre-commit": "^1.1.2",
-    "standard": "^5.3.1",
     "tape": "~2.13.1",
     "uglifyjs": "^2.4.10",
     "zuul": "^3.7.2"
