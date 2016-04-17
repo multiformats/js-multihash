@@ -1,3 +1,5 @@
+'use strict'
+
 var invert = require('invert-hash')
 
 var mh = module.exports = function () {
@@ -13,12 +15,12 @@ var mh = module.exports = function () {
 // the multihash tables
 
 mh.names = {
-  'sha1': 0x11,
+  sha1: 0x11,
   'sha2-256': 0x12,
   'sha2-512': 0x13,
-  'sha3': 0x14,
-  'blake2b': 0x40,
-  'blake2s': 0x41
+  sha3: 0x14,
+  blake2b: 0x40,
+  blake2s: 0x41
 }
 
 mh.codes = invert(mh.names)
