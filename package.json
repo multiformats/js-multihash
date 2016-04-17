@@ -47,5 +47,12 @@
     "tape": "~2.13.1",
     "uglifyjs": "^2.4.10",
     "zuul": "^3.7.2"
-  }
+  },
+  "contributors": [
+    "David Dias <daviddias.p@gmail.com>",
+    "Fil <fil@rezo.net>",
+    "Juan Benet <juan@benet.ai>",
+    "William Cotton <williamcotton@gmail.com>",
+    "nginnever <ginneversource@gmail.com>"
+  ]
 }
