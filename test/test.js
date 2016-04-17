@@ -1,15 +1,17 @@
+'use strict'
+
 var bufeq = require('buffer-equal')
 var multihash = require('../src')
 var invert = require('invert-hash')
 var test = require('tape')
 
 var names = {
-  'sha1': 0x11,
+  sha1: 0x11,
   'sha2-256': 0x12,
   'sha2-512': 0x13,
-  'sha3': 0x14,
-  'blake2b': 0x40,
-  'blake2s': 0x41
+  sha3: 0x14,
+  blake2b: 0x40,
+  blake2s: 0x41
 }
 
 var codes = invert(names)

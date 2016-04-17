@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for src/index.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header medium">
+    <h1>Code coverage report for <span class="entity">src/index.js</span></h1>
+    <h2>
+        Statements: <span class="metric">74.14% <small>(43 / 58)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">63.64% <small>(28 / 44)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">83.33% <small>(5 / 6)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">74.14% <small>(43 / 58)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">src/</a> &#187; index.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">268</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">'use strict'
+&nbsp;
+var invert = require('invert-hash')
+&nbsp;
+var mh = module.exports = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >  if (arguments.length === 1) {</span>
+<span class="cstat-no" title="statement not covered" >    return mh.decode.apply(this, arguments)</span>
+  } else <span class="cstat-no" title="statement not covered" >if (arguments.length &gt; 1) {</span>
+<span class="cstat-no" title="statement not covered" >    return mh.encode.apply(this, arguments)</span>
+  }
+&nbsp;
+<span class="cstat-no" title="statement not covered" >  throw new Error('multihash must be called with the encode or decode parameters.')</span>
+}
+&nbsp;
+// the multihash tables
+&nbsp;
+mh.names = {
+  sha1: 0x11,
+  'sha2-256': 0x12,
+  'sha2-512': 0x13,
+  sha3: 0x14,
+  blake2b: 0x40,
+  blake2s: 0x41
+}
+&nbsp;
+mh.codes = invert(mh.names)
+&nbsp;
+mh.defaultLengths = {
+  0x11: 20,
+  0x12: 32,
+  0x13: 64,
+  0x14: 64,
+  0x40: 64,
+  0x41: 32
+}
+&nbsp;
+// encode(hashfn, [length,] digest)
+mh.encode = function MultihashEncode (digest, hashfn, length) {
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!digest || !hashfn) {
+<span class="cstat-no" title="statement not covered" >    throw new Error('multihash encode requires at least two args: hashfn, digest')</span>
+  }
+&nbsp;
+  // ensure it's a hashfunction code.
+  hashfn = mh.coerceCode(hashfn)
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!(Buffer.isBuffer(digest))) {
+<span class="cstat-no" title="statement not covered" >    throw new Error('digest should be a Buffer')</span>
+  }
+&nbsp;
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (!length) {
+    length = digest.length
+  }
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (length &amp;&amp; digest.length !== length) {
+<span class="cstat-no" title="statement not covered" >    throw new Error('digest length should be equal to specified length.')</span>
+  }
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (length &gt; 127) {
+<span class="cstat-no" title="statement not covered" >    throw new Error('multihash does not yet support digest lengths greater than 127 bytes.')</span>
+  }
+&nbsp;
+  return Buffer.concat([new Buffer([hashfn, length]), digest])
+}
+&nbsp;
+// decode(multihash)
+mh.decode = function MultihashDecode (multihash) {
+  var err = mh.validate(multihash)
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (err) {
+<span class="cstat-no" title="statement not covered" >    throw err</span>
+  }
+&nbsp;
+  var output = {}
+  output.code = multihash[0]
+  output.name = mh.codes[output.code]
+  output.length = multihash[1]
+  output.digest = multihash.slice(2)
+  return output
+}
+&nbsp;
+mh.validate = function validateMultihash (multihash) {
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!(Buffer.isBuffer(multihash))) {
+<span class="cstat-no" title="statement not covered" >    return new Error('multihash must be a Buffer')</span>
+  }
+&nbsp;
+  if (multihash.length &lt; 3) {
+    return new Error('multihash too short. must be &gt; 3 bytes.')
+  }
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (multihash.length &gt; 129) {
+<span class="cstat-no" title="statement not covered" >    return new Error('multihash too long. must be &lt; 129 bytes.')</span>
+  }
+&nbsp;
+  if (!mh.isAppCode(multihash[0]) &amp;&amp; !mh.codes[multihash[0]]) {
+    return new Error('multihash unknown function code: 0x' + multihash[0].toString(16))
+  }
+&nbsp;
+  if (multihash.slice(2).length !== multihash[1]) {
+    return new Error('multihash length inconsistent: 0x' + multihash.toString('hex'))
+  }
+&nbsp;
+  return false
+}
+&nbsp;
+mh.coerceCode = function coerceCode (hashfn) {
+  var code = hashfn
+  if (typeof hashfn === 'string') {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (!mh.names[hashfn]) {
+<span class="cstat-no" title="statement not covered" >      throw new Error('Unrecognized hash function named: ' + hashfn)</span>
+    }
+    code = mh.names[hashfn]
+  }
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (typeof code !== 'number') {
+<span class="cstat-no" title="statement not covered" >    throw new Error('Hash function code should be a number. Got: ' + code)</span>
+  }
+&nbsp;
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (!mh.codes[code] &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!mh.isAppCode(code))</span> {
+<span class="cstat-no" title="statement not covered" >    throw new Error('Unrecognized function code: ' + code)</span>
+  }
+&nbsp;
+  return code
+}
+&nbsp;
+mh.isAppCode = function isAppCode (code) {
+  return code &gt; 0 &amp;&amp; code &lt; 0x10
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sun Apr 17 2016 20:56:27 GMT+0100 (WEST)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
