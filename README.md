@@ -59,6 +59,8 @@ You will need to use Node.js `Buffer` API compatible, if you are running inside 
   digest: <Buffer 0b ee c7 b5 ea 3f 0f db c9 5d 0d d4 7f 3c 5b c2 75 da 8a 33> }
 ```
 
+For encoding and decoding, the [bs58 module](https://github.com/cryptocoinjs/bs58) is recommended.
+
 ## License
 
 MIT
