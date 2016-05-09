@@ -37,17 +37,14 @@
   },
   "dependencies": {
     "invert-hash": "0.0.0",
-    "buffer-equal": "0.0.1"
+    "buffer-equal": "1.0.0"
   },
   "devDependencies": {
-    "aegir": "^2.1.1",
-    "browserify": "^12.0.1",
+    "aegir": "^3.0.1",
     "chai": "^3.5.0",
     "pre-commit": "^1.1.2",
-    "tape": "~2.13.1",
-    "uglifyjs": "^2.4.10",
-    "zuul": "^3.7.2"
-  },
+    "tape": "~4.5.1"
+   },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
     "Fil <fil@rezo.net>",
