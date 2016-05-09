@@ -1,53 +1,70 @@
 'use strict'
 
-var invert = require('invert-hash')
+const bs58 = require('bs58')
 
-var mh = module.exports = function () {
-  if (arguments.length === 1) {
-    return mh.decode.apply(this, arguments)
-  } else if (arguments.length > 1) {
-    return mh.encode.apply(this, arguments)
+const cs = require('./constants')
+
+exports.toHexString = function toHexString (m) {
+  if (!Buffer.isBuffer(m)) {
+    throw new Error('must be passed a buffer')
   }
 
-  throw new Error('multihash must be called with the encode or decode parameters.')
+  return m.toString('hex')
 }
 
-// the multihash tables
-
-mh.names = {
-  sha1: 0x11,
-  'sha2-256': 0x12,
-  'sha2-512': 0x13,
-  sha3: 0x14,
-  blake2b: 0x40,
-  blake2s: 0x41
+exports.fromHexString = function fromHexString (s) {
+  return new Buffer(s, 'hex')
 }
 
-mh.codes = invert(mh.names)
+exports.toB58String = function toB58String (m) {
+  if (!Buffer.isBuffer(m)) {
+    throw new Error('must be passed a buffer')
+  }
 
-mh.defaultLengths = {
-  0x11: 20,
-  0x12: 32,
-  0x13: 64,
-  0x14: 64,
-  0x40: 64,
-  0x41: 32
+  return bs58.encode(m)
 }
 
-// encode(hashfn, [length,] digest)
-mh.encode = function MultihashEncode (digest, hashfn, length) {
-  if (!digest || !hashfn) {
-    throw new Error('multihash encode requires at least two args: hashfn, digest')
+exports.fromB58String = function fromB58String (s) {
+  let encoded = s
+  if (Buffer.isBuffer(s)) {
+    encoded = s.toString()
+  }
+
+  return new Buffer(bs58.decode(encoded))
+}
+
+// Decode a hash from the given Multihash.
+exports.decode = function decode (buf) {
+  const err = exports.validate(buf)
+  if (err) {
+    throw err
+  }
+
+  const code = buf[0]
+
+  return {
+    code: code,
+    name: cs.codes[code],
+    length: buf[1],
+    digest: buf.slice(2)
+  }
+}
+
+// Encode a hash digest along with the specified function code.
+// Note: the length is derived from the length of the digest itself.
+exports.encode = function encode (digest, code, length) {
+  if (!digest || !code) {
+    throw new Error('multihash encode requires at least two args: digest, code')
   }
 
   // ensure it's a hashfunction code.
-  hashfn = mh.coerceCode(hashfn)
+  const hashfn = exports.coerceCode(code)
 
   if (!(Buffer.isBuffer(digest))) {
     throw new Error('digest should be a Buffer')
   }
 
-  if (!length) {
+  if (length == null) {
     length = digest.length
   }
 
@@ -62,22 +79,47 @@ mh.encode = function MultihashEncode (digest, hashfn, length) {
   return Buffer.concat([new Buffer([hashfn, length]), digest])
 }
 
-// decode(multihash)
-mh.decode = function MultihashDecode (multihash) {
-  var err = mh.validate(multihash)
-  if (err) {
-    throw err
+// Converts a hashfn name into the matching code
+exports.coerceCode = function coerceCode (name) {
+  let code = name
+
+  if (typeof name === 'string') {
+    if (!cs.names[name]) {
+      throw new Error(`Unrecognized hash function named: ${name}`)
+    }
+    code = cs.names[name]
   }
 
-  var output = {}
-  output.code = multihash[0]
-  output.name = mh.codes[output.code]
-  output.length = multihash[1]
-  output.digest = multihash.slice(2)
-  return output
+  if (typeof code !== 'number') {
+    throw new Error(`Hash function code should be a number. Got: ${code}`)
+  }
+
+  if (!cs.codes[code] && !exports.isAppCode(code)) {
+    throw new Error(`Unrecognized function code: ${code}`)
+  }
+
+  return code
 }
 
-mh.validate = function validateMultihash (multihash) {
+// Checks wether a code is part of the app range
+exports.isAppCode = function appCode (code) {
+  return code > 0 && code < 0x10
+}
+
+// Checks whether a multihash code is valid.
+exports.isValidCode = function validCode (code) {
+  if (exports.isAppCode(code)) {
+    return true
+  }
+
+  if (cs.codes[code]) {
+    return true
+  }
+
+  return false
+}
+
+exports.validate = function validate (multihash) {
   if (!(Buffer.isBuffer(multihash))) {
     return new Error('multihash must be a Buffer')
   }
@@ -90,37 +132,15 @@ mh.validate = function validateMultihash (multihash) {
     return new Error('multihash too long. must be < 129 bytes.')
   }
 
-  if (!mh.isAppCode(multihash[0]) && !mh.codes[multihash[0]]) {
-    return new Error('multihash unknown function code: 0x' + multihash[0].toString(16))
+  let code = multihash[0]
+
+  if (!exports.isValidCode(code)) {
+    return new Error(`multihash unknown function code: 0x${code.toString(16)}`)
   }
 
   if (multihash.slice(2).length !== multihash[1]) {
-    return new Error('multihash length inconsistent: 0x' + multihash.toString('hex'))
+    return new Error(`multihash length inconsistent: 0x${multihash.toString('hex')}`)
   }
 
   return false
-}
-
-mh.coerceCode = function coerceCode (hashfn) {
-  var code = hashfn
-  if (typeof hashfn === 'string') {
-    if (!mh.names[hashfn]) {
-      throw new Error('Unrecognized hash function named: ' + hashfn)
-    }
-    code = mh.names[hashfn]
-  }
-
-  if (typeof code !== 'number') {
-    throw new Error('Hash function code should be a number. Got: ' + code)
-  }
-
-  if (!mh.codes[code] && !mh.isAppCode(code)) {
-    throw new Error('Unrecognized function code: ' + code)
-  }
-
-  return code
-}
-
-mh.isAppCode = function isAppCode (code) {
-  return code > 0 && code < 0x10
 }

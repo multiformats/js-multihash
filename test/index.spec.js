@@ -1,144 +1,315 @@
-  /* eslint-env mocha */
+/* eslint-env mocha */
 'use strict'
 
-const bufeq = require('buffer-equal')
-const multihash = require('../src')
-const invert = require('invert-hash')
 const expect = require('chai').expect
+const bufeq = require('buffer-equal')
+const bs58 = require('bs58')
 
-const names = {
-  sha1: 0x11,
-  'sha2-256': 0x12,
-  'sha2-512': 0x13,
-  sha3: 0x14,
-  blake2b: 0x40,
-  blake2s: 0x41
+const mh = require('../src')
+const validCases = require('./fixtures/valid')
+const invalidCases = require('./fixtures/invalid')
+
+function sample (code, size, hex) {
+  return Buffer.concat([
+    new Buffer([code, size]),
+    new Buffer(hex, 'hex')
+  ])
 }
 
-var codes = invert(names)
+describe('mh', () => {
+  describe('toHexString', () => {
+    it('valid', () => {
+      validCases.forEach((test) => {
+        const code = test.encoding.code
+        const buf = mh.encode(new Buffer(test.hex, 'hex'), code)
+        expect(
+          mh.toHexString(buf)
+        ).to.be.eql(
+          buf.toString('hex')
+        )
+      })
+    })
 
-// maybe a silly test, but makes it so changing
-// the table accidentally has to happen twice.
-describe('multihash tests', (done) => {
-  it('multihash table', (done) => {
-    for (var n in names) {
-      if (names.hasOwnProperty(n)) {
-        expect(multihash.names[n]).to.equal(names[n])
-        expect(multihash.codes[names[n]]).to.equal(n)
-      }
-    }
-    done()
+    it('invalid', () => {
+      expect(
+        () => mh.toHexString('hello world')
+      ).to.throw(
+        /must be passed a buffer/
+      )
+    })
   })
 
-  it('isAppCode', (done) => {
-    expect(multihash.isAppCode(0)).to.equal(false)
-
-    for (var n = 1; n < 0x10; n++) {
-      expect(multihash.isAppCode(n)).to.equal(true)
-    }
-    for (var m = 0x10; m <= 0xff; m++) {
-      expect(multihash.isAppCode(m)).to.equal(false)
-    }
-    done()
+  describe('fromHexString', () => {
+    it('valid', () => {
+      validCases.forEach((test) => {
+        const code = test.encoding.code
+        const buf = mh.encode(new Buffer(test.hex, 'hex'), code)
+        expect(
+          mh.fromHexString(buf.toString('hex')).toString('hex')
+        ).to.be.eql(
+          buf.toString('hex')
+        )
+      })
+    })
   })
 
-  it('coerceCode', (done) => {
-    for (var n in names) {
-      if (names.hasOwnProperty(n)) {
-        var c = names[n]
-        expect(multihash.coerceCode(n)).to.equal(c)
-        expect(multihash.coerceCode(c)).to.equal(c)
-      }
-    }
-    done()
+  describe('toB58String', () => {
+    it('valid', () => {
+      validCases.forEach((test) => {
+        const code = test.encoding.code
+        const buf = mh.encode(new Buffer(test.hex, 'hex'), code)
+        expect(
+          mh.toB58String(buf)
+        ).to.be.eql(
+          bs58.encode(buf)
+        )
+      })
+    })
+
+    it('invalid', () => {
+      expect(
+        () => mh.toB58String('hello world')
+      ).to.throw(
+        /must be passed a buffer/
+      )
+    })
   })
 
-  var testCases = [
-    [
-      ['0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33', 'sha1'],
-      encodedBuffer(0x11, 20, '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33')
-    ], [
-      ['0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33', 0x11],
-      encodedBuffer(0x11, 20, '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33')
-    ], [
-      ['0beec7b8', 'sha1'],
-      encodedBuffer(0x11, 4, '0beec7b8')
-    ], [
-      ['2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae', 'sha2-256'],
-      encodedBuffer(0x12, 32, '2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae')
-    ], [
-      ['2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae', 0x12],
-      encodedBuffer(0x12, 32, '2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae')
-    ], [
-      ['2c26b46b', 'sha2-256'],
-      encodedBuffer(0x12, 4, '2c26b46b')
-    ], [
-      ['2c26b46b', 'blake2b'],
-      encodedBuffer(0x40, 4, '2c26b46b')
-    ]
-  ]
+  describe('fromB58String', () => {
+    it('valid', () => {
+      const src = 'QmPfjpVaf593UQJ9a5ECvdh2x17XuJYG5Yanv5UFnH3jPE'
+      const expected = new Buffer('122013bf801597d74a660453412635edd8c34271e5998f801fac5d700c6ce8d8e461', 'hex')
 
-  it('encode', (done) => {
-    for (var test in testCases) {
-      if (testCases.hasOwnProperty(test)) {
-        test = testCases[test]
-        var hex = test[0][0]
-        var args = [new Buffer(hex, 'hex')].concat(test[0].slice(1))
-        var r = multihash.encode.apply(this, args)
+      expect(
+        mh.fromB58String(src)
+      ).to.be.eql(
+        expected
+      )
 
-        expect(bufeq(r, test[1])).to.be.ok
-      }
-    }
-    done()
+      expect(
+        mh.fromB58String(new Buffer(src))
+      ).to.be.eql(
+        expected
+      )
+    })
   })
 
-  it('decode', (done) => {
-    for (var test in testCases) {
-      if (testCases.hasOwnProperty(test)) {
-        test = testCases[test]
+  describe('decode', () => {
+    it('valid', () => {
+      validCases.forEach((test) => {
+        const code = test.encoding.code
+        const buf = sample(code, test.size, test.hex)
+        const name = test.encoding.name
+        const d1 = new Buffer(test.hex, 'hex')
+        const length = d1.length
 
-        var buf = test[1]
-        var code = multihash.coerceCode(test[0][1])
-        var name = codes[code]
-        var d1 = new Buffer(test[0][0], 'hex')
-        var length = d1.length
-
-        var r = multihash.decode(buf)
-        var d2 = r.digest
+        const r = mh.decode(buf)
+        const d2 = r.digest
 
         expect(r.code).to.equal(code)
         expect(r.name).to.equal(name)
         expect(r.length).to.equal(length)
-        expect(bufeq(d1, d2)).to.be.ok
-      }
-    }
-    done()
+        expect(bufeq(d1, d2)).to.equal(true)
+      })
+    })
+
+    it('invalid', () => {
+      expect(
+        () => mh.decode('hello')
+      ).to.throw(
+        /multihash must be a Buffer/
+      )
+    })
   })
 
-  var badTestCases = [
-    encodedBuffer(0x00, 32, '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'),
-    encodedBuffer(0x11, 21, '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'),
-    encodedBuffer(0x11, 20, '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a'),
-    encodedBuffer(0x11, 20, ''),
-    encodedBuffer(0x31, 20, '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'),
-    encodedBuffer(0x12, 32, '2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7')
-  ]
+  describe('encode', () => {
+    it('valid', () => {
+      validCases.forEach((test) => {
+        const code = test.encoding.code
+        const name = test.encoding.name
+        const buf = sample(code, test.size, test.hex)
+        const results = [
+          mh.encode(new Buffer(test.hex, 'hex'), code),
+          mh.encode(new Buffer(test.hex, 'hex'), name)
+        ]
 
-  it('validate', (done) => {
-    for (var test in badTestCases) {
-      if (badTestCases.hasOwnProperty(test)) {
-        test = badTestCases[test]
-        // console.log(multihash.validate(test))
-        expect(multihash.validate(test)).to.be.ok
+        results.forEach((res) => {
+          expect(
+            res.toString('hex')
+          ).to.be.eql(
+            buf.toString('hex')
+          )
+        })
+      })
+    })
+
+    it('invalid', () => {
+      expect(
+        () => mh.encode()
+      ).to.throw(
+        /requires at least two args/
+      )
+
+      expect(
+        () => mh.encode('hello', 0x11)
+      ).to.throw(
+        /digest should be a Buffer/
+      )
+
+      expect(
+        () => mh.encode(new Buffer('hello'), 0x11, 2)
+      ).to.throw(
+        /length should be equal/
+      )
+
+      const longBuffer = new Buffer(150)
+      longBuffer.fill('a')
+      expect(
+        () => mh.encode(longBuffer, 0x11)
+      ).to.throw(
+        /not yet support/
+      )
+    })
+  })
+
+  describe('validate', () => {
+    it('valid', () => {
+      validCases.forEach((test) => {
+        expect(
+          mh.validate(sample(test.encoding.code, test.size, test.hex))
+        ).to.be.equal(
+          false
+        )
+      })
+    })
+
+    it('invalid', () => {
+      invalidCases.forEach((test) => {
+        expect(
+          mh.validate(sample(test.code, test.size, test.hex))
+        ).to.be.an('error')
+      })
+
+      const longBuffer = new Buffer(150)
+      longBuffer.fill('a')
+      expect(
+        mh.validate(longBuffer)
+      ).to.be.an(
+        'error'
+      )
+    })
+  })
+
+  describe('isValidCode', () => {
+    it('valid', () => {
+      expect(
+        mh.isValidCode(2)
+      ).to.be.eql(
+        true
+      )
+
+      expect(
+        mh.isValidCode(0x13)
+      ).to.be.eql(
+        true
+      )
+    })
+
+    it('invalid', () => {
+      expect(
+        mh.isValidCode(0x10)
+      ).to.be.eql(
+        false
+      )
+
+      expect(
+        mh.isValidCode(0x90)
+      ).to.be.eql(
+        false
+      )
+    })
+  })
+
+  describe('isAppCode', () => {
+    it('valid', () => {
+      for (let n = 1; n < 0x10; n++) {
+        expect(
+          mh.isAppCode(n)
+        ).to.equal(
+          true
+        )
       }
-    }
-    done()
+    })
+
+    it('invalid', () => {
+      expect(
+        mh.isAppCode(0)
+      ).to.equal(
+        false
+      )
+
+      for (var m = 0x10; m <= 0xff; m++) {
+        expect(
+          mh.isAppCode(m)
+        ).to.equal(
+          false
+        )
+      }
+    })
+  })
+
+  describe('coerceCode', () => {
+    it('valid', () => {
+      const names = {
+        sha1: 0x11,
+        'sha2-256': 0x12,
+        'sha2-512': 0x13,
+        sha3: 0x14,
+        blake2b: 0x40,
+        blake2s: 0x41
+      }
+
+      Object.keys(names).forEach((name) => {
+        expect(
+          mh.coerceCode(name)
+        ).to.be.eql(
+          names[name]
+        )
+
+        expect(
+          mh.coerceCode(names[name])
+        ).to.be.eql(
+          names[name]
+        )
+      })
+    })
+
+    it('invalid', () => {
+      const invalidNames = [
+        'sha256',
+        'sha9',
+        'Blake4b'
+      ]
+
+      invalidNames.forEach((name) => {
+        expect(
+          () => mh.coerceCode(name)
+        ).to.throw(
+          `Unrecognized hash function named: ${name}`
+        )
+      })
+
+      expect(
+        () => mh.coerceCode(new Buffer('hello'))
+      ).to.throw(
+        /should be a number/
+      )
+
+      expect(
+        () => mh.coerceCode(0x99)
+      ).to.throw(
+        /Unrecognized function code/
+      )
+    })
   })
 })
-
-function encodedBuffer (code, size, hex) {
-  return Buffer.concat([
-    new Buffer([code, size]),
-    new Buffer(hex, 'hex')]
-  )
-}

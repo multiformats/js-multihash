@@ -23,19 +23,19 @@ $ npm install --save multihashes # node the name of the module is multihashes
 
 The code published to npm that gets loaded on require is in fact an ES5 transpiled version with the right shims added. This means that you can require it and use with your favourite bundler without having to adjust asset management process.
 
-```JavaScript
+```js
 var multihashes = require('multihashes')
 ```
 
 
 ### In the Browser through `<script>` tag
 
-Loading this module through a script tag will make the ```multihash``` obj available in the global namespace.
+Loading this module through a script tag will make the ```Multihashes``` obj available in the global namespace.
 
 ```
-<script src="https://npmcdn.com/js-multihash/dist/index.min.js"></script>
+<script src="https://npmcdn.com/multihashes/dist/index.min.js"></script>
 <!-- OR -->
-<script src="https://npmcdn.com/js-multihash/dist/index.js"></script>
+<script src="https://npmcdn.com/multihashes/dist/index.js"></script>
 ```
 
 #### Gotchas
