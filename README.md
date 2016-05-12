@@ -150,9 +150,7 @@ Returns a boolean.
 
 - `multihash: Buffer`
 
-Check if the given buffer is a valid multihash.
-
-Returns `false` or an `Error`.
+Check if the given buffer is a valid multihash. Throws an error if it is not valid.
 
 ## License
 

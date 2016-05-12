@@ -176,27 +176,23 @@ describe('mh', () => {
     it('valid', () => {
       validCases.forEach((test) => {
         expect(
-          mh.validate(sample(test.encoding.code, test.size, test.hex))
-        ).to.be.equal(
-          false
-        )
+          () => mh.validate(sample(test.encoding.code, test.size, test.hex))
+        ).to.not.throw()
       })
     })
 
     it('invalid', () => {
       invalidCases.forEach((test) => {
         expect(
-          mh.validate(sample(test.code, test.size, test.hex))
-        ).to.be.an('error')
+          () => mh.validate(sample(test.code, test.size, test.hex))
+        ).to.throw()
       })
 
       const longBuffer = new Buffer(150)
       longBuffer.fill('a')
       expect(
-        mh.validate(longBuffer)
-      ).to.be.an(
-        'error'
-      )
+        () => mh.validate(longBuffer)
+      ).to.throw()
     })
   })
 

@@ -35,10 +35,7 @@ exports.fromB58String = function fromB58String (s) {
 
 // Decode a hash from the given Multihash.
 exports.decode = function decode (buf) {
-  const err = exports.validate(buf)
-  if (err) {
-    throw err
-  }
+  exports.validate(buf)
 
   const code = buf[0]
 
@@ -121,26 +118,24 @@ exports.isValidCode = function validCode (code) {
 
 exports.validate = function validate (multihash) {
   if (!(Buffer.isBuffer(multihash))) {
-    return new Error('multihash must be a Buffer')
+    throw new Error('multihash must be a Buffer')
   }
 
   if (multihash.length < 3) {
-    return new Error('multihash too short. must be > 3 bytes.')
+    throw new Error('multihash too short. must be > 3 bytes.')
   }
 
   if (multihash.length > 129) {
-    return new Error('multihash too long. must be < 129 bytes.')
+    throw new Error('multihash too long. must be < 129 bytes.')
   }
 
   let code = multihash[0]
 
   if (!exports.isValidCode(code)) {
-    return new Error(`multihash unknown function code: 0x${code.toString(16)}`)
+    throw new Error(`multihash unknown function code: 0x${code.toString(16)}`)
   }
 
   if (multihash.slice(2).length !== multihash[1]) {
-    return new Error(`multihash length inconsistent: 0x${multihash.toString('hex')}`)
+    throw new Error(`multihash length inconsistent: 0x${multihash.toString('hex')}`)
   }
-
-  return false
 }
