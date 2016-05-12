@@ -59,6 +59,101 @@ You will need to use Node.js `Buffer` API compatible, if you are running inside 
   digest: <Buffer 0b ee c7 b5 ea 3f 0f db c9 5d 0d d4 7f 3c 5b c2 75 da 8a 33> }
 ```
 
+## API
+
+### `decode(buf)`
+
+- `buf: Buffer`
+
+Decode a hash from the given multihash.
+
+Returns an object of the form,
+
+```js
+{
+  code: Number,
+  name: String,
+  length: Number,
+  digest: Buffer
+}
+```
+
+### `encode(digest, hashfn[, length])`
+
+- `digest: Buffer`
+- `hashfn: String|Number`
+- `length: Number` (optional)
+
+Encode a hash digest along with the specified function code.
+
+> Note: the length is derived from the length of the digest itself.
+
+Returns a buffer.
+
+### `toHexString(multihash)`
+
+- `multihash: Buffer`
+
+Convert the given multihash to a hex encoded string.
+
+Returns a string.
+
+### `fromHexString(string)`
+
+- `string: String`
+
+Convert the given hex encoded string to a multihash (a `Buffer`).
+
+Returns a buffer.
+
+### `toB58String(multihash)`
+
+- `multihash: Buffer`
+
+Convert the given multihash to a base58 encoded string.
+
+Returns a string.
+
+### `fromB58String(string)`
+
+- `string: String`
+
+Convert the given base58 encoded string to a multihash (a `Buffer`).
+
+Returns a buffer.
+
+### `coerceCode(name)`
+
+- `name: String|Number`
+
+Converts a given hash function into the matching code. If passed a number it will return the number if it's a valid code.
+
+Returns a number.
+
+### `isAppCode(code)`
+
+- `code: Number`
+
+Checks wether a code is part of the app range.
+
+Returns a boolean.
+
+### `isValidCode(code)`
+
+- `code: Number`
+
+Checks whether a multihash code is valid.
+
+Returns a boolean.
+
+### `validate(multihash)`
+
+- `multihash: Buffer`
+
+Check if the given buffer is a valid multihash.
+
+Returns `false` or an `Error`.
+
 ## License
 
 MIT
