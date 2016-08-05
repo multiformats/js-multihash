@@ -25,7 +25,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jbenet/js-multihash.git"
+    "url": "git://github.com/multiformats/js-multihash.git"
   },
   "keywords": [
     "multihash"
@@ -33,7 +33,7 @@
   "author": "Juan Benet <juan@benet.ai> (http://juan.benet.ai/)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jbenet/js-multihash/issues"
+    "url": "https://github.com/multiformats/js-multihash/issues"
   },
   "dependencies": {
     "bs58": "^3.0.0"
@@ -50,6 +50,7 @@
     "Juan Benet <juan@benet.ai>",
     "William Cotton <williamcotton@gmail.com>",
     "dignifiedquire <dignifiedquire@gmail.com>",
-    "nginnever <ginneversource@gmail.com>"
+    "nginnever <ginneversource@gmail.com>",
+    "Richard Littauer <richard.littauer@gmail.com"
   ]
 }
