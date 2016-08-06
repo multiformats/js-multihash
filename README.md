@@ -3,13 +3,13 @@ js-multihash
 
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](http://ipn.io)
 [![](https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square)](http://webchat.freenode.net/?channels=%23ipfs)
-[![Coverage Status](https://coveralls.io/repos/github/jbenet/js-multihash/badge.svg?branch=master)](https://coveralls.io/github/jbenet/js-multihash?branch=master)
-[![Travis CI](https://travis-ci.org/jbenet/js-multihash.svg?branch=master)](https://travis-ci.org/jbenet/js-multihash)
-[![Circle CI](https://circleci.com/gh/jbenet/js-multihash.svg?style=svg)](https://circleci.com/gh/jbenet/js-multihash)
-[![Dependency Status](https://david-dm.org/jbenet/multihashes.svg?style=flat-square)](https://david-dm.org/jbenet/js-multihash)
+[![Coverage Status](https://coveralls.io/repos/github/multiformats/js-multihash/badge.svg?branch=master)](https://coveralls.io/github/multiformats/js-multihash?branch=master)
+[![Travis CI](https://travis-ci.org/multiformats/js-multihash.svg?branch=master)](https://travis-ci.org/multiformats/js-multihash)
+[![Circle CI](https://circleci.com/gh/multiformats/js-multihash.svg?style=svg)](https://circleci.com/gh/multiformats/js-multihash)
+[![Dependency Status](https://david-dm.org/multiformats/multihashes.svg?style=flat-square)](https://david-dm.org/multiformats/js-multihash)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
 
-> [multihash](//github.com/jbenet/multihash) implementation.
+> [multihash](//github.com/multiformats/multihash) implementation.
 
 ## Installation
 
