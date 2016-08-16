@@ -6,7 +6,7 @@ js-multihash
 [![Coverage Status](https://coveralls.io/repos/github/multiformats/js-multihash/badge.svg?branch=master)](https://coveralls.io/github/multiformats/js-multihash?branch=master)
 [![Travis CI](https://travis-ci.org/multiformats/js-multihash.svg?branch=master)](https://travis-ci.org/multiformats/js-multihash)
 [![Circle CI](https://circleci.com/gh/multiformats/js-multihash.svg?style=svg)](https://circleci.com/gh/multiformats/js-multihash)
-[![Dependency Status](https://david-dm.org/multiformats/multihashes.svg?style=flat-square)](https://david-dm.org/multiformats/js-multihash)
+[![Dependency Status](https://david-dm.org/multiformats/js-multihash.svg?style=flat-square)](https://david-dm.org/multiformats/js-multihash)
 [![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
 
 > [multihash](//github.com/multiformats/multihash) implementation.
