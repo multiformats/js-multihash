@@ -25,10 +25,6 @@ This is the [multihash](//github.com/multiformats/multihash) implementation in N
 - [API](#api)
   - [`decode(buf)`](#decodebuf)
   - [`encode(digest, hashfn[, length])`](#encodedigest-hashfn-length)
-  - [`toHexString(multihash)`](#tohexstringmultihash)
-  - [`fromHexString(string)`](#fromhexstringstring)
-  - [`toB58String(multihash)`](#tob58stringmultihash)
-  - [`fromB58String(string)`](#fromb58stringstring)
   - [`coerceCode(name)`](#coercecodename)
   - [`isAppCode(code)`](#isappcodecode)
   - [`isValidCode(code)`](#isvalidcodecode)
@@ -113,38 +109,6 @@ Returns an object of the form,
 Encode a hash digest along with the specified function code.
 
 > Note: the length is derived from the length of the digest itself.
-
-Returns a buffer.
-
-### `toHexString(multihash)`
-
-- `multihash: Buffer`
-
-Convert the given multihash to a hex encoded string.
-
-Returns a string.
-
-### `fromHexString(string)`
-
-- `string: String`
-
-Convert the given hex encoded string to a multihash (a `Buffer`).
-
-Returns a buffer.
-
-### `toB58String(multihash)`
-
-- `multihash: Buffer`
-
-Convert the given multihash to a base58 encoded string.
-
-Returns a string.
-
-### `fromB58String(string)`
-
-- `string: String`
-
-Convert the given base58 encoded string to a multihash (a `Buffer`).
 
 Returns a buffer.
 

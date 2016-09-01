@@ -1,37 +1,6 @@
 'use strict'
 
-const bs58 = require('bs58')
-
 const cs = require('./constants')
-
-exports.toHexString = function toHexString (m) {
-  if (!Buffer.isBuffer(m)) {
-    throw new Error('must be passed a buffer')
-  }
-
-  return m.toString('hex')
-}
-
-exports.fromHexString = function fromHexString (s) {
-  return new Buffer(s, 'hex')
-}
-
-exports.toB58String = function toB58String (m) {
-  if (!Buffer.isBuffer(m)) {
-    throw new Error('must be passed a buffer')
-  }
-
-  return bs58.encode(m)
-}
-
-exports.fromB58String = function fromB58String (s) {
-  let encoded = s
-  if (Buffer.isBuffer(s)) {
-    encoded = s.toString()
-  }
-
-  return new Buffer(bs58.decode(encoded))
-}
 
 // Decode a hash from the given Multihash.
 exports.decode = function decode (buf) {
