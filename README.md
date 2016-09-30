@@ -59,9 +59,9 @@ var multihashes = require('multihashes')
 Loading this module through a script tag will make the ```Multihashes``` obj available in the global namespace.
 
 ```
-<script src="https://unpkg.com/multihashes/dist/index.min.js"></script>
+<script src="/multihashes@0.2.2/dist/index.min.js"></script>
 <!-- OR -->
-<script src="https://unpkg.com/multihashes/dist/index.js"></script>
+<script src="/multihashes@0.2.2/dist/index.js"></script>
 ```
 
 #### Gotchas
