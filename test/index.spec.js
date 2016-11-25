@@ -1,4 +1,5 @@
 /* eslint-env mocha */
+/* eslint max-nested-callbacks: off */
 'use strict'
 
 const expect = require('chai').expect
@@ -260,7 +261,7 @@ describe('mh', () => {
         sha1: 0x11,
         'sha2-256': 0x12,
         'sha2-512': 0x13,
-        sha3: 0x14,
+        'sha3-512': 0x14,
         blake2b: 0x40,
         blake2s: 0x41
       }
