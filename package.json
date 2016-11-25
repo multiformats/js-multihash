@@ -39,7 +39,7 @@
     "bs58": "^3.0.0"
   },
   "devDependencies": {
-    "aegir": "^3.0.1",
+    "aegir": "^9.1.2",
     "buffer-equal": "1.0.0",
     "chai": "^3.5.0",
     "pre-commit": "^1.1.2"
