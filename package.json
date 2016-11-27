@@ -36,9 +36,6 @@
   "bugs": {
     "url": "https://github.com/multiformats/js-multihash/issues"
   },
-  "dependencies": {
-    "bs58": "^3.0.0"
-  },
   "devDependencies": {
     "aegir": "^9.1.2",
     "buffer-equal": "1.0.0",

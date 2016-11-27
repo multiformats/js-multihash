@@ -4,7 +4,6 @@
 
 const expect = require('chai').expect
 const bufeq = require('buffer-equal')
-const bs58 = require('bs58')
 
 const mh = require('../src')
 const validCases = require('./fixtures/valid')
@@ -18,83 +17,6 @@ function sample (code, size, hex) {
 }
 
 describe('mh', () => {
-  describe('toHexString', () => {
-    it('valid', () => {
-      validCases.forEach((test) => {
-        const code = test.encoding.code
-        const buf = mh.encode(new Buffer(test.hex, 'hex'), code)
-        expect(
-          mh.toHexString(buf)
-        ).to.be.eql(
-          buf.toString('hex')
-        )
-      })
-    })
-
-    it('invalid', () => {
-      expect(
-        () => mh.toHexString('hello world')
-      ).to.throw(
-        /must be passed a buffer/
-      )
-    })
-  })
-
-  describe('fromHexString', () => {
-    it('valid', () => {
-      validCases.forEach((test) => {
-        const code = test.encoding.code
-        const buf = mh.encode(new Buffer(test.hex, 'hex'), code)
-        expect(
-          mh.fromHexString(buf.toString('hex')).toString('hex')
-        ).to.be.eql(
-          buf.toString('hex')
-        )
-      })
-    })
-  })
-
-  describe('toB58String', () => {
-    it('valid', () => {
-      validCases.forEach((test) => {
-        const code = test.encoding.code
-        const buf = mh.encode(new Buffer(test.hex, 'hex'), code)
-        expect(
-          mh.toB58String(buf)
-        ).to.be.eql(
-          bs58.encode(buf)
-        )
-      })
-    })
-
-    it('invalid', () => {
-      expect(
-        () => mh.toB58String('hello world')
-      ).to.throw(
-        /must be passed a buffer/
-      )
-    })
-  })
-
-  describe('fromB58String', () => {
-    it('valid', () => {
-      const src = 'QmPfjpVaf593UQJ9a5ECvdh2x17XuJYG5Yanv5UFnH3jPE'
-      const expected = new Buffer('122013bf801597d74a660453412635edd8c34271e5998f801fac5d700c6ce8d8e461', 'hex')
-
-      expect(
-        mh.fromB58String(src)
-      ).to.be.eql(
-        expected
-      )
-
-      expect(
-        mh.fromB58String(new Buffer(src))
-      ).to.be.eql(
-        expected
-      )
-    })
-  })
-
   describe('decode', () => {
     it('valid', () => {
       validCases.forEach((test) => {
