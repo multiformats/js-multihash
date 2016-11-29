@@ -69,10 +69,6 @@ exports.encode = function encode (digest, code, length) {
     throw new Error('digest length should be equal to specified length.')
   }
 
-  if (length > 127) {
-    throw new Error('multihash does not yet support digest lengths greater than 127 bytes.')
-  }
-
   return Buffer.concat([new Buffer([hashfn, length]), digest])
 }
 
