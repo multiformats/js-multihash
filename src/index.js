@@ -2,23 +2,6 @@
  * Multihash implementation in JavaScript.
  *
  * @module multihash
- * @example
- * const multihash = require('multihashes')
- * const buf = new Buffer('0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33', 'hex')
- *
- * const encoded = multihash.encode(buf, 'sha1')
- * console.log(encoded)
- * // => <Buffer 11 14 0b ee c7 b5 ea 3f 0f db c9 5d 0d d4 7f 3c 5b c2 75 da 8a 33>
- *
- * const decoded = multihash.decode(encoded)
- * console.log(decoded)
- * // => {
- * //      code: 17,
- * //      name: 'sha1',
- * //      length: 20,
- * //      digest: <Buffer 0b ee c7 b5 ea 3f 0f db c9 5d 0d d4 7f 3c 5b c2 75 da 8a 33>
- * //    }
- *
  */
 'use strict'
 
@@ -29,51 +12,51 @@ const cs = require('./constants')
 /**
  * Convert the given multihash to a hex encoded string.
  *
- * @param {Buffer} m
+ * @param {Buffer} hash
  * @returns {string}
  */
-exports.toHexString = function toHexString (m) {
-  if (!Buffer.isBuffer(m)) {
+exports.toHexString = function toHexString (hash) {
+  if (!Buffer.isBuffer(hash)) {
     throw new Error('must be passed a buffer')
   }
 
-  return m.toString('hex')
+  return hash.toString('hex')
 }
 
 /**
  * Convert the given hex encoded string to a multihash.
  *
- * @param {string} s
+ * @param {string} hash
  * @returns {Buffer}
  */
-exports.fromHexString = function fromHexString (s) {
-  return new Buffer(s, 'hex')
+exports.fromHexString = function fromHexString (hash) {
+  return new Buffer(hash, 'hex')
 }
 
 /**
  * Convert the given multihash to a base58 encoded string.
  *
- * @param {Buffer} m
+ * @param {Buffer} hash
  * @returns {string}
  */
-exports.toB58String = function toB58String (m) {
-  if (!Buffer.isBuffer(m)) {
+exports.toB58String = function toB58String (hash) {
+  if (!Buffer.isBuffer(hash)) {
     throw new Error('must be passed a buffer')
   }
 
-  return bs58.encode(m)
+  return bs58.encode(hash)
 }
 
 /**
  * Convert the given base58 encoded string to a multihash.
  *
- * @param {string} s
+ * @param {string|Buffer} hash
  * @returns {Buffer}
  */
-exports.fromB58String = function fromB58String (s) {
-  let encoded = s
-  if (Buffer.isBuffer(s)) {
-    encoded = s.toString()
+exports.fromB58String = function fromB58String (hash) {
+  let encoded = hash
+  if (Buffer.isBuffer(hash)) {
+    encoded = hash.toString()
   }
 
   return new Buffer(bs58.decode(encoded))
@@ -83,11 +66,7 @@ exports.fromB58String = function fromB58String (s) {
  * Decode a hash from the given multihash.
  *
  * @param {Buffer} buf
- * @returns {Object} result
- * @returns {number} result.code
- * @returns {string} result.name
- * @returns {number} result.length
- * @returns {Buffer} result.digest
+ * @returns {{code: number, name: string, length: number, digest: Buffer}} result
  */
 exports.decode = function decode (buf) {
   exports.validate(buf)
