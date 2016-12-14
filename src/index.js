@@ -1,39 +1,73 @@
+/**
+ * Multihash implementation in JavaScript.
+ *
+ * @module multihash
+ */
 'use strict'
 
 const bs58 = require('bs58')
 
 const cs = require('./constants')
 
-exports.toHexString = function toHexString (m) {
-  if (!Buffer.isBuffer(m)) {
+/**
+ * Convert the given multihash to a hex encoded string.
+ *
+ * @param {Buffer} hash
+ * @returns {string}
+ */
+exports.toHexString = function toHexString (hash) {
+  if (!Buffer.isBuffer(hash)) {
     throw new Error('must be passed a buffer')
   }
 
-  return m.toString('hex')
+  return hash.toString('hex')
 }
 
-exports.fromHexString = function fromHexString (s) {
-  return new Buffer(s, 'hex')
+/**
+ * Convert the given hex encoded string to a multihash.
+ *
+ * @param {string} hash
+ * @returns {Buffer}
+ */
+exports.fromHexString = function fromHexString (hash) {
+  return new Buffer(hash, 'hex')
 }
 
-exports.toB58String = function toB58String (m) {
-  if (!Buffer.isBuffer(m)) {
+/**
+ * Convert the given multihash to a base58 encoded string.
+ *
+ * @param {Buffer} hash
+ * @returns {string}
+ */
+exports.toB58String = function toB58String (hash) {
+  if (!Buffer.isBuffer(hash)) {
     throw new Error('must be passed a buffer')
   }
 
-  return bs58.encode(m)
+  return bs58.encode(hash)
 }
 
-exports.fromB58String = function fromB58String (s) {
-  let encoded = s
-  if (Buffer.isBuffer(s)) {
-    encoded = s.toString()
+/**
+ * Convert the given base58 encoded string to a multihash.
+ *
+ * @param {string|Buffer} hash
+ * @returns {Buffer}
+ */
+exports.fromB58String = function fromB58String (hash) {
+  let encoded = hash
+  if (Buffer.isBuffer(hash)) {
+    encoded = hash.toString()
   }
 
   return new Buffer(bs58.decode(encoded))
 }
 
-// Decode a hash from the given Multihash.
+/**
+ * Decode a hash from the given multihash.
+ *
+ * @param {Buffer} buf
+ * @returns {{code: number, name: string, length: number, digest: Buffer}} result
+ */
 exports.decode = function decode (buf) {
   exports.validate(buf)
 
@@ -47,8 +81,16 @@ exports.decode = function decode (buf) {
   }
 }
 
-// Encode a hash digest along with the specified function code.
-// Note: the length is derived from the length of the digest itself.
+/**
+ *  Encode a hash digest along with the specified function code.
+ *
+ * > **Note:** the length is derived from the length of the digest itself.
+ *
+ * @param {Buffer} digest
+ * @param {string|number} code
+ * @param {number} [length]
+ * @returns {Buffer}
+ */
 exports.encode = function encode (digest, code, length) {
   if (!digest || !code) {
     throw new Error('multihash encode requires at least two args: digest, code')
@@ -76,7 +118,12 @@ exports.encode = function encode (digest, code, length) {
   return Buffer.concat([new Buffer([hashfn, length]), digest])
 }
 
-// Converts a hashfn name into the matching code
+/**
+ * Converts a hash function name into the matching code.
+ * If passed a number it will return the number if it's a valid code.
+ * @param {string|number} name
+ * @returns {number}
+ */
 exports.coerceCode = function coerceCode (name) {
   let code = name
 
@@ -98,12 +145,22 @@ exports.coerceCode = function coerceCode (name) {
   return code
 }
 
-// Checks wether a code is part of the app range
+/**
+ * Checks wether a code is part of the app range
+ *
+ * @param {number} code
+ * @returns {boolean}
+ */
 exports.isAppCode = function appCode (code) {
   return code > 0 && code < 0x10
 }
 
-// Checks whether a multihash code is valid.
+/**
+ * Checks whether a multihash code is valid.
+ *
+ * @param {number} code
+ * @returns {boolean}
+ */
 exports.isValidCode = function validCode (code) {
   if (exports.isAppCode(code)) {
     return true
@@ -116,6 +173,13 @@ exports.isValidCode = function validCode (code) {
   return false
 }
 
+/**
+ * Check if the given buffer is a valid multihash. Throws an error if it is not valid.
+ *
+ * @param {Buffer} multihash
+ * @returns {undefined}
+ * @throws {Error}
+ */
 exports.validate = function validate (multihash) {
   if (!(Buffer.isBuffer(multihash))) {
     throw new Error('multihash must be a Buffer')

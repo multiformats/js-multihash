@@ -9,9 +9,10 @@
     "test:browser": "aegir-test browser",
     "build": "aegir-build",
     "test": "aegir-test",
-    "release": "aegir-release",
-    "release-minor": "aegir-release --type minor",
-    "release-major": "aegir-release --type major",
+    "docs": "aegir-docs",
+    "release": "aegir-release --docs",
+    "release-minor": "aegir-release --type minor --docs",
+    "release-major": "aegir-release --type major --docs",
     "coverage": "aegir-coverage",
     "coverage-publish": "aegir-coverage publish"
   },
@@ -37,13 +38,13 @@
     "url": "https://github.com/multiformats/js-multihash/issues"
   },
   "dependencies": {
-    "bs58": "^3.0.0"
+    "bs58": "^3.1.0"
   },
   "devDependencies": {
-    "aegir": "^9.1.2",
+    "aegir": "^9.3.0",
     "buffer-equal": "1.0.0",
     "chai": "^3.5.0",
-    "pre-commit": "^1.1.2"
+    "pre-commit": "^1.2.2"
   },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
