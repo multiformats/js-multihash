@@ -180,7 +180,7 @@ exports.isValidCode = function validCode (code) {
  * @returns {undefined}
  * @throws {Error}
  */
-exports.validate = function validate (multihash) {
+function validate (multihash) {
   if (!(Buffer.isBuffer(multihash))) {
     throw new Error('multihash must be a Buffer')
   }
@@ -202,4 +202,18 @@ exports.validate = function validate (multihash) {
   if (multihash.slice(2).length !== multihash[1]) {
     throw new Error(`multihash length inconsistent: 0x${multihash.toString('hex')}`)
   }
+}
+exports.validate = validate
+
+/**
+ * Returns a prefix from a valid multihash. Throws an error if it is not valid.
+ *
+ * @param {Buffer} multihash
+ * @returns {undefined}
+ * @throws {Error}
+ */
+exports.prefix = function prefix (multihash) {
+  validate(multihash)
+
+  return multihash.slice(0, 2)
 }

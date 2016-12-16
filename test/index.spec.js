@@ -17,7 +17,7 @@ function sample (code, size, hex) {
   ])
 }
 
-describe('mh', () => {
+describe('multihash', () => {
   describe('toHexString', () => {
     it('valid', () => {
       validCases.forEach((test) => {
@@ -308,5 +308,19 @@ describe('mh', () => {
         /Unrecognized function code/
       )
     })
+  })
+
+  it('prefix', () => {
+    const multihash = mh.encode(new Buffer('hey'), 0x11, 3)
+    const prefix = mh.prefix(multihash)
+    expect(prefix.toString('hex')).to.eql('1103')
+  })
+
+  it('prefix throws on invalid multihash', () => {
+    const multihash = new Buffer('definitely not valid')
+
+    expect(() => {
+      mh.prefix(multihash)
+    }).to.throw
   })
 })
