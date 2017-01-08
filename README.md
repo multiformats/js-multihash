@@ -77,7 +77,7 @@ You will need to use Node.js `Buffer` API compatible, if you are running inside 
 
 ## API
 
-TODO.
+https://multiformats.github.io/js-multihash/
 
 ## Maintainers
 
