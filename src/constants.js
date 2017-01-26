@@ -16,6 +16,7 @@ exports.names = {
   'keccak-256': 0x1B,
   'keccak-384': 0x1C,
   'keccak-512': 0x1D,
+  'murmur3':    0x22,
   'blake2b':    0x40,
   'blake2s':    0x41
 }
@@ -34,6 +35,7 @@ exports.codes = {
   0x1B: 'keccak-256',
   0x1C: 'keccak-384',
   0x1D: 'keccak-512',
+  0x22: 'murmur3',
   0x40: 'blake2b',
   0x41: 'blake2s'
 }
@@ -52,6 +54,7 @@ exports.defaultLengths = {
   0x1B: 32,
   0x1C: 48,
   0x1D: 64,
+  0x22: 32,
   0x40: 64,
   0x41: 32
 }
