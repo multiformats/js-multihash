@@ -162,14 +162,6 @@ describe('multihash', () => {
       ).to.throw(
         /length should be equal/
       )
-
-      const longBuffer = new Buffer(150)
-      longBuffer.fill('a')
-      expect(
-        () => mh.encode(longBuffer, 0x11)
-      ).to.throw(
-        /not yet support/
-      )
     })
   })
 

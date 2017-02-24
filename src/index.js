@@ -8,6 +8,7 @@
 const bs58 = require('bs58')
 
 const cs = require('./constants')
+const varint = require('varint')
 
 /**
  * Convert the given multihash to a hex encoded string.
@@ -69,15 +70,35 @@ exports.fromB58String = function fromB58String (hash) {
  * @returns {{code: number, name: string, length: number, digest: Buffer}} result
  */
 exports.decode = function decode (buf) {
-  exports.validate(buf)
+ if (!(Buffer.isBuffer(buf))) {
+    throw new Error('multihash must be a Buffer')
+  }
 
-  const code = buf[0]
+  if (buf.length < 3) {
+    throw new Error('multihash too short. must be > 3 bytes.')
+  }
+
+  let code = varint.decode(buf)
+  if (!exports.isValidCode(code)) {
+    throw new Error(`multihash unknown function code: 0x${code.toString(16)}`)
+  }
+  buf = buf.slice(varint.decode.bytes)
+
+  let len = varint.decode(buf)
+  if (len < 1) {
+    throw new Error(`multihash invalid length: 0x${len.toString(16)}`)
+  }
+  buf = buf.slice(varint.decode.bytes)
+
+  if (buf.length !== len) {
+    throw new Error(`multihash length inconsistent: 0x${buf.toString('hex')}`)
+  }
 
   return {
     code: code,
     name: cs.codes[code],
-    length: buf[1],
-    digest: buf.slice(2)
+    length: len,
+    digest: buf
   }
 }
 
@@ -111,11 +132,11 @@ exports.encode = function encode (digest, code, length) {
     throw new Error('digest length should be equal to specified length.')
   }
 
-  if (length > 127) {
-    throw new Error('multihash does not yet support digest lengths greater than 127 bytes.')
-  }
-
-  return Buffer.concat([new Buffer([hashfn, length]), digest])
+  return Buffer.concat([
+    new Buffer(varint.encode(hashfn)),
+    new Buffer(varint.encode(length)),
+    digest
+  ])
 }
 
 /**
@@ -181,27 +202,7 @@ exports.isValidCode = function validCode (code) {
  * @throws {Error}
  */
 function validate (multihash) {
-  if (!(Buffer.isBuffer(multihash))) {
-    throw new Error('multihash must be a Buffer')
-  }
-
-  if (multihash.length < 3) {
-    throw new Error('multihash too short. must be > 3 bytes.')
-  }
-
-  if (multihash.length > 129) {
-    throw new Error('multihash too long. must be < 129 bytes.')
-  }
-
-  let code = multihash[0]
-
-  if (!exports.isValidCode(code)) {
-    throw new Error(`multihash unknown function code: 0x${code.toString(16)}`)
-  }
-
-  if (multihash.slice(2).length !== multihash[1]) {
-    throw new Error(`multihash length inconsistent: 0x${multihash.toString('hex')}`)
-  }
+  exports.decode(multihash) // throws if bad.
 }
 exports.validate = validate
 
