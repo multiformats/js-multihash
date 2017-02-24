@@ -70,7 +70,7 @@ exports.fromB58String = function fromB58String (hash) {
  * @returns {{code: number, name: string, length: number, digest: Buffer}} result
  */
 exports.decode = function decode (buf) {
- if (!(Buffer.isBuffer(buf))) {
+  if (!(Buffer.isBuffer(buf))) {
     throw new Error('multihash must be a Buffer')
   }
 
