@@ -319,8 +319,6 @@ describe('multihash', () => {
   it('prefix throws on invalid multihash', () => {
     const multihash = new Buffer('definitely not valid')
 
-    expect(() => {
-      mh.prefix(multihash)
-    }).to.throw
+    expect(() => mh.prefix(multihash)).to.throw()
   })
 })
