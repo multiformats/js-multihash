@@ -42,7 +42,7 @@
     "varint": "^5.0.0"
   },
   "devDependencies": {
-    "aegir": "^10.0.0",
+    "aegir": "^11.0.0",
     "buffer-equal": "1.0.0",
     "chai": "^3.5.0",
     "pre-commit": "^1.2.2"
