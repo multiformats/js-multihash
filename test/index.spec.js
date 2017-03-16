@@ -2,7 +2,10 @@
 /* eslint max-nested-callbacks: off */
 'use strict'
 
-const expect = require('chai').expect
+const chai = require('chai')
+const dirtyChai = require('dirty-chai')
+chai.use(dirtyChai)
+const expect = chai.expect
 const bufeq = require('buffer-equal')
 const bs58 = require('bs58')
 
