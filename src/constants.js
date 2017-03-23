@@ -16,7 +16,8 @@ exports.names = {
   'keccak-256': 0x1B,
   'keccak-384': 0x1C,
   'keccak-512': 0x1D,
-  'murmur3':    0x22,
+  'murmur3-128': 0x22,
+  'murmur3-32':  0x23,
   'blake2b-8':   0xb201,
   'blake2b-16':  0xb202,
   'blake2b-24':  0xb203,
@@ -129,7 +130,8 @@ exports.codes = {
   0x1B: 'keccak-256',
   0x1C: 'keccak-384',
   0x1D: 'keccak-512',
-  0x22: 'murmur3',
+  0x22: 'murmur3-128',
+  0x23: 'murmur3-32',
 
   // blake2
   0xb201: 'blake2b-8',
