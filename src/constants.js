@@ -454,7 +454,7 @@ exports.codes = {
   0xb25e: 'blake2s-240',
   0xb25f: 'blake2s-248',
   0xb260: 'blake2s-256',
-  
+
   // skein
   0xb301: 'Skein256-8',
   0xb302: 'Skein256-16',
