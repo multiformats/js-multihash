@@ -30,21 +30,21 @@ This is the [multihash](//github.com/multiformats/multihash) implementation in N
 
 ## Install
 
-### In Node.js through npm
+### Using npm
 
 ```bash
-$ npm install --save multihashes # node the name of the module is multihashes
+> npm install --save multihashes # node the name of the module is multihashes
 ```
 
-### Browser: Browserify, Webpack, other bundlers
-
-The code published to npm that gets loaded on require is in fact an ES5 transpiled version with the right shims added. This means that you can require it and use with your favourite bundler without having to adjust asset management process.
+Once the install is complete, you can require it as a normal dependency
 
 ```js
-var multihashes = require('multihashes')
+const multihashes = require('multihashes')
 ```
 
-### In the Browser through `<script>` tag
+You can require it and use with your favourite bundler to bundle this package in a browser compatible code.
+
+### Using a `<script>` tag
 
 Loading this module through a script tag will make the ```Multihashes``` obj available in the global namespace.
 
