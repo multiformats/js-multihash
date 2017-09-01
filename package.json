@@ -49,6 +49,7 @@
     "pre-commit": "^1.2.2"
   },
   "contributors": [
+    "Alan Shaw <alan@tableflip.io>",
     "David Dias <daviddias.p@gmail.com>",
     "Fil <fil@rezo.net>",
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
