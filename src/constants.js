@@ -2,7 +2,7 @@
 /* eslint key-spacing: off */
 'use strict'
 
-exports.names = {
+exports.names = Object.freeze({
   'sha1':       0x11,
   'sha2-256':   0x12,
   'sha2-512':   0x13,
@@ -114,9 +114,9 @@ exports.names = {
   'blake2s-240': 0xb25e,
   'blake2s-248': 0xb25f,
   'blake2s-256': 0xb260
-}
+})
 
-exports.codes = {
+exports.codes = Object.freeze({
   0x11: 'sha1',
   0x12: 'sha2-256',
   0x13: 'sha2-512',
@@ -230,9 +230,9 @@ exports.codes = {
   0xb25e: 'blake2s-240',
   0xb25f: 'blake2s-248',
   0xb260: 'blake2s-256'
-}
+})
 
-exports.defaultLengths = {
+exports.defaultLengths = Object.freeze({
   0x11: 20,
   0x12: 32,
   0x13: 64,
@@ -344,4 +344,4 @@ exports.defaultLengths = {
   0xb25e: 0x1e,
   0xb25f: 0x1f,
   0xb260: 0x20
-}
+})

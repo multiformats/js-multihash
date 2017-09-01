@@ -8,6 +8,11 @@
 const bs58 = require('bs58')
 
 const cs = require('./constants')
+
+exports.names = cs.names
+exports.codes = cs.codes
+exports.defaultLengths = cs.defaultLengths
+
 const varint = require('varint')
 
 /**
