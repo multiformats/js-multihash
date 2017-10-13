@@ -4,17 +4,17 @@
   "description": "multihash implementation",
   "main": "src/index.js",
   "scripts": {
-    "test:node": "aegir-test node",
-    "lint": "aegir-lint",
-    "test:browser": "aegir-test browser",
-    "build": "aegir-build",
-    "test": "aegir-test",
-    "docs": "aegir-docs",
-    "release": "aegir-release --docs",
-    "release-minor": "aegir-release --type minor --docs",
-    "release-major": "aegir-release --type major --docs",
-    "coverage": "aegir-coverage",
-    "coverage-publish": "aegir-coverage publish"
+    "lint": "aegir lint",
+    "test:browser": "aegir test --target browser",
+    "test:node": "aegir test --target node",
+    "build": "aegir build",
+    "test": "aegir test",
+    "docs": "aegir docs",
+    "release": "aegir release --docs",
+    "release-minor": "aegir release --type minor --docs",
+    "release-major": "aegir release --type major --docs",
+    "coverage": "aegir coverage",
+    "coverage-publish": "aegir coverage --provider coveralls"
   },
   "pre-commit": [
     "lint",
@@ -42,9 +42,9 @@
     "varint": "^5.0.0"
   },
   "devDependencies": {
-    "aegir": "^11.0.2",
+    "aegir": "^12.0.8",
     "buffer-equal": "1.0.0",
-    "chai": "^4.1.1",
+    "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
     "pre-commit": "^1.2.2"
   },
