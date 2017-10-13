@@ -2,7 +2,7 @@
 /* eslint key-spacing: off */
 'use strict'
 
-exports.names = {
+exports.names = Object.freeze({
   'sha1':       0x11,
   'sha2-256':   0x12,
   'sha2-512':   0x13,
@@ -338,9 +338,9 @@ exports.names = {
   'Skein1024-1008': 0xb3de,
   'Skein1024-1016': 0xb3df,
   'Skein1024-1024': 0xb3e0
-}
+})
 
-exports.codes = {
+exports.codes = Object.freeze({
   0x11: 'sha1',
   0x12: 'sha2-256',
   0x13: 'sha2-512',
@@ -453,8 +453,6 @@ exports.codes = {
   0xb25d: 'blake2s-232',
   0xb25e: 'blake2s-240',
   0xb25f: 'blake2s-248',
-  0xb260: 'blake2s-256',
-
   // skein
   0xb301: 'Skein256-8',
   0xb302: 'Skein256-16',
@@ -680,9 +678,9 @@ exports.codes = {
   0xb3de: 'Skein1024-1008',
   0xb3df: 'Skein1024-1016',
   0xb3e0: 'Skein1024-1024'
-}
+})
 
-exports.defaultLengths = {
+exports.defaultLengths = Object.freeze({
   0x11: 20,
   0x12: 32,
   0x13: 64,
@@ -794,7 +792,6 @@ exports.defaultLengths = {
   0xb25e: 0x1e,
   0xb25f: 0x1f,
   0xb260: 0x20,
-
   0xb301: 0x01,
   0xb302: 0x02,
   0xb303: 0x03,
@@ -1019,4 +1016,4 @@ exports.defaultLengths = {
   0xb3de: 0x7e,
   0xb3df: 0x7f,
   0xb3e0: 0x80
-}
+})

@@ -10,6 +10,7 @@ const bufeq = require('buffer-equal')
 const bs58 = require('bs58')
 
 const mh = require('../src')
+const constants = require('../src/constants')
 const validCases = require('./fixtures/valid')
 const invalidCases = require('./fixtures/invalid')
 
@@ -313,5 +314,19 @@ describe('multihash', () => {
     const multihash = new Buffer('definitely not valid')
 
     expect(() => mh.prefix(multihash)).to.throw()
+  })
+
+  describe('constants', () => {
+    it('exported', () => {
+      expect(mh.names).to.equal(constants.names)
+      expect(mh.codes).to.equal(constants.codes)
+      expect(mh.defaultLengths).to.equal(constants.defaultLengths)
+    })
+
+    it('frozen', () => {
+      expect(Object.isFrozen(mh.names)).to.be.true()
+      expect(Object.isFrozen(mh.codes)).to.be.true()
+      expect(Object.isFrozen(mh.defaultLengths)).to.be.true()
+    })
   })
 })
