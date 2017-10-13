@@ -16,8 +16,8 @@ const invalidCases = require('./fixtures/invalid')
 
 function sample (code, size, hex) {
   return Buffer.concat([
-    new Buffer([code, size]),
-    new Buffer(hex, 'hex')
+    Buffer.from([code, size]),
+    Buffer.from(hex, 'hex')
   ])
 }
 
@@ -26,7 +26,7 @@ describe('multihash', () => {
     it('valid', () => {
       validCases.forEach((test) => {
         const code = test.encoding.code
-        const buf = mh.encode(new Buffer(test.hex, 'hex'), code)
+        const buf = mh.encode(Buffer.from(test.hex, 'hex'), code)
         expect(
           mh.toHexString(buf)
         ).to.be.eql(
@@ -48,7 +48,7 @@ describe('multihash', () => {
     it('valid', () => {
       validCases.forEach((test) => {
         const code = test.encoding.code
-        const buf = mh.encode(new Buffer(test.hex, 'hex'), code)
+        const buf = mh.encode(Buffer.from(test.hex, 'hex'), code)
         expect(
           mh.fromHexString(buf.toString('hex')).toString('hex')
         ).to.be.eql(
@@ -62,7 +62,7 @@ describe('multihash', () => {
     it('valid', () => {
       validCases.forEach((test) => {
         const code = test.encoding.code
-        const buf = mh.encode(new Buffer(test.hex, 'hex'), code)
+        const buf = mh.encode(Buffer.from(test.hex, 'hex'), code)
         expect(
           mh.toB58String(buf)
         ).to.be.eql(
@@ -83,7 +83,7 @@ describe('multihash', () => {
   describe('fromB58String', () => {
     it('valid', () => {
       const src = 'QmPfjpVaf593UQJ9a5ECvdh2x17XuJYG5Yanv5UFnH3jPE'
-      const expected = new Buffer('122013bf801597d74a660453412635edd8c34271e5998f801fac5d700c6ce8d8e461', 'hex')
+      const expected = Buffer.from('122013bf801597d74a660453412635edd8c34271e5998f801fac5d700c6ce8d8e461', 'hex')
 
       expect(
         mh.fromB58String(src)
@@ -92,7 +92,7 @@ describe('multihash', () => {
       )
 
       expect(
-        mh.fromB58String(new Buffer(src))
+        mh.fromB58String(Buffer.from(src))
       ).to.be.eql(
         expected
       )
@@ -105,7 +105,7 @@ describe('multihash', () => {
         const code = test.encoding.code
         const buf = sample(code, test.size, test.hex)
         const name = test.encoding.name
-        const d1 = new Buffer(test.hex, 'hex')
+        const d1 = Buffer.from(test.hex, 'hex')
         const length = d1.length
 
         const r = mh.decode(buf)
@@ -134,8 +134,8 @@ describe('multihash', () => {
         const name = test.encoding.name
         const buf = sample(code, test.size, test.hex)
         const results = [
-          mh.encode(new Buffer(test.hex, 'hex'), code),
-          mh.encode(new Buffer(test.hex, 'hex'), name)
+          mh.encode(Buffer.from(test.hex, 'hex'), code),
+          mh.encode(Buffer.from(test.hex, 'hex'), name)
         ]
 
         results.forEach((res) => {
@@ -162,7 +162,7 @@ describe('multihash', () => {
       )
 
       expect(
-        () => mh.encode(new Buffer('hello'), 0x11, 2)
+        () => mh.encode(Buffer.from('hello'), 0x11, 2)
       ).to.throw(
         /length should be equal/
       )
@@ -185,7 +185,7 @@ describe('multihash', () => {
         ).to.throw()
       })
 
-      const longBuffer = new Buffer(150)
+      const longBuffer = Buffer.from(150)
       longBuffer.fill('a')
       expect(
         () => mh.validate(longBuffer)
@@ -291,7 +291,7 @@ describe('multihash', () => {
       })
 
       expect(
-        () => mh.coerceCode(new Buffer('hello'))
+        () => mh.coerceCode(Buffer.from('hello'))
       ).to.throw(
         /should be a number/
       )
@@ -305,13 +305,13 @@ describe('multihash', () => {
   })
 
   it('prefix', () => {
-    const multihash = mh.encode(new Buffer('hey'), 0x11, 3)
+    const multihash = mh.encode(Buffer.from('hey'), 0x11, 3)
     const prefix = mh.prefix(multihash)
     expect(prefix.toString('hex')).to.eql('1103')
   })
 
   it('prefix throws on invalid multihash', () => {
-    const multihash = new Buffer('definitely not valid')
+    const multihash = Buffer.from('definitely not valid')
 
     expect(() => mh.prefix(multihash)).to.throw()
   })

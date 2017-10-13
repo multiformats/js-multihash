@@ -36,7 +36,7 @@ exports.toHexString = function toHexString (hash) {
  * @returns {Buffer}
  */
 exports.fromHexString = function fromHexString (hash) {
-  return new Buffer(hash, 'hex')
+  return Buffer.from(hash, 'hex')
 }
 
 /**
@@ -65,7 +65,7 @@ exports.fromB58String = function fromB58String (hash) {
     encoded = hash.toString()
   }
 
-  return new Buffer(bs58.decode(encoded))
+  return Buffer.from(bs58.decode(encoded))
 }
 
 /**
@@ -138,8 +138,8 @@ exports.encode = function encode (digest, code, length) {
   }
 
   return Buffer.concat([
-    new Buffer(varint.encode(hashfn)),
-    new Buffer(varint.encode(length)),
+    Buffer.from(varint.encode(hashfn)),
+    Buffer.from(varint.encode(length)),
     digest
   ])
 }
