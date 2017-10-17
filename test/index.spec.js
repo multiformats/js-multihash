@@ -185,8 +185,7 @@ describe('multihash', () => {
         ).to.throw()
       })
 
-      const longBuffer = Buffer.from(150)
-      longBuffer.fill('a')
+      const longBuffer = Buffer.alloc(150, 'a')
       expect(
         () => mh.validate(longBuffer)
       ).to.throw()
