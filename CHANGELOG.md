@@ -1,3 +1,13 @@
+<a name="0.4.12"></a>
+## [0.4.12](https://github.com/multiformats/js-multihash/compare/v0.4.11...v0.4.12) (2017-10-20)
+
+
+### Bug Fixes
+
+* add missing blake2s-256 ([72b856f](https://github.com/multiformats/js-multihash/commit/72b856f))
+
+
+
 <a name="0.4.11"></a>
 ## [0.4.11](https://github.com/multiformats/js-multihash/compare/v0.4.10...v0.4.11) (2017-10-20)
 

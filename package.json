@@ -1,6 +1,6 @@
 {
   "name": "multihashes",
-  "version": "0.4.11",
+  "version": "0.4.12",
   "description": "multihash implementation",
   "main": "src/index.js",
   "scripts": {
