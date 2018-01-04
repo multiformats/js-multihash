@@ -1,3 +1,13 @@
+<a name="0.4.13"></a>
+## [0.4.13](https://github.com/multiformats/js-multihash/compare/v0.4.12...v0.4.13) (2018-01-04)
+
+
+### Bug Fixes
+
+* add missing dbl-sha2-256 ([#44](https://github.com/multiformats/js-multihash/issues/44)) ([4421157](https://github.com/multiformats/js-multihash/commit/4421157)), closes [#38](https://github.com/multiformats/js-multihash/issues/38)
+
+
+
 <a name="0.4.12"></a>
 ## [0.4.12](https://github.com/multiformats/js-multihash/compare/v0.4.11...v0.4.12) (2017-10-20)
 
