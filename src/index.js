@@ -1,19 +1,26 @@
+// @flow
+
 /**
  * Multihash implementation in JavaScript.
  *
  * @module multihash
  */
-'use strict'
+import bs58 from 'bs58'
+import varint from 'varint'
+import {names, codes, defaultLengths, type Name, type Code} from './constants'
 
-const bs58 = require('bs58')
+export {names, codes, defaultLengths}
 
-const cs = require('./constants')
-
-exports.names = cs.names
-exports.codes = cs.codes
-exports.defaultLengths = cs.defaultLengths
-
-const varint = require('varint')
+export type Multihash = Buffer
+export type MultihashPrefix = Buffer
+export type B58Buffer = Buffer
+export type HexString = string
+export type MultihashData = {
+  code: Code,
+  name: Name,
+  length: number,
+  digest: Buffer
+}
 
 /**
  * Convert the given multihash to a hex encoded string.
@@ -21,7 +28,7 @@ const varint = require('varint')
  * @param {Buffer} hash
  * @returns {string}
  */
-exports.toHexString = function toHexString (hash) {
+export function toHexString (hash: Multihash): HexString {
   if (!Buffer.isBuffer(hash)) {
     throw new Error('must be passed a buffer')
   }
@@ -35,17 +42,18 @@ exports.toHexString = function toHexString (hash) {
  * @param {string} hash
  * @returns {Buffer}
  */
-exports.fromHexString = function fromHexString (hash) {
+export function fromHexString (hash: HexString): Multihash {
   return Buffer.from(hash, 'hex')
 }
 
+export type B58String = string
 /**
  * Convert the given multihash to a base58 encoded string.
  *
  * @param {Buffer} hash
  * @returns {string}
  */
-exports.toB58String = function toB58String (hash) {
+export function toB58String (hash: Multihash): B58String {
   if (!Buffer.isBuffer(hash)) {
     throw new Error('must be passed a buffer')
   }
@@ -59,7 +67,7 @@ exports.toB58String = function toB58String (hash) {
  * @param {string|Buffer} hash
  * @returns {Buffer}
  */
-exports.fromB58String = function fromB58String (hash) {
+export function fromB58String (hash: B58String | B58Buffer): Multihash {
   let encoded = hash
   if (Buffer.isBuffer(hash)) {
     encoded = hash.toString()
@@ -74,7 +82,7 @@ exports.fromB58String = function fromB58String (hash) {
  * @param {Buffer} buf
  * @returns {{code: number, name: string, length: number, digest: Buffer}} result
  */
-exports.decode = function decode (buf) {
+export function decode (buf: Multihash): MultihashData {
   if (!(Buffer.isBuffer(buf))) {
     throw new Error('multihash must be a Buffer')
   }
@@ -84,7 +92,7 @@ exports.decode = function decode (buf) {
   }
 
   let code = varint.decode(buf)
-  if (!exports.isValidCode(code)) {
+  if (!isValidCode(code)) {
     throw new Error(`multihash unknown function code: 0x${code.toString(16)}`)
   }
   buf = buf.slice(varint.decode.bytes)
@@ -101,7 +109,7 @@ exports.decode = function decode (buf) {
 
   return {
     code: code,
-    name: cs.codes[code],
+    name: codes[code],
     length: len,
     digest: buf
   }
@@ -117,13 +125,13 @@ exports.decode = function decode (buf) {
  * @param {number} [length]
  * @returns {Buffer}
  */
-exports.encode = function encode (digest, code, length) {
+export function encode (digest: Buffer, code: Code, length: number): Multihash {
   if (!digest || !code) {
     throw new Error('multihash encode requires at least two args: digest, code')
   }
 
   // ensure it's a hashfunction code.
-  const hashfn = exports.coerceCode(code)
+  const hashfn = coerceCode(code)
 
   if (!(Buffer.isBuffer(digest))) {
     throw new Error('digest should be a Buffer')
@@ -150,21 +158,22 @@ exports.encode = function encode (digest, code, length) {
  * @param {string|number} name
  * @returns {number}
  */
-exports.coerceCode = function coerceCode (name) {
+// TODO: Sholud we just allow Name here instead ?
+export function coerceCode (name: Name | Code): Code {
   let code = name
 
   if (typeof name === 'string') {
-    if (!cs.names[name]) {
+    if (!names[name]) {
       throw new Error(`Unrecognized hash function named: ${name}`)
     }
-    code = cs.names[name]
+    code = names[name]
   }
 
   if (typeof code !== 'number') {
     throw new Error(`Hash function code should be a number. Got: ${code}`)
   }
 
-  if (!cs.codes[code] && !exports.isAppCode(code)) {
+  if (!codes[code] && !exports.isAppCode(code)) {
     throw new Error(`Unrecognized function code: ${code}`)
   }
 
@@ -177,7 +186,7 @@ exports.coerceCode = function coerceCode (name) {
  * @param {number} code
  * @returns {boolean}
  */
-exports.isAppCode = function appCode (code) {
+export function isAppCode (code: number): boolean {
   return code > 0 && code < 0x10
 }
 
@@ -187,12 +196,12 @@ exports.isAppCode = function appCode (code) {
  * @param {number} code
  * @returns {boolean}
  */
-exports.isValidCode = function validCode (code) {
-  if (exports.isAppCode(code)) {
+export function isValidCode (code: number): boolean {
+  if (isAppCode(code)) {
     return true
   }
 
-  if (cs.codes[code]) {
+  if (codes[(code: any)]) {
     return true
   }
 
@@ -206,19 +215,18 @@ exports.isValidCode = function validCode (code) {
  * @returns {undefined}
  * @throws {Error}
  */
-function validate (multihash) {
-  exports.decode(multihash) // throws if bad.
+export function validate (multihash: Buffer) {
+  decode(multihash) // throws if bad.
 }
-exports.validate = validate
 
 /**
  * Returns a prefix from a valid multihash. Throws an error if it is not valid.
  *
  * @param {Buffer} multihash
- * @returns {undefined}
+ * @returns {Buffer}
  * @throws {Error}
  */
-exports.prefix = function prefix (multihash) {
+export function prefix (multihash: Multihash): MultihashPrefix {
   validate(multihash)
 
   return multihash.slice(0, 2)

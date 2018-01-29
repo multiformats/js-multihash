@@ -1,0 +1,34 @@
+{
+  "env": {
+    "development": {
+      "sourceMaps": "inline",
+      "comments": false,
+      "presets": [
+        [
+          "env",
+          {
+            "targets": {
+              "node": "current"
+            }
+          }
+        ],
+        "flow-node"
+      ]
+    },
+    "umd": {
+      "comments": false,
+      "presets": [
+        [
+          "env",
+          {
+            "modules": false,
+            "targets": {
+              "browsers": "last 2 versions"
+            }
+          }
+        ],
+        "flow-node"
+      ]
+    }
+  }
+}
