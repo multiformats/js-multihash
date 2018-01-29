@@ -1,0 +1,7 @@
+{
+  "sourceMaps": "inline",
+  "comments": false,
+  "presets": [
+    "flow-node"
+  ]
+}

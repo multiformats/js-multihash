@@ -2,11 +2,12 @@
   "name": "multihashes",
   "version": "0.4.13",
   "description": "multihash implementation",
-  "main": "src/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "lint": "aegir lint",
     "test:browser": "aegir test --target browser",
     "test:node": "aegir test --target node",
+    "type-check": "flow check",
     "build": "aegir build",
     "test": "aegir test",
     "docs": "aegir docs",
@@ -14,7 +15,11 @@
     "release-minor": "aegir release --type minor --docs",
     "release-major": "aegir release --type major --docs",
     "coverage": "aegir coverage",
-    "coverage-publish": "aegir coverage --provider coveralls"
+    "coverage-publish": "aegir coverage --provider coveralls",
+    "build:types": "flow-copy-source --verbose src lib",
+    "build:lib": "babel --out-dir lib src",
+    "build:node": "npm build types && npm bulid lib",
+    "start": "flow-copy-source --watch --verbose src lib & babel --watch --out-dir lib src"
   },
   "pre-commit": [
     "lint",
@@ -46,7 +51,11 @@
     "buffer-equal": "1.0.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
-    "pre-commit": "^1.2.2"
+    "pre-commit": "^1.2.2",
+    "babel-cli": "6.26.0",
+    "babel-preset-flow-node": "^1.0.2",
+    "flow-bin": "^0.64.0",
+    "flow-copy-source": "^1.2.0"
   },
   "contributors": [
     "Alan Shaw <alan@tableflip.io>",
