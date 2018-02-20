@@ -9,8 +9,8 @@ const expect = chai.expect
 const bufeq = require('buffer-equal')
 const bs58 = require('bs58')
 
-const mh = require('../src')
-const constants = require('../src/constants')
+const mh = require('../lib')
+const constants = require('../lib/constants')
 const validCases = require('./fixtures/valid')
 const invalidCases = require('./fixtures/invalid')
 
