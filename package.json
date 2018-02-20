@@ -4,12 +4,12 @@
   "description": "multihash implementation",
   "main": "lib/index.js",
   "scripts": {
-    "lint": "aegir lint",
+    "lint": "lint-staged && npm run type-check",
     "test:browser": "aegir test --target browser",
     "test:node": "aegir test --target node",
     "type-check": "flow check",
-    "build": "aegir build",
-    "test": "aegir test",
+    "build": "npm run build:node && BABEL_ENV=umd aegir build",
+    "test": "npm run build:node && aegir test",
     "docs": "aegir docs",
     "release": "aegir release --docs",
     "release-minor": "aegir release --type minor --docs",
@@ -18,8 +18,14 @@
     "coverage-publish": "aegir coverage --provider coveralls",
     "build:types": "flow-copy-source --verbose src lib",
     "build:lib": "babel --out-dir lib src",
-    "build:node": "npm build types && npm bulid lib",
+    "build:node": "npm run build:types && npm run build:lib",
     "start": "flow-copy-source --watch --verbose src lib & babel --watch --out-dir lib src"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --no-semi --write",
+      "git add"
+    ]
   },
   "pre-commit": [
     "lint",
@@ -48,14 +54,21 @@
   },
   "devDependencies": {
     "aegir": "^12.3.0",
+    "babel-cli": "6.26.0",
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-preset-flow-node": "2.0.1",
     "buffer-equal": "1.0.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
+    "flow-bin": "^0.66.0",
+    "flow-copy-source": "^1.2.0",
+    "lint-staged": "^6.0.0",
     "pre-commit": "^1.2.2",
-    "babel-cli": "6.26.0",
-    "babel-preset-flow-node": "^1.0.2",
-    "flow-bin": "^0.64.0",
-    "flow-copy-source": "^1.2.0"
+    "prettier": "1.10.2",
+    "rollup": "0.56.1",
+    "rollup.config.flow": "1.0.0",
+    "source-map-support": "0.5.3"
   },
   "contributors": [
     "Alan Shaw <alan@tableflip.io>",
