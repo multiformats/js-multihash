@@ -6,7 +6,7 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "aegir lint && npm run type-check",
-    "test:browser": "npm run build && aegir test --target browser",
+    "test:browser": "npm run build && BABEL_ENV=umd aegir test --target browser",
     "test:node": "npm run build:node && aegir test --target node",
     "type-check": "flow check",
     "build": "npm run build:node && BABEL_ENV=umd aegir build",
