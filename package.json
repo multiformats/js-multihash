@@ -49,8 +49,6 @@
   "devDependencies": {
     "aegir": "git+https://github.com/ipfs/aegir#flow",
     "babel-cli": "6.26.0",
-    "babel-core": "6.26.0",
-    "babel-loader": "7.1.2",
     "babel-preset-flow-node": "2.0.1",
     "buffer-equal": "1.0.0",
     "chai": "^4.1.2",
