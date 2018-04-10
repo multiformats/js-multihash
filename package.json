@@ -53,7 +53,7 @@
     "buffer-equal": "1.0.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
-    "flow-bin": "^0.66.0",
+    "flow-bin": "~0.69.0",
     "flow-copy-source": "^1.2.0",
     "pre-commit": "^1.2.2"
   },
