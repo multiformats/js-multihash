@@ -6,10 +6,10 @@
   "main": "lib/index.js",
   "scripts": {
     "lint": "aegir lint && npm run type-check",
-    "test:browser": "npm run build && BABEL_ENV=umd aegir test --target browser",
+    "test:browser": "npm run build:node && aegir test --target browser",
     "test:node": "npm run build:node && aegir test --target node",
     "type-check": "flow check",
-    "build": "npm run build:node && BABEL_ENV=umd aegir build",
+    "build": "aegir build",
     "test": "npm run build:node && aegir test",
     "docs": "aegir docs",
     "release": "aegir release --docs",
@@ -18,8 +18,7 @@
     "coverage": "aegir coverage",
     "coverage-publish": "aegir coverage --provider coveralls",
     "build:types": "flow-copy-source --verbose src lib",
-    "build:lib": "babel --out-dir lib src",
-    "build:node": "npm run build:types && npm run build:lib",
+    "build:node": "npm run build:types && aegir build --lib --no-dist",
     "start": "flow-copy-source --watch --verbose src lib & babel --watch --out-dir lib src"
   },
   "pre-commit": [
