@@ -19,7 +19,7 @@
     "coverage-publish": "aegir coverage --provider coveralls",
     "build:types": "flow-copy-source --verbose src lib",
     "build:node": "npm run build:types && aegir build --lib --no-dist",
-    "start": "flow-copy-source --watch --verbose src lib & babel --watch --out-dir lib src"
+    "start": "flow-copy-source --watch --verbose src lib & aegir build --watch --no-dist"
   },
   "pre-commit": [
     "lint",
@@ -47,8 +47,6 @@
   },
   "devDependencies": {
     "aegir": "git+https://github.com/ipfs/aegir#flow",
-    "babel-cli": "6.26.0",
-    "babel-preset-flow-node": "2.0.1",
     "buffer-equal": "1.0.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
