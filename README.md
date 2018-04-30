@@ -15,6 +15,10 @@ js-multihash
 
 This is the [multihash](//github.com/multiformats/multihash) implementation in Node.
 
+## Lead Maintainer
+
+[David Dias](http://github.com/diasdavid/)
+
 ## Table of Contents
 
 - [Install](#install)
@@ -24,7 +28,6 @@ This is the [multihash](//github.com/multiformats/multihash) implementation in N
     - [Gotchas](#gotchas)
 - [Usage](#usage)
 - [API](#api)
-- [Maintainers](#maintainers)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -78,10 +81,6 @@ You will need to use Node.js `Buffer` API compatible, if you are running inside 
 ## API
 
 https://multiformats.github.io/js-multihash/
-
-## Maintainers
-
-Captain: [@diasdavid](https://github.com/diasdavid).
 
 ## Contribute
 
