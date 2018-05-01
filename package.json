@@ -2,7 +2,7 @@
   "name": "multihashes",
   "version": "0.4.13",
   "description": "multihash implementation",
-  "lead-maintainer": "David Dias <daviddias@ipfs.io>",
+  "leadMaintainer": "David Dias <daviddias@ipfs.io>",
   "main": "src/index.js",
   "scripts": {
     "lint": "aegir lint",
@@ -16,15 +16,6 @@
     "release-major": "aegir release --type major --docs",
     "coverage": "aegir coverage",
     "coverage-publish": "aegir coverage --provider coveralls"
-  },
-  "pre-commit": [
-    "lint",
-    "test"
-  ],
-  "standard": {
-    "ignore": [
-      "dist"
-    ]
   },
   "repository": {
     "type": "git",
