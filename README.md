@@ -15,7 +15,7 @@ js-multihash
 
 This is the [multihash](//github.com/multiformats/multihash) implementation in Node.
 
-## Lead Maintainer
+## Captain
 
 [David Dias](http://github.com/diasdavid/)
 
