@@ -16,9 +16,8 @@
     "release-major": "aegir release --type major --docs",
     "coverage": "aegir coverage",
     "coverage-publish": "aegir coverage --provider coveralls",
-    "build:types": "flow-copy-source --verbose src lib",
-    "build:node": "npm run build:types && aegir build --lib --no-dist",
-    "start": "flow-copy-source --watch --verbose src lib & aegir build --watch --no-dist"
+    "build:node": "aegir build --no-dist",
+    "start": "aegir build --watch --no-dist"
   },
   "pre-commit": [
     "lint",
@@ -49,7 +48,6 @@
     "buffer-equal": "1.0.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
-    "flow-copy-source": "^1.2.0",
     "pre-commit": "^1.2.2"
   },
   "contributors": [
