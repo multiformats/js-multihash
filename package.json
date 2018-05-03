@@ -5,10 +5,9 @@
   "lead-maintainer": "David Dias <daviddias@ipfs.io>",
   "main": "lib/index.js",
   "scripts": {
-    "lint": "aegir lint && npm run type-check",
+    "lint": "aegir lint",
     "test:browser": "npm run build:node && aegir test --target browser",
     "test:node": "npm run build:node && aegir test --target node",
-    "type-check": "flow check",
     "build": "aegir build",
     "test": "npm run build:node && aegir test",
     "docs": "aegir docs",
@@ -50,7 +49,6 @@
     "buffer-equal": "1.0.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
-    "flow-bin": "~0.69.0",
     "flow-copy-source": "^1.2.0",
     "pre-commit": "^1.2.2"
   },
