@@ -7,19 +7,18 @@
   "browser": "dist/multihashes.min.js",
   "scripts": {
     "lint": "aegir lint && npm run type-check",
-    "test:browser": "aegir test --target browser",
-    "test:node": "aegir test --target node",
+    "test:browser": "aegir test --eek --target browser",
+    "test:node": "aegir test --flow --target node",
     "type-check": "flow check",
     "build:browser": "aegir build --eebb",
     "build": "NODE_ENV=production babel src -d ./dist/src --presets ./node_modules/aegir/src/config/babelrc.js",
-    "test": "aegir test --eek",
+    "test": "aegir test --eek --flow",
     "docs": "aegir docs",
     "release": "aegir release --docs",
     "release-minor": "aegir release --type minor --docs",
     "release-major": "aegir release --type major --docs",
     "coverage": "aegir coverage",
-    "coverage-publish": "aegir coverage --provider coveralls",
-    "build:types": "flow-copy-source --verbose src lib"
+    "coverage-publish": "aegir coverage --provider coveralls"
   },
   "pre-commit": [
     "lint",
