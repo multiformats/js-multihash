@@ -29,6 +29,22 @@ exports.toHexString = function toHexString (hash) {
   return hash.toString('hex')
 }
 
+// This function is only used to test that code coverage works correctly.
+exports.uncoveredFunction = function coolFunction () {
+  console.log('This function is not covered by code coverage')
+  for (var i = 1; i <= 20; i++) {
+    if (i % 15 === 0) {
+      console.log('FizzBuzz')
+    } else if (i % 3 === 0) {
+      console.log('Fizz')
+    } else if (i % 5 === 0) {
+      console.log('Buzz')
+    } else {
+      console.log(i)
+    }
+  }
+}
+
 /**
  * Convert the given hex encoded string to a multihash.
  *
