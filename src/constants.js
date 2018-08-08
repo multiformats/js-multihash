@@ -3,6 +3,7 @@
 'use strict'
 
 exports.names = Object.freeze({
+  'id':         0x0,
   'sha1':       0x11,
   'sha2-256':   0x12,
   'sha2-512':   0x13,
