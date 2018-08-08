@@ -1,3 +1,13 @@
+<a name="0.4.14"></a>
+## [0.4.14](https://github.com/multiformats/js-multihash/compare/v0.4.13...v0.4.14) (2018-08-08)
+
+
+### Bug Fixes
+
+* missing id name constant ([42b9f0c](https://github.com/multiformats/js-multihash/commit/42b9f0c))
+
+
+
 <a name="0.4.13"></a>
 ## [0.4.13](https://github.com/multiformats/js-multihash/compare/v0.4.12...v0.4.13) (2018-01-04)
 

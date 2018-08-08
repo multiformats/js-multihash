@@ -1,6 +1,6 @@
 {
   "name": "multihashes",
-  "version": "0.4.13",
+  "version": "0.4.14",
   "description": "multihash implementation",
   "leadMaintainer": "David Dias <daviddias@ipfs.io>",
   "main": "src/index.js",
