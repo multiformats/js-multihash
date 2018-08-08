@@ -33,7 +33,7 @@
     "varint": "^5.0.0"
   },
   "devDependencies": {
-    "aegir": "^12.3.0",
+    "aegir": "^15.1.0",
     "buffer-equal": "1.0.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
