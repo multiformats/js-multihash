@@ -83,13 +83,13 @@ exports.decode = function decode (buf) {
     throw new Error('multihash too short. must be > 3 bytes.')
   }
 
-  let code = varint.decode(buf)
+  const code = varint.decode(buf)
   if (!exports.isValidCode(code)) {
     throw new Error(`multihash unknown function code: 0x${code.toString(16)}`)
   }
   buf = buf.slice(varint.decode.bytes)
 
-  let len = varint.decode(buf)
+  const len = varint.decode(buf)
   if (len < 1) {
     throw new Error(`multihash invalid length: 0x${len.toString(16)}`)
   }
