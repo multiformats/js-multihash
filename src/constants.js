@@ -340,7 +340,12 @@ exports.names = Object.freeze({
   'Skein1024-1008': 0xb3de,
   'Skein1024-1016': 0xb3df,
   'Skein1024-1024': 0xb3e0,
-  'holochain-keys': 0x8be634
+  'holochain-key-v0': 0x9471,
+  'holochain-key-v1': 0x9571,
+  'holochain-adr-v0': 0x8071,
+  'holochain-adr-v1': 0x8171,
+  'holochain-sig-v0': 0xa271,
+  'holochain-sig-v1': 0xa371
 })
 
 exports.codes = Object.freeze({
@@ -684,7 +689,12 @@ exports.codes = Object.freeze({
   0xb3de: 'Skein1024-1008',
   0xb3df: 'Skein1024-1016',
   0xb3e0: 'Skein1024-1024',
-  0x8be634: 'holochain-keys'
+  0x9471: 'holochain-key-v0',
+  0x9571: 'holochain-key-v1',
+  0x8071: 'holochain-adr-v0',
+  0x8171: 'holochain-adr-v1',
+  0xa271: 'holochain-sig-v0',
+  0xa371: 'holochain-sig-v1'
 })
 
 exports.defaultLengths = Object.freeze({
@@ -1024,5 +1034,10 @@ exports.defaultLengths = Object.freeze({
   0xb3de: 0x7e,
   0xb3df: 0x7f,
   0xb3e0: 0x80,
-  0x8be634: 0x47
+  0x9471: 0x24,
+  0x9571: 0x24,
+  0x8071: 0x24,
+  0x8171: 0x24,
+  0xa271: 0x24,
+  0xa371: 0x24
 })
