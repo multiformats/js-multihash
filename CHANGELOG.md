@@ -1,3 +1,13 @@
+<a name="0.4.15"></a>
+## [0.4.15](https://github.com/multiformats/js-multihash/compare/v0.4.14...v0.4.15) (2019-02-08)
+
+
+### Features
+
+* Adding Holochain prefixes for Keys, Addresses and Signatures ([#63](https://github.com/multiformats/js-multihash/pull/63))
+
+
+
 <a name="0.4.14"></a>
 ## [0.4.14](https://github.com/multiformats/js-multihash/compare/v0.4.13...v0.4.14) (2018-08-08)
 
