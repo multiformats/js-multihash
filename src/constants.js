@@ -339,7 +339,9 @@ exports.names = Object.freeze({
   'Skein1024-1000': 0xb3dd,
   'Skein1024-1008': 0xb3de,
   'Skein1024-1016': 0xb3df,
-  'Skein1024-1024': 0xb3e0
+  'Skein1024-1024': 0xb3e0,
+
+  'md5': 0xd5
 })
 
 exports.codes = Object.freeze({
@@ -682,7 +684,9 @@ exports.codes = Object.freeze({
   0xb3dd: 'Skein1024-1000',
   0xb3de: 'Skein1024-1008',
   0xb3df: 'Skein1024-1016',
-  0xb3e0: 'Skein1024-1024'
+  0xb3e0: 'Skein1024-1024',
+
+  0xd5: 'md5'
 })
 
 exports.defaultLengths = Object.freeze({
@@ -1021,5 +1025,7 @@ exports.defaultLengths = Object.freeze({
   0xb3dd: 0x7d,
   0xb3de: 0x7e,
   0xb3df: 0x7f,
-  0xb3e0: 0x80
+  0xb3e0: 0x80,
+
+  0xd5: 0x16
 })
