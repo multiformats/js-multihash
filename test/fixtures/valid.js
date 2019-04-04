@@ -28,4 +28,11 @@ module.exports = [{
   },
   hex: '2c26b46b',
   size: 4
+}, {
+  encoding: {
+    code: 0x0,
+    name: 'identity'
+  },
+  hex: '7465737420737472696e6720f09f918d',
+  size: 16
 }]

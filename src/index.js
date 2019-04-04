@@ -118,7 +118,7 @@ exports.decode = function decode (buf) {
  * @returns {Buffer}
  */
 exports.encode = function encode (digest, code, length) {
-  if (!digest || !code) {
+  if (!digest || code === undefined) {
     throw new Error('multihash encode requires at least two args: digest, code')
   }
 
@@ -154,7 +154,7 @@ exports.coerceCode = function coerceCode (name) {
   let code = name
 
   if (typeof name === 'string') {
-    if (!cs.names[name]) {
+    if (cs.names[name] === undefined) {
       throw new Error(`Unrecognized hash function named: ${name}`)
     }
     code = cs.names[name]
@@ -164,7 +164,7 @@ exports.coerceCode = function coerceCode (name) {
     throw new Error(`Hash function code should be a number. Got: ${code}`)
   }
 
-  if (!cs.codes[code] && !exports.isAppCode(code)) {
+  if (cs.codes[code] === undefined && !exports.isAppCode(code)) {
     throw new Error(`Unrecognized function code: ${code}`)
   }
 
