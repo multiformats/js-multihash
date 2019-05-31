@@ -3,7 +3,7 @@
 'use strict'
 
 exports.names = Object.freeze({
-  'identity':   0x0,
+  'id':         0x0,
   'sha1':       0x11,
   'sha2-256':   0x12,
   'sha2-512':   0x13,
@@ -18,6 +18,8 @@ exports.names = Object.freeze({
   'keccak-256': 0x1B,
   'keccak-384': 0x1C,
   'keccak-512': 0x1D,
+  'onion': 0x01bc,
+  'onion3': 0x01bd,
   'murmur3-128': 0x22,
   'murmur3-32':  0x23,
   'blake2b-8':   0xb201,
@@ -343,9 +345,6 @@ exports.names = Object.freeze({
 })
 
 exports.codes = Object.freeze({
-  0x0: 'identity',
-
-  // sha family
   0x11: 'sha1',
   0x12: 'sha2-256',
   0x13: 'sha2-512',
@@ -360,9 +359,10 @@ exports.codes = Object.freeze({
   0x1B: 'keccak-256',
   0x1C: 'keccak-384',
   0x1D: 'keccak-512',
-
   0x22: 'murmur3-128',
   0x23: 'murmur3-32',
+  0x01bc: 'onion',
+  0x01bd: 'onion3',
 
   // blake2
   0xb201: 'blake2b-8',
