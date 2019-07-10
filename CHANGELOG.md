@@ -1,3 +1,13 @@
+<a name="0.4.15"></a>
+## [0.4.15](https://github.com/multiformats/js-multihash/compare/v0.4.14...v0.4.15) (2019-07-10)
+
+
+### Features
+
+* support identity hashes ([b85999d](https://github.com/multiformats/js-multihash/commit/b85999d))
+
+
+
 <a name="0.4.14"></a>
 ## [0.4.14](https://github.com/multiformats/js-multihash/compare/v0.4.13...v0.4.14) (2018-08-08)
 
