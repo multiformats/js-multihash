@@ -1,6 +1,6 @@
 {
   "name": "multihashes",
-  "version": "0.4.15",
+  "version": "0.4.16",
   "description": "multihash implementation",
   "leadMaintainer": "David Dias <daviddias@ipfs.io>",
   "main": "src/index.js",
@@ -46,24 +46,24 @@
     "pre-commit": "^1.2.2"
   },
   "contributors": [
-    "Alan Shaw <alan@tableflip.io>",
     "David Dias <daviddias.p@gmail.com>",
-    "Donald Tsang <brandonknlee@gmail.com>",
-    "Fil <fil@rezo.net>",
-    "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
     "Juan Benet <juan@benet.ai>",
-    "Linus Unnebäck <linus@folkdatorn.se>",
-    "Pedro Teixeira <i@pgte.me>",
+    "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
     "Richard Littauer <richard.littauer@gmail.com>",
-    "Rod Vagg <rod@vagg.org>",
-    "Trond Arne Bråthen <tabrath@gmail.com>",
-    "Vasco Santos <vasco.santos@moxy.studio>",
+    "ᴠɪᴄᴛᴏʀ ʙᴊᴇʟᴋʜᴏʟᴍ <victorbjelkholm@gmail.com>",
+    "Pedro Teixeira <i@pgte.me>",
+    "Jacob Heun <jacobheun@gmail.com>",
+    "kumavis <aaron@kumavis.me>",
     "Volker Mische <volker.mische@gmail.com>",
     "William Cotton <williamcotton@gmail.com>",
-    "greenkeeper[bot] <greenkeeper[bot]@users.noreply.github.com>",
-    "kumavis <aaron@kumavis.me>",
     "nginnever <ginneversource@gmail.com>",
-    "npm-to-cdn-bot (by Forbes Lindesay) <npmcdn-to-unpkg-bot@users.noreply.github.com>",
-    "victorbjelkholm <victorbjelkholm@gmail.com>"
+    "Rod Vagg <rod@vagg.org>",
+    "Donald Tsang <brandonknlee@gmail.com>",
+    "Fil <fil@rezo.net>",
+    "Hugo Dias <hugomrdias@gmail.com>",
+    "Linus Unnebäck <linus@folkdatorn.se>",
+    "Alan Shaw <alan@tableflip.io>",
+    "Trond Arne Bråthen <tabrath@gmail.com>",
+    "Vasco Santos <vasco.santos@moxy.studio>"
   ]
 }
