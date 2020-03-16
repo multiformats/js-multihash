@@ -17,6 +17,10 @@
     "coverage": "aegir coverage",
     "coverage-publish": "aegir coverage --provider coveralls"
   },
+  "files": [
+    "src",
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/multiformats/js-multihash.git"
@@ -30,10 +34,12 @@
   },
   "dependencies": {
     "bs58": "^4.0.1",
+    "buffer": "^5.5.0",
+    "multibase": "^0.6.0",
     "varint": "^5.0.0"
   },
   "devDependencies": {
-    "aegir": "^15.1.0",
+    "aegir": "^21.3.0",
     "buffer-equal": "1.0.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
