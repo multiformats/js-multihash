@@ -1,3 +1,13 @@
+<a name="0.4.16"></a>
+## [0.4.16](https://github.com/multiformats/js-multihash/compare/v0.4.15...v0.4.16) (2020-03-16)
+
+
+### Bug Fixes
+
+* add buffer dependency ([#71](https://github.com/multiformats/js-multihash/issues/71)) ([1e91e64](https://github.com/multiformats/js-multihash/commit/1e91e64))
+
+
+
 <a name="0.4.15"></a>
 ## [0.4.15](https://github.com/multiformats/js-multihash/compare/v0.4.14...v0.4.15) (2019-07-10)
 
