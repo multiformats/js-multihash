@@ -1,6 +1,6 @@
 {
   "name": "multihashes",
-  "version": "0.4.16",
+  "version": "0.4.17",
   "description": "multihash implementation",
   "leadMaintainer": "David Dias <daviddias@ipfs.io>",
   "main": "src/index.js",
@@ -49,19 +49,20 @@
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
     "Richard Littauer <richard.littauer@gmail.com>",
     "ᴠɪᴄᴛᴏʀ ʙᴊᴇʟᴋʜᴏʟᴍ <victorbjelkholm@gmail.com>",
-    "Pedro Teixeira <i@pgte.me>",
     "Jacob Heun <jacobheun@gmail.com>",
+    "Pedro Teixeira <i@pgte.me>",
     "kumavis <aaron@kumavis.me>",
+    "Hugo Dias <hugomrdias@gmail.com>",
+    "Nate Foss <npfoss@gmail.com>",
+    "Alan Shaw <alan@tableflip.io>",
+    "Donald Tsang <brandonknlee@gmail.com>",
+    "Rod Vagg <rod@vagg.org>",
+    "Trond Arne Bråthen <tabrath@gmail.com>",
+    "Vasco Santos <vasco.santos@moxy.studio>",
+    "Fil <fil@rezo.net>",
     "Volker Mische <volker.mische@gmail.com>",
     "William Cotton <williamcotton@gmail.com>",
     "nginnever <ginneversource@gmail.com>",
-    "Rod Vagg <rod@vagg.org>",
-    "Donald Tsang <brandonknlee@gmail.com>",
-    "Fil <fil@rezo.net>",
-    "Hugo Dias <hugomrdias@gmail.com>",
-    "Linus Unnebäck <linus@folkdatorn.se>",
-    "Alan Shaw <alan@tableflip.io>",
-    "Trond Arne Bråthen <tabrath@gmail.com>",
-    "Vasco Santos <vasco.santos@moxy.studio>"
+    "Linus Unnebäck <linus@folkdatorn.se>"
   ]
 }
