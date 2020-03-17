@@ -6,8 +6,7 @@ const chai = require('chai')
 const dirtyChai = require('dirty-chai')
 chai.use(dirtyChai)
 const expect = chai.expect
-const bufeq = require('buffer-equal')
-const bs58 = require('bs58')
+const multibase = require('multibase')
 
 const mh = require('../src')
 const constants = require('../src/constants')
@@ -66,7 +65,7 @@ describe('multihash', () => {
         expect(
           mh.toB58String(buf)
         ).to.be.eql(
-          bs58.encode(buf)
+          multibase.encode('base58btc', buf).toString().slice(1)
         )
       })
     })
@@ -114,7 +113,7 @@ describe('multihash', () => {
         expect(r.code).to.equal(code)
         expect(r.name).to.equal(name)
         expect(r.length).to.equal(length)
-        expect(bufeq(d1, d2)).to.equal(true)
+        expect(d1.equals(d2)).to.equal(true)
       })
     })
 
