@@ -13,6 +13,9 @@ js-multihash
 > multihash implementation in node.js
 
 This is the [multihash](//github.com/multiformats/multihash) implementation in Node.
+It is extended by [js-multihashing](https://github.com/multiformats/js-multihashing)
+and [js-multihashing-async](https://github.com/multiformats/js-multihashing-async),
+so give those a look as well.
 
 ## Lead Maintainer
 
