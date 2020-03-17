@@ -1,3 +1,13 @@
+<a name="0.4.17"></a>
+## [0.4.17](https://github.com/multiformats/js-multihash/compare/v0.4.16...v0.4.17) (2020-03-17)
+
+
+### Bug Fixes
+
+* remove unnecessary deps ([#72](https://github.com/multiformats/js-multihash/issues/72)) ([1e0ac42](https://github.com/multiformats/js-multihash/commit/1e0ac42))
+
+
+
 <a name="0.4.16"></a>
 ## [0.4.16](https://github.com/multiformats/js-multihash/compare/v0.4.15...v0.4.16) (2020-03-16)
 
