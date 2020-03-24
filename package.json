@@ -1,6 +1,6 @@
 {
   "name": "multihashes",
-  "version": "0.4.17",
+  "version": "0.4.18",
   "description": "multihash implementation",
   "leadMaintainer": "David Dias <daviddias@ipfs.io>",
   "main": "src/index.js",
@@ -47,22 +47,22 @@
     "David Dias <daviddias.p@gmail.com>",
     "Juan Benet <juan@benet.ai>",
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
+    "Jacob Heun <jacobheun@gmail.com>",
     "Richard Littauer <richard.littauer@gmail.com>",
     "ᴠɪᴄᴛᴏʀ ʙᴊᴇʟᴋʜᴏʟᴍ <victorbjelkholm@gmail.com>",
-    "Jacob Heun <jacobheun@gmail.com>",
+    "Hugo Dias <hugomrdias@gmail.com>",
     "Pedro Teixeira <i@pgte.me>",
     "kumavis <aaron@kumavis.me>",
-    "Hugo Dias <hugomrdias@gmail.com>",
     "Nate Foss <npfoss@gmail.com>",
     "Alan Shaw <alan@tableflip.io>",
     "Donald Tsang <brandonknlee@gmail.com>",
     "Rod Vagg <rod@vagg.org>",
     "Trond Arne Bråthen <tabrath@gmail.com>",
     "Vasco Santos <vasco.santos@moxy.studio>",
-    "Fil <fil@rezo.net>",
     "Volker Mische <volker.mische@gmail.com>",
     "William Cotton <williamcotton@gmail.com>",
     "nginnever <ginneversource@gmail.com>",
+    "Fil <fil@rezo.net>",
     "Linus Unnebäck <linus@folkdatorn.se>"
   ]
 }
