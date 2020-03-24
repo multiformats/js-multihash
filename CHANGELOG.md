@@ -1,3 +1,8 @@
+<a name="0.4.18"></a>
+## [0.4.18](https://github.com/multiformats/js-multihash/compare/v0.4.17...v0.4.18) (2020-03-24)
+
+
+
 <a name="0.4.17"></a>
 ## [0.4.17](https://github.com/multiformats/js-multihash/compare/v0.4.16...v0.4.17) (2020-03-17)
 
