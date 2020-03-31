@@ -45,7 +45,6 @@ module.exports = [
     hex: '2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae',
     size: 32
   },
-  /* TODO: zero-length not supported
   {
     encoding: {
       code: 0x00,
@@ -54,7 +53,6 @@ module.exports = [
     hex: '',
     size: 0
   },
-  */
   {
     encoding: {
       code: 0x11,

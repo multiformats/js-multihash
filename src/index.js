@@ -78,8 +78,8 @@ exports.decode = function decode (buf) {
     throw new Error('multihash must be a Buffer')
   }
 
-  if (buf.length < 3) {
-    throw new Error('multihash too short. must be > 3 bytes.')
+  if (buf.length < 2) {
+    throw new Error('multihash too short. must be > 2 bytes.')
   }
 
   const code = varint.decode(buf)
@@ -89,8 +89,8 @@ exports.decode = function decode (buf) {
   buf = buf.slice(varint.decode.bytes)
 
   const len = varint.decode(buf)
-  if (len < 1) {
-    throw new Error(`multihash invalid length: 0x${len.toString(16)}`)
+  if (len < 0) {
+    throw new Error(`multihash invalid length: ${len}`)
   }
   buf = buf.slice(varint.decode.bytes)
 
