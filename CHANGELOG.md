@@ -1,3 +1,15 @@
+<a name="0.4.19"></a>
+## [0.4.19](https://github.com/multiformats/js-multihash/compare/v0.4.18...v0.4.19) (2020-03-31)
+
+
+### Bug Fixes
+
+* add missing md{4,5} hash codes ([010f8cd](https://github.com/multiformats/js-multihash/commit/010f8cd))
+* support zero-length multihashes ([86f556f](https://github.com/multiformats/js-multihash/commit/86f556f))
+* sync test fixtures with go-multihash ([00d5e23](https://github.com/multiformats/js-multihash/commit/00d5e23))
+
+
+
 <a name="0.4.18"></a>
 ## [0.4.18](https://github.com/multiformats/js-multihash/compare/v0.4.17...v0.4.18) (2020-03-24)
 
