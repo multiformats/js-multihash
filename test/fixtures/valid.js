@@ -72,16 +72,14 @@ module.exports = [
     hex: '2c26b46b68ffc68ff99b453c1d30413413',
     size: 17
   },
-  /* TODO: murmur3 not listed in constants.js
   {
     encoding: {
       code: 0x22,
-      name: 'murmur3'
+      name: 'murmur3-128'
     },
     hex: '243ddb9e',
     size: 4
   },
-  */
   {
     encoding: {
       code: 0x1b,
@@ -113,15 +111,14 @@ module.exports = [
     },
     hex: '4bca2b137edc580fe50a88983ef860ebaca36c857b1f492839d6d7392452a63c82cbebc68e3b70a2a1480b4bb5d437a7cba6ecf9d89f9ff3ccd14cd6146ea7e7',
     size: 64
+  },
+  {
+    encoding: {
+      code: 0xd5,
+      name: 'md5',
+      varint: 'd501'
+    },
+    hex: 'd41d8cd98f00b204e9800998ecf8427e',
+    size: 16
   }
-  /* TODO: md5 not listed in constants.js
-    {
-      encoding: {
-        code: 0xd5,
-        name: 'md5'
-      },
-      hex: 'd41d8cd98f00b204e9800998ecf8427e',
-      size: 16
-    }
-  */
 ]
