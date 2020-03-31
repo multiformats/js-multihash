@@ -14,10 +14,14 @@ const validCases = require('./fixtures/valid')
 const invalidCases = require('./fixtures/invalid')
 
 function sample (code, size, hex) {
-  return Buffer.concat([
-    Buffer.from([code, size]),
-    Buffer.from(hex, 'hex')
-  ])
+  const toHex = (i) => {
+    if (typeof i === 'string') {
+      return i
+    }
+    const h = i.toString(16)
+    return h.length % 2 === 1 ? `0${h}` : h
+  }
+  return Buffer.from(`${toHex(code)}${toHex(size)}${hex}`, 'hex')
 }
 
 describe('multihash', () => {
@@ -102,7 +106,7 @@ describe('multihash', () => {
     it('valid', () => {
       validCases.forEach((test) => {
         const code = test.encoding.code
-        const buf = sample(code, test.size, test.hex)
+        const buf = sample(test.encoding.varint || code, test.size, test.hex)
         const name = test.encoding.name
         const d1 = Buffer.from(test.hex, 'hex')
         const length = d1.length
@@ -131,7 +135,7 @@ describe('multihash', () => {
       validCases.forEach((test) => {
         const code = test.encoding.code
         const name = test.encoding.name
-        const buf = sample(code, test.size, test.hex)
+        const buf = sample(test.encoding.varint || code, test.size, test.hex)
         const results = [
           mh.encode(Buffer.from(test.hex, 'hex'), code),
           mh.encode(Buffer.from(test.hex, 'hex'), name)
@@ -172,7 +176,7 @@ describe('multihash', () => {
     it('valid', () => {
       validCases.forEach((test) => {
         expect(
-          () => mh.validate(sample(test.encoding.code, test.size, test.hex))
+          () => mh.validate(sample(test.encoding.varint || test.encoding.code, test.size, test.hex))
         ).to.not.throw()
       })
     })
@@ -180,7 +184,7 @@ describe('multihash', () => {
     it('invalid', () => {
       invalidCases.forEach((test) => {
         expect(
-          () => mh.validate(sample(test.code, test.size, test.hex))
+          () => mh.validate(sample(test.encoding.varint || test.code, test.size, test.hex))
         ).to.throw()
       })
 
