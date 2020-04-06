@@ -321,14 +321,11 @@ describe('multihash', () => {
   describe('constants', () => {
     it('exported', () => {
       expect(mh.names).to.equal(constants.names)
-      expect(mh.codes).to.equal(constants.codes)
-      expect(mh.defaultLengths).to.equal(constants.defaultLengths)
     })
 
     it('frozen', () => {
       expect(Object.isFrozen(mh.names)).to.be.true()
       expect(Object.isFrozen(mh.codes)).to.be.true()
-      expect(Object.isFrozen(mh.defaultLengths)).to.be.true()
     })
   })
 })
