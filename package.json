@@ -2,7 +2,7 @@
   "name": "multihashes",
   "version": "0.4.19",
   "description": "multihash implementation",
-  "leadMaintainer": "David Dias <daviddias@ipfs.io>",
+  "leadMaintainer": "Hugo Dias <hugomrdias@gmail.com>",
   "main": "src/index.js",
   "scripts": {
     "lint": "aegir lint",
@@ -15,7 +15,8 @@
     "release-minor": "aegir release --type minor --docs",
     "release-major": "aegir release --type major --docs",
     "coverage": "aegir coverage",
-    "coverage-publish": "aegir coverage --provider coveralls"
+    "coverage-publish": "aegir coverage --provider coveralls",
+    "update-constants": "node update-constants.js"
   },
   "files": [
     "src",
@@ -33,16 +34,15 @@
     "url": "https://github.com/multiformats/js-multihash/issues"
   },
   "dependencies": {
-    "buffer": "^5.5.0",
+    "buffer": "^5.6.0",
     "multibase": "^0.7.0",
     "varint": "^5.0.0"
   },
   "devDependencies": {
-    "aegir": "^21.4.4",
+    "aegir": "^21.9.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
-    "ipfs-utils": "^1.2.2",
-    "pre-commit": "^1.2.2"
+    "ipfs-utils": "^2.2.0"
   },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
