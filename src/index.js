@@ -1,3 +1,4 @@
+/* eslint-disable guard-for-in */
 /**
  * Multihash implementation in JavaScript.
  *
@@ -8,11 +9,15 @@
 const { Buffer } = require('buffer')
 const multibase = require('multibase')
 const varint = require('varint')
-const cs = require('./constants')
+const { names } = require('./constants')
 
-exports.names = cs.names
-exports.codes = cs.codes
-exports.defaultLengths = cs.defaultLengths
+const codes = {}
+
+for (const key in names) {
+  codes[names[key]] = key
+}
+exports.names = names
+exports.codes = Object.freeze(codes)
 
 /**
  * Convert the given multihash to a hex encoded string.
@@ -100,7 +105,7 @@ exports.decode = function decode (buf) {
 
   return {
     code: code,
-    name: cs.codes[code],
+    name: codes[code],
     length: len,
     digest: buf
   }
@@ -153,17 +158,17 @@ exports.coerceCode = function coerceCode (name) {
   let code = name
 
   if (typeof name === 'string') {
-    if (cs.names[name] === undefined) {
+    if (names[name] === undefined) {
       throw new Error(`Unrecognized hash function named: ${name}`)
     }
-    code = cs.names[name]
+    code = names[name]
   }
 
   if (typeof code !== 'number') {
     throw new Error(`Hash function code should be a number. Got: ${code}`)
   }
 
-  if (cs.codes[code] === undefined && !exports.isAppCode(code)) {
+  if (codes[code] === undefined && !exports.isAppCode(code)) {
     throw new Error(`Unrecognized function code: ${code}`)
   }
 
@@ -191,7 +196,7 @@ exports.isValidCode = function validCode (code) {
     return true
   }
 
-  if (cs.codes[code]) {
+  if (codes[code]) {
     return true
   }
 

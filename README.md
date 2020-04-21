@@ -19,7 +19,7 @@ so give those a look as well.
 
 ## Lead Maintainer
 
-[David Dias](http://github.com/diasdavid/)
+[Hugo Dias](http://github.com/hugomrdias/)
 
 ## Table of Contents
 
@@ -84,6 +84,15 @@ You will need to use Node.js `Buffer` API compatible, if you are running inside 
 
 https://multiformats.github.io/js-multihash/
 
+## Update Constants
+
+To update the constants table run the command below. This will fetch the main codec list from https://raw.githubusercontent.com/multiformats/multicodec/master/table.csv and filter only the multihash codecs and update the `constants.js` file in this repo.
+
+```sh
+npm run update-constants
+```
+
+
 ## Contribute
 
 Contributions welcome. Please check out [the issues](https://github.com/multiformats/js-multihash/issues).
@@ -94,4 +103,4 @@ Small note: If editing the README, please conform to the [standard-readme](https
 
 ## License
 
-[MIT](LICENSE) © 2016 Protocol Labs Inc.
+[MIT](LICENSE) © Protocol Labs Inc.
