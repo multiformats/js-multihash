@@ -104,7 +104,7 @@ exports.decode = function decode (buf) {
   }
 
   return {
-    code: code,
+    code,
     name: codes[code],
     length: len,
     digest: buf
