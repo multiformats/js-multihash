@@ -39,7 +39,7 @@
     "varint": "^5.0.0"
   },
   "devDependencies": {
-    "aegir": "^21.9.0",
+    "aegir": "^22.0.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
     "ipfs-utils": "^2.2.0"
