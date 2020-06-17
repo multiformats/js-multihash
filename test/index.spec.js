@@ -7,7 +7,7 @@ const dirtyChai = require('dirty-chai')
 chai.use(dirtyChai)
 const expect = chai.expect
 const multibase = require('multibase')
-
+const { Buffer } = require('buffer')
 const mh = require('../src')
 const constants = require('../src/constants')
 const validCases = require('./fixtures/valid')

@@ -35,11 +35,11 @@
   },
   "dependencies": {
     "buffer": "^5.6.0",
-    "multibase": "^0.7.0",
+    "multibase": "multiformats/js-multibase#fix/add-buffer",
     "varint": "^5.0.0"
   },
   "devDependencies": {
-    "aegir": "^21.9.0",
+    "aegir": "^24.0.0",
     "chai": "^4.1.2",
     "dirty-chai": "^2.0.1",
     "ipfs-utils": "^2.2.0"
