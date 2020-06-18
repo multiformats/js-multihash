@@ -1,6 +1,6 @@
 {
   "name": "multihashes",
-  "version": "0.4.19",
+  "version": "0.4.20",
   "description": "multihash implementation",
   "leadMaintainer": "Hugo Dias <hugomrdias@gmail.com>",
   "main": "src/index.js",
@@ -47,15 +47,15 @@
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
     "Juan Benet <juan@benet.ai>",
-    "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
     "Jacob Heun <jacobheun@gmail.com>",
+    "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
+    "Hugo Dias <hugomrdias@gmail.com>",
     "Richard Littauer <richard.littauer@gmail.com>",
     "ᴠɪᴄᴛᴏʀ ʙᴊᴇʟᴋʜᴏʟᴍ <victorbjelkholm@gmail.com>",
     "Rod Vagg <rod@vagg.org>",
-    "Hugo Dias <hugomrdias@gmail.com>",
     "Pedro Teixeira <i@pgte.me>",
+    "Linus Unnebäck <linus@folkdatorn.se>",
     "kumavis <aaron@kumavis.me>",
-    "Alan Shaw <alan@tableflip.io>",
     "Fil <fil@rezo.net>",
     "Donald Tsang <brandonknlee@gmail.com>",
     "Trond Arne Bråthen <tabrath@gmail.com>",
@@ -63,7 +63,7 @@
     "Volker Mische <volker.mische@gmail.com>",
     "William Cotton <williamcotton@gmail.com>",
     "nginnever <ginneversource@gmail.com>",
-    "Linus Unnebäck <linus@folkdatorn.se>",
-    "Nate Foss <npfoss@gmail.com>"
+    "Nate Foss <npfoss@gmail.com>",
+    "Alan Shaw <alan@tableflip.io>"
   ]
 }
