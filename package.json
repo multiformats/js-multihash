@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "buffer": "^5.6.0",
-    "multibase": "multiformats/js-multibase#fix/add-buffer",
+    "multibase": "^1.0.1",
     "varint": "^5.0.0"
   },
   "devDependencies": {
