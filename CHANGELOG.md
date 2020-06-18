@@ -1,3 +1,24 @@
+<a name="0.4.20"></a>
+## [0.4.20](https://github.com/multiformats/js-multihash/compare/v0.4.19...v0.4.20) (2020-06-18)
+
+
+### Bug Fixes
+
+* change maintainer, add docs ([0e7152e](https://github.com/multiformats/js-multihash/commit/0e7152e))
+* update multibase and add buffer in the test ([#83](https://github.com/multiformats/js-multihash/issues/83)) ([a42bcc7](https://github.com/multiformats/js-multihash/commit/a42bcc7))
+
+
+### Features
+
+* updates multihash table ([a8c8838](https://github.com/multiformats/js-multihash/commit/a8c8838))
+
+
+### BREAKING CHANGES
+
+* defaultLengths removed
+
+
+
 <a name="0.4.19"></a>
 ## [0.4.19](https://github.com/multiformats/js-multihash/compare/v0.4.18...v0.4.19) (2020-03-31)
 
