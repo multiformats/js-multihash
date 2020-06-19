@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8'>
-  <title>multihashes 0.4.21 | Documentation</title>
+  <title>multihashes 1.0.0 | Documentation</title>
   <meta name='description' content='multihash implementation'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>multihashes</h3>
-          <div class='mb1'><code>0.4.21</code></div>
+          <div class='mb1'><code>1.0.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -147,27 +147,8 @@
 
   
     <p>Installable via  <code>npm install --save multihashes</code>, it can also be used directly in the browser.</p>
-<h2>Quick Example</h2>
-<pre class='hljs'><span class="hljs-comment">/* eslint-disable no-console */</span>
-<span class="hljs-meta">'use strict'</span>
-
-<span class="hljs-keyword">const</span> multihash = <span class="hljs-built_in">require</span>(<span class="hljs-string">'multihashes'</span>)
-<span class="hljs-keyword">const</span> buf = Buffer.from(<span class="hljs-string">'0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33'</span>, <span class="hljs-string">'hex'</span>)
-
-<span class="hljs-keyword">const</span> encoded = multihash.encode(buf, <span class="hljs-string">'sha1'</span>)
-<span class="hljs-built_in">console</span>.log(encoded)
-<span class="hljs-comment">// =&gt; &lt;Buffer 11 14 0b ee c7 b5 ea 3f 0f db c9 5d 0d d4 7f 3c 5b c2 75 da 8a 33&gt;</span>
-
-multihash.decode(encoded)
-<span class="hljs-comment">// =&gt; {</span>
-<span class="hljs-comment">//      code: 17,</span>
-<span class="hljs-comment">//      name: 'sha1',</span>
-<span class="hljs-comment">//      length: 20,</span>
-<span class="hljs-comment">//      digest: &lt;Buffer 0b ee c7 b5 ea 3f 0f db c9 5d 0d d4 7f 3c 5b c2 75 da 8a 33&gt;</span>
-<span class="hljs-comment">//    }</span></pre>
-<p>There are more available, so take a look at the docs below for a full list. This documentation aims to be comprehensive, so if you feel anything is missing please create a GitHub issue for it.</p>
 <h2>Download</h2>
-<p>The source is available for download from <a href="git://github.com/multiformats/js-multihash.git">GitHub</a>. Alternatively, you can install using npm:</p>
+<p>The source is available for download from <a href="undefined">GitHub</a>. Alternatively, you can install using npm:</p>
 <pre class='hljs'>$ npm install --save multihashes</pre>
 <p>You can then <code>require()</code> multihashes as normal:</p>
 <pre class='hljs'><span class="hljs-keyword">const</span> multihashes = <span class="hljs-built_in">require</span>(<span class="hljs-string">'multihashes'</span>)</pre>
@@ -196,7 +177,7 @@ multihash.decode(encoded)
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/72620b82b7be0fb6e396e73d18956b6f10c47f61/src/index.js#L6-L6'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/62285e77d0c820cdfa1d5d442d85e3a8d79dc3b1/src/index.js#L7-L7'>
       <span>src/index.js</span>
       </a>
     
@@ -246,7 +227,7 @@ multihash.decode(encoded)
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/72620b82b7be0fb6e396e73d18956b6f10c47f61/src/index.js#L23-L29'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/62285e77d0c820cdfa1d5d442d85e3a8d79dc3b1/src/index.js#L28-L34'>
       <span>src/index.js</span>
       </a>
     
@@ -325,7 +306,7 @@ multihash.decode(encoded)
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/72620b82b7be0fb6e396e73d18956b6f10c47f61/src/index.js#L37-L39'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/62285e77d0c820cdfa1d5d442d85e3a8d79dc3b1/src/index.js#L42-L44'>
       <span>src/index.js</span>
       </a>
     
@@ -404,7 +385,7 @@ multihash.decode(encoded)
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/72620b82b7be0fb6e396e73d18956b6f10c47f61/src/index.js#L47-L53'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/62285e77d0c820cdfa1d5d442d85e3a8d79dc3b1/src/index.js#L52-L58'>
       <span>src/index.js</span>
       </a>
     
@@ -483,7 +464,7 @@ multihash.decode(encoded)
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/72620b82b7be0fb6e396e73d18956b6f10c47f61/src/index.js#L61-L68'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/62285e77d0c820cdfa1d5d442d85e3a8d79dc3b1/src/index.js#L66-L73'>
       <span>src/index.js</span>
       </a>
     
@@ -562,7 +543,7 @@ multihash.decode(encoded)
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/72620b82b7be0fb6e396e73d18956b6f10c47f61/src/index.js#L76-L107'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/62285e77d0c820cdfa1d5d442d85e3a8d79dc3b1/src/index.js#L81-L112'>
       <span>src/index.js</span>
       </a>
     
@@ -641,7 +622,7 @@ multihash.decode(encoded)
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/72620b82b7be0fb6e396e73d18956b6f10c47f61/src/index.js#L119-L144'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/62285e77d0c820cdfa1d5d442d85e3a8d79dc3b1/src/index.js#L124-L149'>
       <span>src/index.js</span>
       </a>
     
@@ -739,7 +720,7 @@ multihash.decode(encoded)
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/72620b82b7be0fb6e396e73d18956b6f10c47f61/src/index.js#L152-L171'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/62285e77d0c820cdfa1d5d442d85e3a8d79dc3b1/src/index.js#L157-L176'>
       <span>src/index.js</span>
       </a>
     
@@ -819,7 +800,7 @@ If passed a number it will return the number if it's a valid code.</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/72620b82b7be0fb6e396e73d18956b6f10c47f61/src/index.js#L179-L181'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/62285e77d0c820cdfa1d5d442d85e3a8d79dc3b1/src/index.js#L184-L186'>
       <span>src/index.js</span>
       </a>
     
@@ -898,7 +879,7 @@ If passed a number it will return the number if it's a valid code.</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/72620b82b7be0fb6e396e73d18956b6f10c47f61/src/index.js#L189-L199'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/62285e77d0c820cdfa1d5d442d85e3a8d79dc3b1/src/index.js#L194-L204'>
       <span>src/index.js</span>
       </a>
     
@@ -977,7 +958,7 @@ If passed a number it will return the number if it's a valid code.</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/72620b82b7be0fb6e396e73d18956b6f10c47f61/src/index.js#L220-L224'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/62285e77d0c820cdfa1d5d442d85e3a8d79dc3b1/src/index.js#L225-L229'>
       <span>src/index.js</span>
       </a>
     
@@ -1073,7 +1054,7 @@ If passed a number it will return the number if it's a valid code.</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/72620b82b7be0fb6e396e73d18956b6f10c47f61/src/index.js#L208-L210'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/62285e77d0c820cdfa1d5d442d85e3a8d79dc3b1/src/index.js#L213-L215'>
       <span>src/index.js</span>
       </a>
     
