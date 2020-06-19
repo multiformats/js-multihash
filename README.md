@@ -27,7 +27,6 @@ so give those a look as well.
   - [In Node.js through npm](#in-nodejs-through-npm)
   - [Browser: Browserify, Webpack, other bundlers](#browser-browserify-webpack-other-bundlers)
   - [In the Browser through `<script>` tag](#in-the-browser-through-script-tag)
-    - [Gotchas](#gotchas)
 - [Usage](#usage)
 - [API](#api)
 - [Contribute](#contribute)
@@ -38,7 +37,7 @@ so give those a look as well.
 ### Using npm
 
 ```bash
-> npm install --save multihashes # node the name of the module is multihashes
+> npm install multihashes # node the name of the module is multihashes
 ```
 
 Once the install is complete, you can require it as a normal dependency
@@ -53,15 +52,9 @@ You can require it and use with your favourite bundler to bundle this package in
 
 Loading this module through a script tag will make the ```Multihashes``` obj available in the global namespace.
 
-```
+```html
 <script src="https://unpkg.com/multihashes/dist/index.min.js"></script>
-<!-- OR -->
-<script src="https://unpkg.com/multihashes/dist/index.js"></script>
 ```
-
-#### Gotchas
-
-You will need to use Node.js `Buffer` API compatible, if you are running inside the browser, you can access it by `multihash.Buffer` or you can install Feross's [Buffer](https://github.com/feross/buffer).
 
 ## Usage
 

@@ -2,8 +2,20 @@
   "name": "multihashes",
   "version": "0.4.20",
   "description": "multihash implementation",
+  "keywords": [
+    "multihash",
+    "multiformats",
+    "ipfs",
+    "hash"
+  ],
+  "homepage": "https://github.com/multiformats/js-multihash",
+  "bugs": "https://github.com/multiformats/js-multihash/issues",
+  "license": "MIT",
   "leadMaintainer": "Hugo Dias <hugomrdias@gmail.com>",
-  "main": "src/index.js",
+  "files": [
+    "src",
+    "dist"
+  ],
   "scripts": {
     "lint": "aegir lint",
     "test:browser": "aegir test --target browser",
@@ -14,25 +26,10 @@
     "release": "aegir release --docs",
     "release-minor": "aegir release --type minor --docs",
     "release-major": "aegir release --type major --docs",
-    "coverage": "aegir coverage",
-    "coverage-publish": "aegir coverage --provider coveralls",
     "update-constants": "node update-constants.js"
   },
-  "files": [
-    "src",
-    "dist"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/multiformats/js-multihash.git"
-  },
-  "keywords": [
-    "multihash"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/multiformats/js-multihash/issues"
-  },
+  "main": "src/index.js",
+  "repository": "github:multiformats/js-multihash",
   "dependencies": {
     "buffer": "^5.6.0",
     "multibase": "^1.0.1",
@@ -65,5 +62,9 @@
     "nginnever <ginneversource@gmail.com>",
     "Nate Foss <npfoss@gmail.com>",
     "Alan Shaw <alan@tableflip.io>"
-  ]
+  ],
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  }
 }
