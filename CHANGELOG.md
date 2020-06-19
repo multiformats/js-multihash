@@ -1,3 +1,13 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/multiformats/js-multihash/compare/v0.4.20...v1.0.0) (2020-06-19)
+
+
+### Features
+
+* update constants ([66e7132](https://github.com/multiformats/js-multihash/commit/66e7132))
+
+
+
 <a name="0.4.20"></a>
 ## [0.4.20](https://github.com/multiformats/js-multihash/compare/v0.4.19...v0.4.20) (2020-06-18)
 
