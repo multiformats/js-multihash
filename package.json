@@ -1,6 +1,6 @@
 {
   "name": "multihashes",
-  "version": "0.4.20",
+  "version": "1.0.0",
   "description": "multihash implementation",
   "keywords": [
     "multihash",
@@ -44,9 +44,9 @@
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
     "Juan Benet <juan@benet.ai>",
+    "Hugo Dias <hugomrdias@gmail.com>",
     "Jacob Heun <jacobheun@gmail.com>",
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
-    "Hugo Dias <hugomrdias@gmail.com>",
     "Richard Littauer <richard.littauer@gmail.com>",
     "ᴠɪᴄᴛᴏʀ ʙᴊᴇʟᴋʜᴏʟᴍ <victorbjelkholm@gmail.com>",
     "Rod Vagg <rod@vagg.org>",
