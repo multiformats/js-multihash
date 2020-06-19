@@ -23,6 +23,11 @@ const names = Object.freeze({
   'md4': 0xd4,
   'md5': 0xd5,
   'bmt': 0xd6,
+  'sha2-256-trunc254-padded': 0x1012,
+  'ripemd-128': 0x1052,
+  'ripemd-160': 0x1053,
+  'ripemd-256': 0x1054,
+  'ripemd-320': 0x1055,
   'x11': 0x1100,
   'sm3-256': 0x534d,
   'blake2b-8': 0xb201,
@@ -344,7 +349,9 @@ const names = Object.freeze({
   'skein1024-1000': 0xb3dd,
   'skein1024-1008': 0xb3de,
   'skein1024-1016': 0xb3df,
-  'skein1024-1024': 0xb3e0
+  'skein1024-1024': 0xb3e0,
+  'poseidon-bls12_381-a2-fc1': 0xb401,
+  'poseidon-bls12_381-a2-fc1-sc': 0xb402
 })
 
 module.exports = { names }
