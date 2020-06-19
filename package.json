@@ -1,6 +1,6 @@
 {
   "name": "multihashes",
-  "version": "0.4.20",
+  "version": "0.4.21",
   "description": "multihash implementation",
   "leadMaintainer": "David Dias <daviddias@ipfs.io>",
   "main": "src/index.js",
@@ -49,9 +49,9 @@
     "Jacob Heun <jacobheun@gmail.com>",
     "Friedel Ziegelmayer <dignifiedquire@gmail.com>",
     "Richard Littauer <richard.littauer@gmail.com>",
+    "Hugo Dias <hugomrdias@gmail.com>",
     "ᴠɪᴄᴛᴏʀ ʙᴊᴇʟᴋʜᴏʟᴍ <victorbjelkholm@gmail.com>",
     "Rod Vagg <rod@vagg.org>",
-    "Hugo Dias <hugomrdias@gmail.com>",
     "Pedro Teixeira <i@pgte.me>",
     "kumavis <aaron@kumavis.me>",
     "Alan Shaw <alan@tableflip.io>",
