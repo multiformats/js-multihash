@@ -1,3 +1,4 @@
+// @ts-check
 /* eslint-disable guard-for-in */
 /**
  * Multihash implementation in JavaScript.
@@ -10,6 +11,9 @@ const { Buffer } = require('buffer')
 const multibase = require('multibase')
 const varint = require('varint')
 const { names } = require('./constants')
+const textDecoder = typeof TextDecoder !== 'undefined'
+  ? new TextDecoder()
+  : new (require('util').TextDecoder)()
 
 const codes = {}
 
@@ -22,15 +26,19 @@ exports.codes = Object.freeze(codes)
 /**
  * Convert the given multihash to a hex encoded string.
  *
- * @param {Buffer} hash
+ * @param {Uint8Array} hash
  * @returns {string}
  */
 exports.toHexString = function toHexString (hash) {
-  if (!Buffer.isBuffer(hash)) {
-    throw new Error('must be passed a buffer')
+  if (!(hash instanceof Uint8Array)) {
+    throw new Error('must be passed an Uint8Array')
   }
 
-  return hash.toString('hex')
+  const buffer = Buffer.isBuffer(hash)
+    ? hash
+    : Buffer.from(hash.buffer, hash.byteOffset, hash.byteLength)
+
+  return buffer.toString('hex')
 }
 
 /**
@@ -46,28 +54,27 @@ exports.fromHexString = function fromHexString (hash) {
 /**
  * Convert the given multihash to a base58 encoded string.
  *
- * @param {Buffer} hash
+ * @param {Uint8Array} hash
  * @returns {string}
  */
 exports.toB58String = function toB58String (hash) {
-  if (!Buffer.isBuffer(hash)) {
-    throw new Error('must be passed a buffer')
+  if (!(hash instanceof Uint8Array)) {
+    throw new Error('must be passed an Uint8Array')
   }
 
-  return multibase.encode('base58btc', hash).toString().slice(1)
+  return textDecoder.decode(multibase.encode('base58btc', hash)).slice(1)
 }
 
 /**
  * Convert the given base58 encoded string to a multihash.
  *
- * @param {string|Buffer} hash
+ * @param {string|Uint8Array} hash
  * @returns {Buffer}
  */
 exports.fromB58String = function fromB58String (hash) {
-  let encoded = hash
-  if (Buffer.isBuffer(hash)) {
-    encoded = hash.toString()
-  }
+  const encoded = hash instanceof Uint8Array
+    ? textDecoder.decode(hash)
+    : hash
 
   return multibase.decode('z' + encoded)
 }
@@ -75,13 +82,16 @@ exports.fromB58String = function fromB58String (hash) {
 /**
  * Decode a hash from the given multihash.
  *
- * @param {Buffer} buf
+ * @param {Uint8Array} bytes
  * @returns {{code: number, name: string, length: number, digest: Buffer}} result
  */
-exports.decode = function decode (buf) {
-  if (!(Buffer.isBuffer(buf))) {
-    throw new Error('multihash must be a Buffer')
+exports.decode = function decode (bytes) {
+  if (!(bytes instanceof Uint8Array)) {
+    throw new Error('multihash must be an Uint8Array')
   }
+  let buf = Buffer.isBuffer(bytes)
+    ? bytes
+    : Buffer.from(bytes.buffer, bytes.byteOffset, bytes.byteLength)
 
   if (buf.length < 2) {
     throw new Error('multihash too short. must be > 2 bytes.')
@@ -116,7 +126,7 @@ exports.decode = function decode (buf) {
  *
  * > **Note:** the length is derived from the length of the digest itself.
  *
- * @param {Buffer} digest
+ * @param {Uint8Array} digest
  * @param {string|number} code
  * @param {number} [length]
  * @returns {Buffer}
@@ -129,8 +139,8 @@ exports.encode = function encode (digest, code, length) {
   // ensure it's a hashfunction code.
   const hashfn = exports.coerceCode(code)
 
-  if (!(Buffer.isBuffer(digest))) {
-    throw new Error('digest should be a Buffer')
+  if (!(digest instanceof Uint8Array)) {
+    throw new Error('digest should be an Uint8Array')
   }
 
   if (length == null) {
@@ -141,11 +151,13 @@ exports.encode = function encode (digest, code, length) {
     throw new Error('digest length should be equal to specified length.')
   }
 
-  return Buffer.concat([
-    Buffer.from(varint.encode(hashfn)),
-    Buffer.from(varint.encode(length)),
-    digest
-  ])
+  const hash = varint.encode(hashfn)
+  const len = varint.encode(length)
+  const buffer = Buffer.alloc(hash.length + len.length + digest.length)
+  buffer.set(hash, 0)
+  buffer.set(len, hash.length)
+  buffer.set(digest, hash.length + len.length)
+  return buffer
 }
 
 /**
@@ -206,8 +218,8 @@ exports.isValidCode = function validCode (code) {
 /**
  * Check if the given buffer is a valid multihash. Throws an error if it is not valid.
  *
- * @param {Buffer} multihash
- * @returns {undefined}
+ * @param {Uint8Array} multihash
+ * @returns {void}
  * @throws {Error}
  */
 function validate (multihash) {
@@ -218,12 +230,12 @@ exports.validate = validate
 /**
  * Returns a prefix from a valid multihash. Throws an error if it is not valid.
  *
- * @param {Buffer} multihash
- * @returns {undefined}
+ * @param {Uint8Array} multihash
+ * @returns {Buffer}
  * @throws {Error}
  */
 exports.prefix = function prefix (multihash) {
   validate(multihash)
 
-  return multihash.slice(0, 2)
+  return Buffer.from(multihash.buffer, multihash.byteOffset, 2)
 }
