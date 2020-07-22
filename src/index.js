@@ -11,10 +11,9 @@ const { Buffer } = require('buffer')
 const multibase = require('multibase')
 const varint = require('varint')
 const { names } = require('./constants')
-const textDecoder = typeof TextDecoder !== 'undefined'
-  ? new TextDecoder()
-  : new (require('util').TextDecoder)()
+const { TextDecoder } = require('web-encoding')
 
+const textDecoder = new TextDecoder()
 const codes = {}
 
 for (const key in names) {
