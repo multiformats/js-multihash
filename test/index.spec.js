@@ -27,16 +27,24 @@ function sample (code, size, hex) {
   return Buffer.from(`${toHex(code)}${toHex(size)}${hex}`, 'hex')
 }
 
-const encodeHex = string => {
-  const { buffer, byteOffset, byteLength } = Buffer.from(string, 'hex')
-  return new Uint8Array(buffer, byteOffset, byteLength)
-}
+const they = (description, test) => {
+  it(`${description} (Buffer)`, () => test({
+    encodeText: Buffer.from,
+    encodeHex: (text) => Buffer.from(text, 'hex')
+  }))
 
-const encodeText = string => textEncoder.encode(string)
+  it(`${description} (Uint8Array)`, () => test({
+    encodeText: (text) => textEncoder.encode(text),
+    encodeHex: (text) => {
+      const { buffer, byteOffset, byteLength } = Buffer.from(text, 'hex')
+      return new Uint8Array(buffer, byteOffset, byteLength)
+    }
+  }))
+}
 
 describe('multihash', () => {
   describe('toHexString', () => {
-    it('valid', () => {
+    they('valid', ({ encodeHex }) => {
       validCases.forEach((test) => {
         const code = test.encoding.code
         const buf = mh.encode(encodeHex(test.hex), code)
@@ -58,7 +66,7 @@ describe('multihash', () => {
   })
 
   describe('fromHexString', () => {
-    it('valid', () => {
+    they('valid', ({ encodeHex }) => {
       validCases.forEach((test) => {
         const code = test.encoding.code
         const buf = mh.encode(encodeHex(test.hex), code)
@@ -72,10 +80,10 @@ describe('multihash', () => {
   })
 
   describe('toB58String', () => {
-    it('valid', () => {
+    they('valid', ({ encodeHex }) => {
       validCases.forEach((test) => {
         const code = test.encoding.code
-        const buf = mh.encode(encodeHex(test.hex, 'hex'), code)
+        const buf = mh.encode(encodeHex(test.hex), code)
         expect(
           mh.toB58String(buf)
         ).to.be.eql(
@@ -94,7 +102,7 @@ describe('multihash', () => {
   })
 
   describe('fromB58String', () => {
-    it('valid', () => {
+    they('valid', ({ encodeHex, encodeText }) => {
       const src = 'QmPfjpVaf593UQJ9a5ECvdh2x17XuJYG5Yanv5UFnH3jPE'
       const expected = encodeHex('122013bf801597d74a660453412635edd8c34271e5998f801fac5d700c6ce8d8e461')
 
@@ -141,7 +149,7 @@ describe('multihash', () => {
   })
 
   describe('encode', () => {
-    it('valid', () => {
+    they('valid', ({ encodeHex }) => {
       validCases.forEach((test) => {
         const code = test.encoding.code
         const name = test.encoding.name
@@ -161,7 +169,7 @@ describe('multihash', () => {
       })
     })
 
-    it('invalid', () => {
+    they('invalid', ({ encodeText }) => {
       expect(
         () => mh.encode()
       ).to.throw(
@@ -287,7 +295,7 @@ describe('multihash', () => {
       })
     })
 
-    it('invalid', () => {
+    they('invalid', ({ encodeText }) => {
       const invalidNames = [
         'sha256',
         'sha9',
@@ -316,13 +324,13 @@ describe('multihash', () => {
     })
   })
 
-  it('prefix', () => {
+  they('prefix', ({ encodeText }) => {
     const multihash = mh.encode(encodeText('hey'), 0x11, 3)
     const prefix = mh.prefix(multihash)
     expect(prefix.toString('hex')).to.eql('1103')
   })
 
-  it('prefix throws on invalid multihash', () => {
+  they('prefix throws on invalid multihash', ({ encodeText }) => {
     const multihash = encodeText('definitely not valid')
 
     expect(() => mh.prefix(multihash)).to.throw()
