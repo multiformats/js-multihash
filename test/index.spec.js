@@ -12,9 +12,7 @@ const mh = require('../src')
 const constants = require('../src/constants')
 const validCases = require('./fixtures/valid')
 const invalidCases = require('./fixtures/invalid')
-const textEncoder = typeof TextEncoder !== 'undefined'
-  ? new TextEncoder()
-  : new (require('util').TextEncoder)()
+const { TextEncoder } = require('web-encoding')
 
 function sample (code, size, hex) {
   const toHex = (i) => {
@@ -33,6 +31,7 @@ const they = (description, test) => {
     encodeHex: (text) => Buffer.from(text, 'hex')
   }))
 
+  const textEncoder = new TextEncoder()
   it(`${description} (Uint8Array)`, () => test({
     encodeText: (text) => textEncoder.encode(text),
     encodeHex: (text) => {

@@ -30,7 +30,7 @@ exports.codes = Object.freeze(codes)
  */
 exports.toHexString = function toHexString (hash) {
   if (!(hash instanceof Uint8Array)) {
-    throw new Error('must be passed an Uint8Array')
+    throw new Error('must be passed a Uint8Array')
   }
 
   const buffer = Buffer.isBuffer(hash)
@@ -58,7 +58,7 @@ exports.fromHexString = function fromHexString (hash) {
  */
 exports.toB58String = function toB58String (hash) {
   if (!(hash instanceof Uint8Array)) {
-    throw new Error('must be passed an Uint8Array')
+    throw new Error('must be passed a Uint8Array')
   }
 
   return textDecoder.decode(multibase.encode('base58btc', hash)).slice(1)
@@ -86,7 +86,7 @@ exports.fromB58String = function fromB58String (hash) {
  */
 exports.decode = function decode (bytes) {
   if (!(bytes instanceof Uint8Array)) {
-    throw new Error('multihash must be an Uint8Array')
+    throw new Error('multihash must be a Uint8Array')
   }
   let buf = Buffer.isBuffer(bytes)
     ? bytes
@@ -139,7 +139,7 @@ exports.encode = function encode (digest, code, length) {
   const hashfn = exports.coerceCode(code)
 
   if (!(digest instanceof Uint8Array)) {
-    throw new Error('digest should be an Uint8Array')
+    throw new Error('digest should be a Uint8Array')
   }
 
   if (length == null) {
