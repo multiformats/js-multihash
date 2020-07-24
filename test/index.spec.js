@@ -59,7 +59,7 @@ describe('multihash', () => {
       expect(
         () => mh.toHexString('hello world')
       ).to.throw(
-        /must be passed an Uint8Array/
+        /must be passed a Uint8Array/
       )
     })
   })
@@ -95,7 +95,7 @@ describe('multihash', () => {
       expect(
         () => mh.toB58String('hello world')
       ).to.throw(
-        /must be passed an Uint8Array/
+        /must be passed a Uint8Array/
       )
     })
   })
@@ -142,7 +142,7 @@ describe('multihash', () => {
       expect(
         () => mh.decode('hello')
       ).to.throw(
-        /multihash must be an Uint8Array/
+        /multihash must be a Uint8Array/
       )
     })
   })
@@ -178,7 +178,7 @@ describe('multihash', () => {
       expect(
         () => mh.encode('hello', 0x11)
       ).to.throw(
-        /digest should be an Uint8Array/
+        /digest should be a Uint8Array/
       )
 
       expect(
