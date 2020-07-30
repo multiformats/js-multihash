@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset='utf-8'>
-  <title>multihashes 1.0.1 | Documentation</title>
+  <title>multihashes 2.0.0 | Documentation</title>
   <meta name='description' content='multihash implementation'>
   <meta name='viewport' content='width=device-width,initial-scale=1'>
   <link href='assets/bass.css' rel='stylesheet'>
@@ -15,7 +15,7 @@
       <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
         <div class='py1 px2'>
           <h3 class='mb0 no-anchor'>multihashes</h3>
-          <div class='mb1'><code>1.0.1</code></div>
+          <div class='mb1'><code>2.0.0</code></div>
           <input
             placeholder='Filter'
             id='filter-input'
@@ -139,7 +139,7 @@
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/e850f682b0368a759391f7f72343019ff23a2775/src/index.js#L7-L7'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/b90be958b61f60669b627c7e6aee284aecd91a77/src/index.js#L8-L8'>
       <span>src/index.js</span>
       </a>
     
@@ -189,7 +189,7 @@
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/e850f682b0368a759391f7f72343019ff23a2775/src/index.js#L28-L34'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/b90be958b61f60669b627c7e6aee284aecd91a77/src/index.js#L31-L41'>
       <span>src/index.js</span>
       </a>
     
@@ -198,7 +198,7 @@
 
   <p>Convert the given multihash to a hex encoded string.</p>
 
-    <div class='pre p1 fill-light mt0'>toHexString(hash: <a href="https://nodejs.org/api/buffer.html">Buffer</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+    <div class='pre p1 fill-light mt0'>toHexString(hash: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
   
   
 
@@ -215,7 +215,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>hash</span> <code class='quiet'>(<a href="https://nodejs.org/api/buffer.html">Buffer</a>)</code>
+            <span class='code bold'>hash</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)</code>
 	    
           </div>
           
@@ -268,7 +268,7 @@
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/e850f682b0368a759391f7f72343019ff23a2775/src/index.js#L42-L44'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/b90be958b61f60669b627c7e6aee284aecd91a77/src/index.js#L49-L51'>
       <span>src/index.js</span>
       </a>
     
@@ -347,7 +347,7 @@
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/e850f682b0368a759391f7f72343019ff23a2775/src/index.js#L52-L58'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/b90be958b61f60669b627c7e6aee284aecd91a77/src/index.js#L59-L65'>
       <span>src/index.js</span>
       </a>
     
@@ -356,7 +356,7 @@
 
   <p>Convert the given multihash to a base58 encoded string.</p>
 
-    <div class='pre p1 fill-light mt0'>toB58String(hash: <a href="https://nodejs.org/api/buffer.html">Buffer</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
+    <div class='pre p1 fill-light mt0'>toB58String(hash: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
   
   
 
@@ -373,7 +373,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>hash</span> <code class='quiet'>(<a href="https://nodejs.org/api/buffer.html">Buffer</a>)</code>
+            <span class='code bold'>hash</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)</code>
 	    
           </div>
           
@@ -426,7 +426,7 @@
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/e850f682b0368a759391f7f72343019ff23a2775/src/index.js#L66-L73'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/b90be958b61f60669b627c7e6aee284aecd91a77/src/index.js#L73-L79'>
       <span>src/index.js</span>
       </a>
     
@@ -435,7 +435,7 @@
 
   <p>Convert the given base58 encoded string to a multihash.</p>
 
-    <div class='pre p1 fill-light mt0'>fromB58String(hash: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://nodejs.org/api/buffer.html">Buffer</a>)): <a href="https://nodejs.org/api/buffer.html">Buffer</a></div>
+    <div class='pre p1 fill-light mt0'>fromB58String(hash: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)): <a href="https://nodejs.org/api/buffer.html">Buffer</a></div>
   
   
 
@@ -452,7 +452,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>hash</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://nodejs.org/api/buffer.html">Buffer</a>))</code>
+            <span class='code bold'>hash</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>))</code>
 	    
           </div>
           
@@ -495,7 +495,7 @@
       <div class="clearfix small pointer toggle-sibling">
         <div class="py1 contain">
             <a class='icon pin-right py1 dark-link caret-right'>▸</a>
-            <span class='code strong strong truncate'>decode(buf)</span>
+            <span class='code strong strong truncate'>decode(bytes)</span>
         </div>
       </div>
       <div class="clearfix display-none toggle-target">
@@ -505,7 +505,7 @@
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/e850f682b0368a759391f7f72343019ff23a2775/src/index.js#L81-L112'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/b90be958b61f60669b627c7e6aee284aecd91a77/src/index.js#L87-L121'>
       <span>src/index.js</span>
       </a>
     
@@ -514,7 +514,7 @@
 
   <p>Decode a hash from the given multihash.</p>
 
-    <div class='pre p1 fill-light mt0'>decode(buf: <a href="https://nodejs.org/api/buffer.html">Buffer</a>): {code: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, length: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, digest: <a href="https://nodejs.org/api/buffer.html">Buffer</a>}</div>
+    <div class='pre p1 fill-light mt0'>decode(bytes: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>): {code: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, name: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>, length: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, digest: <a href="https://nodejs.org/api/buffer.html">Buffer</a>}</div>
   
   
 
@@ -531,7 +531,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>buf</span> <code class='quiet'>(<a href="https://nodejs.org/api/buffer.html">Buffer</a>)</code>
+            <span class='code bold'>bytes</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)</code>
 	    
           </div>
           
@@ -584,7 +584,7 @@
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/e850f682b0368a759391f7f72343019ff23a2775/src/index.js#L124-L149'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/b90be958b61f60669b627c7e6aee284aecd91a77/src/index.js#L133-L160'>
       <span>src/index.js</span>
       </a>
     
@@ -596,7 +596,7 @@
 <p><strong>Note:</strong> the length is derived from the length of the digest itself.</p>
 </blockquote>
 
-    <div class='pre p1 fill-light mt0'>encode(digest: <a href="https://nodejs.org/api/buffer.html">Buffer</a>, code: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>), length: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>?): <a href="https://nodejs.org/api/buffer.html">Buffer</a></div>
+    <div class='pre p1 fill-light mt0'>encode(digest: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>, code: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>), length: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>?): <a href="https://nodejs.org/api/buffer.html">Buffer</a></div>
   
   
 
@@ -613,7 +613,7 @@
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>digest</span> <code class='quiet'>(<a href="https://nodejs.org/api/buffer.html">Buffer</a>)</code>
+            <span class='code bold'>digest</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)</code>
 	    
           </div>
           
@@ -682,7 +682,7 @@
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/e850f682b0368a759391f7f72343019ff23a2775/src/index.js#L157-L176'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/b90be958b61f60669b627c7e6aee284aecd91a77/src/index.js#L168-L187'>
       <span>src/index.js</span>
       </a>
     
@@ -762,7 +762,7 @@ If passed a number it will return the number if it's a valid code.</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/e850f682b0368a759391f7f72343019ff23a2775/src/index.js#L184-L186'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/b90be958b61f60669b627c7e6aee284aecd91a77/src/index.js#L195-L197'>
       <span>src/index.js</span>
       </a>
     
@@ -841,7 +841,7 @@ If passed a number it will return the number if it's a valid code.</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/e850f682b0368a759391f7f72343019ff23a2775/src/index.js#L194-L204'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/b90be958b61f60669b627c7e6aee284aecd91a77/src/index.js#L205-L215'>
       <span>src/index.js</span>
       </a>
     
@@ -920,7 +920,7 @@ If passed a number it will return the number if it's a valid code.</p>
   <div class='clearfix'>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/e850f682b0368a759391f7f72343019ff23a2775/src/index.js#L225-L229'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/b90be958b61f60669b627c7e6aee284aecd91a77/src/index.js#L236-L240'>
       <span>src/index.js</span>
       </a>
     
@@ -929,7 +929,7 @@ If passed a number it will return the number if it's a valid code.</p>
 
   <p>Returns a prefix from a valid multihash. Throws an error if it is not valid.</p>
 
-    <div class='pre p1 fill-light mt0'>prefix(multihash: <a href="https://nodejs.org/api/buffer.html">Buffer</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></div>
+    <div class='pre p1 fill-light mt0'>prefix(multihash: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>): <a href="https://nodejs.org/api/buffer.html">Buffer</a></div>
   
   
 
@@ -946,7 +946,7 @@ If passed a number it will return the number if it's a valid code.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>multihash</span> <code class='quiet'>(<a href="https://nodejs.org/api/buffer.html">Buffer</a>)</code>
+            <span class='code bold'>multihash</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)</code>
 	    
           </div>
           
@@ -960,7 +960,7 @@ If passed a number it will return the number if it's a valid code.</p>
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></code>:
+      <code><a href="https://nodejs.org/api/buffer.html">Buffer</a></code>:
         
 
       
@@ -1016,7 +1016,7 @@ If passed a number it will return the number if it's a valid code.</p>
     </h3>
     
     
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/e850f682b0368a759391f7f72343019ff23a2775/src/index.js#L213-L215'>
+      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/b90be958b61f60669b627c7e6aee284aecd91a77/src/index.js#L224-L226'>
       <span>src/index.js</span>
       </a>
     
@@ -1025,7 +1025,7 @@ If passed a number it will return the number if it's a valid code.</p>
 
   <p>Check if the given buffer is a valid multihash. Throws an error if it is not valid.</p>
 
-    <div class='pre p1 fill-light mt0'>validate(multihash: <a href="https://nodejs.org/api/buffer.html">Buffer</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></div>
+    <div class='pre p1 fill-light mt0'>validate(multihash: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>): void</div>
   
   
 
@@ -1042,7 +1042,7 @@ If passed a number it will return the number if it's a valid code.</p>
       
         <div class='space-bottom0'>
           <div>
-            <span class='code bold'>multihash</span> <code class='quiet'>(<a href="https://nodejs.org/api/buffer.html">Buffer</a>)</code>
+            <span class='code bold'>multihash</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)</code>
 	    
           </div>
           
@@ -1056,7 +1056,7 @@ If passed a number it will return the number if it's a valid code.</p>
   
     
       <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></code>:
+      <code>void</code>:
         
 
       
