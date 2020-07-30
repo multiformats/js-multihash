@@ -32,8 +32,9 @@
   "repository": "github:multiformats/js-multihash",
   "dependencies": {
     "buffer": "^5.6.0",
-    "multibase": "^1.0.1",
-    "varint": "^5.0.0"
+    "multibase": "^2.0.0",
+    "varint": "^5.0.0",
+    "web-encoding": "^1.0.2"
   },
   "devDependencies": {
     "aegir": "^24.0.0",
