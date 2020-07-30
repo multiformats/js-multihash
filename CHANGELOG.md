@@ -1,3 +1,13 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/multiformats/js-multihash/compare/v1.0.1...v2.0.0) (2020-07-30)
+
+
+### Features
+
+* accept Uint8Arrays input in place of Buffers ([#88](https://github.com/multiformats/js-multihash/issues/88)) ([4bc2a05](https://github.com/multiformats/js-multihash/commit/4bc2a05))
+
+
+
 <a name="1.0.1"></a>
 ## [1.0.1](https://github.com/multiformats/js-multihash/compare/v1.0.0...v1.0.1) (2020-06-19)
 
