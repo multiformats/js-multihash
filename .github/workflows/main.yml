@@ -9,7 +9,7 @@ jobs:
     - run: yarn
     - run: yarn lint
     - run: yarn aegir dep-check -- -i aegir
-    - uses: ipfs/aegir/actions/bundle-size@master
+    - uses: ipfs/aegir/actions/bundle-size@fix/bundlesize-gh-action
       name: size
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
