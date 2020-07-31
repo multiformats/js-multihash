@@ -1,5 +1,4 @@
-js-multihash
-============
+# js-multihash <!-- omit in toc -->
 
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](http://ipn.io)
 [![](https://img.shields.io/badge/project-multiformats-blue.svg?style=flat-square)](https://github.com/multiformats/multiformats)
@@ -17,18 +16,18 @@ It is extended by [js-multihashing](https://github.com/multiformats/js-multihash
 and [js-multihashing-async](https://github.com/multiformats/js-multihashing-async),
 so give those a look as well.
 
-## Lead Maintainer
+## Lead Maintainer <!-- omit in toc -->
 
 [Hugo Dias](http://github.com/hugomrdias/)
 
-## Table of Contents
+## Table of Contents <!-- omit in toc -->
 
 - [Install](#install)
-  - [In Node.js through npm](#in-nodejs-through-npm)
-  - [Browser: Browserify, Webpack, other bundlers](#browser-browserify-webpack-other-bundlers)
-  - [In the Browser through `<script>` tag](#in-the-browser-through-script-tag)
+  - [Using npm](#using-npm)
+  - [Using a `<script>` tag](#using-a-script-tag)
 - [Usage](#usage)
 - [API](#api)
+- [Update Constants](#update-constants)
 - [Contribute](#contribute)
 - [License](#license)
 
@@ -60,17 +59,17 @@ Loading this module through a script tag will make the ```Multihashes``` obj ava
 
 ```js
 > var multihash = require('multihashes')
-> var buf = new Buffer('0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33', 'hex')
+> var bytes = Uint8Array.from([0, 1, 2, 3...])
 
-> var encoded = multihash.encode(buf, 'sha1')
+> var encoded = multihash.encode(bytes, 'sha1')
 > console.log(encoded)
-<Buffer 11 14 0b ee c7 b5 ea 3f 0f db c9 5d 0d d4 7f 3c 5b c2 75 da 8a 33>
+<Uint8Array 11 14 0b ee c7 b5 ea 3f 0f db c9 5d 0d d4 7f 3c 5b c2 75 da 8a 33>
 
 > multihash.decode(encoded)
 { code: 17,
   name: 'sha1',
   length: 20,
-  digest: <Buffer 0b ee c7 b5 ea 3f 0f db c9 5d 0d d4 7f 3c 5b c2 75 da 8a 33> }
+  digest: <Uint8Array 0b ee c7 b5 ea 3f 0f db c9 5d 0d d4 7f 3c 5b c2 75 da 8a 33> }
 ```
 
 ## API

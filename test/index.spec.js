@@ -2,17 +2,15 @@
 /* eslint max-nested-callbacks: off */
 'use strict'
 
-const chai = require('chai')
-const dirtyChai = require('dirty-chai')
-chai.use(dirtyChai)
-const expect = chai.expect
+const { expect } = require('aegir/utils/chai')
 const multibase = require('multibase')
-const { Buffer } = require('buffer')
 const mh = require('../src')
 const constants = require('../src/constants')
 const validCases = require('./fixtures/valid')
 const invalidCases = require('./fixtures/invalid')
-const { TextEncoder } = require('web-encoding')
+const uint8ArrayToString = require('uint8arrays/to-string')
+const uint8ArrayFromString = require('uint8arrays/from-string')
+const uint8ArrayEquals = require('uint8arrays/equals')
 
 function sample (code, size, hex) {
   const toHex = (i) => {
@@ -22,22 +20,13 @@ function sample (code, size, hex) {
     const h = i.toString(16)
     return h.length % 2 === 1 ? `0${h}` : h
   }
-  return Buffer.from(`${toHex(code)}${toHex(size)}${hex}`, 'hex')
+  return uint8ArrayFromString(`${toHex(code)}${toHex(size)}${hex}`, 'base16')
 }
 
 const they = (description, test) => {
-  it(`${description} (Buffer)`, () => test({
-    encodeText: Buffer.from,
-    encodeHex: (text) => Buffer.from(text, 'hex')
-  }))
-
-  const textEncoder = new TextEncoder()
-  it(`${description} (Uint8Array)`, () => test({
-    encodeText: (text) => textEncoder.encode(text),
-    encodeHex: (text) => {
-      const { buffer, byteOffset, byteLength } = Buffer.from(text, 'hex')
-      return new Uint8Array(buffer, byteOffset, byteLength)
-    }
+  it(description, () => test({
+    encodeText: (text) => uint8ArrayFromString(text),
+    encodeHex: (text) => uint8ArrayFromString(text, 'base16')
   }))
 }
 
@@ -50,7 +39,7 @@ describe('multihash', () => {
         expect(
           mh.toHexString(buf)
         ).to.be.eql(
-          buf.toString('hex')
+          uint8ArrayToString(buf, 'base16')
         )
       })
     })
@@ -70,9 +59,9 @@ describe('multihash', () => {
         const code = test.encoding.code
         const buf = mh.encode(encodeHex(test.hex), code)
         expect(
-          mh.fromHexString(buf.toString('hex')).toString('hex')
+          uint8ArrayToString(mh.fromHexString(uint8ArrayToString(buf, 'base16')), 'base16')
         ).to.be.eql(
-          buf.toString('hex')
+          uint8ArrayToString(buf, 'base16')
         )
       })
     })
@@ -86,7 +75,7 @@ describe('multihash', () => {
         expect(
           mh.toB58String(buf)
         ).to.be.eql(
-          multibase.encode('base58btc', buf).toString().slice(1)
+          uint8ArrayToString(multibase.encode('base58btc', buf)).slice(1)
         )
       })
     })
@@ -125,7 +114,7 @@ describe('multihash', () => {
         const code = test.encoding.code
         const buf = sample(test.encoding.varint || code, test.size, test.hex)
         const name = test.encoding.name
-        const d1 = Buffer.from(test.hex, 'hex')
+        const d1 = uint8ArrayFromString(test.hex, 'base16')
         const length = d1.length
 
         const r = mh.decode(buf)
@@ -134,7 +123,7 @@ describe('multihash', () => {
         expect(r.code).to.equal(code)
         expect(r.name).to.equal(name)
         expect(r.length).to.equal(length)
-        expect(d1.equals(d2)).to.equal(true)
+        expect(uint8ArrayEquals(d1, d2)).to.equal(true)
       })
     })
 
@@ -160,9 +149,9 @@ describe('multihash', () => {
 
         results.forEach((res) => {
           expect(
-            res.toString('hex')
+            uint8ArrayToString(res, 'base16')
           ).to.be.eql(
-            buf.toString('hex')
+            uint8ArrayToString(buf, 'base16')
           )
         })
       })
@@ -205,7 +194,7 @@ describe('multihash', () => {
         ).to.throw()
       })
 
-      const longBuffer = Uint8Array.from(Buffer.alloc(150, 'a'))
+      const longBuffer = new Uint8Array(150).fill(0)
       expect(
         () => mh.validate(longBuffer)
       ).to.throw()
@@ -326,7 +315,7 @@ describe('multihash', () => {
   they('prefix', ({ encodeText }) => {
     const multihash = mh.encode(encodeText('hey'), 0x11, 3)
     const prefix = mh.prefix(multihash)
-    expect(prefix.toString('hex')).to.eql('1103')
+    expect(uint8ArrayToString(prefix, 'base16')).to.eql('1103')
   })
 
   they('prefix throws on invalid multihash', ({ encodeText }) => {

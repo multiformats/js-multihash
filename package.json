@@ -31,15 +31,12 @@
   "main": "src/index.js",
   "repository": "github:multiformats/js-multihash",
   "dependencies": {
-    "buffer": "^5.6.0",
-    "multibase": "^2.0.0",
-    "varint": "^5.0.0",
-    "web-encoding": "^1.0.2"
+    "multibase": "^3.0.0",
+    "uint8arrays": "^1.0.0",
+    "varint": "^5.0.0"
   },
   "devDependencies": {
-    "aegir": "^24.0.0",
-    "chai": "^4.1.2",
-    "dirty-chai": "^2.0.1",
+    "aegir": "^25.0.0",
     "ipfs-utils": "^2.3.1"
   },
   "contributors": [

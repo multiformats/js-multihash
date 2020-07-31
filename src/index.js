@@ -7,11 +7,12 @@
  */
 'use strict'
 
-const { Buffer } = require('buffer')
 const multibase = require('multibase')
 const varint = require('varint')
 const { names } = require('./constants')
-const { TextDecoder } = require('web-encoding')
+const uint8ArrayToString = require('uint8arrays/to-string')
+const uint8ArrayFromString = require('uint8arrays/from-string')
+const uint8ArrayConcat = require('uint8arrays/concat')
 
 const textDecoder = new TextDecoder()
 const codes = {}
@@ -33,21 +34,17 @@ exports.toHexString = function toHexString (hash) {
     throw new Error('must be passed a Uint8Array')
   }
 
-  const buffer = Buffer.isBuffer(hash)
-    ? hash
-    : Buffer.from(hash.buffer, hash.byteOffset, hash.byteLength)
-
-  return buffer.toString('hex')
+  return uint8ArrayToString(hash, 'base16')
 }
 
 /**
  * Convert the given hex encoded string to a multihash.
  *
  * @param {string} hash
- * @returns {Buffer}
+ * @returns {Uint8Array}
  */
 exports.fromHexString = function fromHexString (hash) {
-  return Buffer.from(hash, 'hex')
+  return uint8ArrayFromString(hash, 'base16')
 }
 
 /**
@@ -68,7 +65,7 @@ exports.toB58String = function toB58String (hash) {
  * Convert the given base58 encoded string to a multihash.
  *
  * @param {string|Uint8Array} hash
- * @returns {Buffer}
+ * @returns {Uint8Array}
  */
 exports.fromB58String = function fromB58String (hash) {
   const encoded = hash instanceof Uint8Array
@@ -82,41 +79,38 @@ exports.fromB58String = function fromB58String (hash) {
  * Decode a hash from the given multihash.
  *
  * @param {Uint8Array} bytes
- * @returns {{code: number, name: string, length: number, digest: Buffer}} result
+ * @returns {{code: number, name: string, length: number, digest: Uint8Array}} result
  */
 exports.decode = function decode (bytes) {
   if (!(bytes instanceof Uint8Array)) {
     throw new Error('multihash must be a Uint8Array')
   }
-  let buf = Buffer.isBuffer(bytes)
-    ? bytes
-    : Buffer.from(bytes.buffer, bytes.byteOffset, bytes.byteLength)
 
-  if (buf.length < 2) {
+  if (bytes.length < 2) {
     throw new Error('multihash too short. must be > 2 bytes.')
   }
 
-  const code = varint.decode(buf)
+  const code = varint.decode(bytes)
   if (!exports.isValidCode(code)) {
     throw new Error(`multihash unknown function code: 0x${code.toString(16)}`)
   }
-  buf = buf.slice(varint.decode.bytes)
+  bytes = bytes.slice(varint.decode.bytes)
 
-  const len = varint.decode(buf)
+  const len = varint.decode(bytes)
   if (len < 0) {
     throw new Error(`multihash invalid length: ${len}`)
   }
-  buf = buf.slice(varint.decode.bytes)
+  bytes = bytes.slice(varint.decode.bytes)
 
-  if (buf.length !== len) {
-    throw new Error(`multihash length inconsistent: 0x${buf.toString('hex')}`)
+  if (bytes.length !== len) {
+    throw new Error(`multihash length inconsistent: 0x${uint8ArrayToString(bytes, 'base16')}`)
   }
 
   return {
     code,
     name: codes[code],
     length: len,
-    digest: buf
+    digest: bytes
   }
 }
 
@@ -128,7 +122,7 @@ exports.decode = function decode (bytes) {
  * @param {Uint8Array} digest
  * @param {string|number} code
  * @param {number} [length]
- * @returns {Buffer}
+ * @returns {Uint8Array}
  */
 exports.encode = function encode (digest, code, length) {
   if (!digest || code === undefined) {
@@ -152,11 +146,7 @@ exports.encode = function encode (digest, code, length) {
 
   const hash = varint.encode(hashfn)
   const len = varint.encode(length)
-  const buffer = Buffer.alloc(hash.length + len.length + digest.length)
-  buffer.set(hash, 0)
-  buffer.set(len, hash.length)
-  buffer.set(digest, hash.length + len.length)
-  return buffer
+  return uint8ArrayConcat([hash, len, digest], hash.length + len.length + digest.length)
 }
 
 /**
@@ -230,11 +220,11 @@ exports.validate = validate
  * Returns a prefix from a valid multihash. Throws an error if it is not valid.
  *
  * @param {Uint8Array} multihash
- * @returns {Buffer}
+ * @returns {Uint8Array}
  * @throws {Error}
  */
 exports.prefix = function prefix (multihash) {
   validate(multihash)
 
-  return Buffer.from(multihash.buffer, multihash.byteOffset, 2)
+  return multihash.subarray(0, 2)
 }
