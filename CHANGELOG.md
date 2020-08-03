@@ -1,3 +1,13 @@
+<a name="3.0.1"></a>
+## [3.0.1](https://github.com/multiformats/js-multihash/compare/v3.0.0...v3.0.1) (2020-08-03)
+
+
+### Bug Fixes
+
+* remove text decoder ([#93](https://github.com/multiformats/js-multihash/issues/93)) ([91525fa](https://github.com/multiformats/js-multihash/commit/91525fa))
+
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/multiformats/js-multihash/compare/v2.0.0...v3.0.0) (2020-08-03)
 
