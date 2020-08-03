@@ -1,3 +1,18 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/multiformats/js-multihash/compare/v2.0.0...v3.0.0) (2020-08-03)
+
+
+### Bug Fixes
+
+* replace node buffers with uint8arrays ([#92](https://github.com/multiformats/js-multihash/issues/92)) ([b5dbaca](https://github.com/multiformats/js-multihash/commit/b5dbaca))
+
+
+### BREAKING CHANGES
+
+* - Where node `Buffer`s were returned, now `Uint8Array`s are
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/multiformats/js-multihash/compare/v1.0.1...v2.0.0) (2020-07-30)
 
