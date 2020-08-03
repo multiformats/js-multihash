@@ -14,7 +14,6 @@ const uint8ArrayToString = require('uint8arrays/to-string')
 const uint8ArrayFromString = require('uint8arrays/from-string')
 const uint8ArrayConcat = require('uint8arrays/concat')
 
-const textDecoder = new TextDecoder()
 const codes = {}
 
 for (const key in names) {
@@ -58,7 +57,7 @@ exports.toB58String = function toB58String (hash) {
     throw new Error('must be passed a Uint8Array')
   }
 
-  return textDecoder.decode(multibase.encode('base58btc', hash)).slice(1)
+  return uint8ArrayToString(multibase.encode('base58btc', hash)).slice(1)
 }
 
 /**
@@ -69,7 +68,7 @@ exports.toB58String = function toB58String (hash) {
  */
 exports.fromB58String = function fromB58String (hash) {
   const encoded = hash instanceof Uint8Array
-    ? textDecoder.decode(hash)
+    ? uint8ArrayToString(hash)
     : hash
 
   return multibase.decode('z' + encoded)
