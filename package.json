@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "aegir": "^25.0.0",
-    "ipfs-utils": "^2.3.1"
+    "ipfs-utils": "^3.0.0"
   },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
