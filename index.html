@@ -1,1415 +1,277 @@
 <!doctype html>
-<html lang="en">
+<html class="default no-js">
 <head>
-  <meta charset='utf-8'>
-  <title>multihashes 3.0.1 | Documentation</title>
-  <meta name='description' content='multihash implementation'>
-  <meta name='viewport' content='width=device-width,initial-scale=1'>
-  <link href='assets/bass.css' rel='stylesheet'>
-  <link href='assets/style.css' rel='stylesheet'>
-  <link href='assets/github.css' rel='stylesheet'>
-  <link href='assets/split.css' rel='stylesheet'>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>multihashes - v3.0.1</title>
+	<meta name="description" content="Documentation for multihashes - v3.0.1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<link href="https://unpkg.com/nord-highlightjs@0.1.0/dist/nord.css" rel="stylesheet" type="text/css" />
+	<style>
+        .toolbar-icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .toolbar-icon-search {
+            box-sizing: border-box;
+            position: absolute;
+            overflow: hidden;
+            right: -40px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            @media (min-width: 901px){
+                display: none
+            }
+        }
+            @media (min-width: 901px){
+                .toolbar-icon-menu {
+                    display: none
+                }
+                .toolbar-icon-options {
+                    display: none
+                }
+            }
+
+        .gg-menu {
+            transform: scale(var(--ggs,1))
+        }
+        .gg-menu,
+        .gg-menu::after,
+        .gg-menu::before {
+            box-sizing: border-box;
+            position: relative;
+            display: block;
+            width: 20px;
+            height: 2px;
+            border-radius: 3px;
+            background: currentColor
+        }
+        .gg-menu::after,
+        .gg-menu::before {
+            content: "";
+            position: absolute;
+            top: -6px
+        }
+        .gg-menu::after {
+            top: 6px
+        }
+        .gg-options {
+            box-sizing: border-box;
+            position: relative;
+            display: block;
+            transform: scale(var(--ggs,1));
+            width: 10px;
+            height: 2px;
+            box-shadow:
+                -3px 4px 0 0,
+                3px -4px 0 0
+        }
+        .gg-options::after,
+        .gg-options::before {
+            content: "";
+            display: block;
+            box-sizing: border-box;
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border: 2px solid;
+            border-radius: 100%
+        }
+        .gg-options::before {
+            top: -7px;
+            left: -4px
+        }
+        .gg-options::after {
+            bottom: -7px;
+            right: -4px
+        }
+        .gg-search {
+            box-sizing: border-box;
+            position: relative;
+            display: block;
+            transform: scale(var(--ggs,1));
+            width: 16px;
+            height: 16px;
+            border: 2px solid;
+            border-radius: 100%;
+            margin-left: -4px;
+            margin-top: -4px
+        }
+        .gg-search::after {
+            content: "";
+            display: block;
+            box-sizing: border-box;
+            position: absolute;
+            border-radius: 3px;
+            width: 2px;
+            height: 8px;
+            background: currentColor;
+            transform: rotate(-45deg);
+            top: 10px;
+            left: 12px
+        }
+    </style>
 </head>
-<body class='documentation m0'>
-    <div class='flex'>
-      <div id='split-left' class='overflow-auto fs0 height-viewport-100'>
-        <div class='py1 px2'>
-          <h3 class='mb0 no-anchor'>multihashes</h3>
-          <div class='mb1'><code>3.0.1</code></div>
-          <input
-            placeholder='Filter'
-            id='filter-input'
-            class='col12 block input'
-            spellcheck='false'
-            autocapitalize='off'
-            autocorrect='off'
-            type='text' />
-          <div id='toc'>
-            <ul class='list-reset h5 py1-ul'>
-              
-                
-                <li><a
-                  href='#multihash'
-                  class="">
-                  multihash
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#codes'
-                  class="">
-                  codes
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#codes'
-                  class="">
-                  codes
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#tohexstring'
-                  class="">
-                  toHexString
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#fromhexstring'
-                  class="">
-                  fromHexString
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#tob58string'
-                  class="">
-                  toB58String
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#fromb58string'
-                  class="">
-                  fromB58String
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#decode'
-                  class="">
-                  decode
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#encode'
-                  class="">
-                  encode
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#coercecode'
-                  class="">
-                  coerceCode
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#isappcode'
-                  class="">
-                  isAppCode
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#isvalidcode'
-                  class="">
-                  isValidCode
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#validate'
-                  class="">
-                  validate
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#prefix'
-                  class="">
-                  prefix
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#hashnames'
-                  class="">
-                  HashNames
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#hashcodes'
-                  class="">
-                  HashCodes
-                  
-                </a>
-                
-                </li>
-              
-                
-                <li><a
-                  href='#names'
-                  class="">
-                  names
-                  
-                </a>
-                
-                </li>
-              
-            </ul>
-          </div>
-          <div class='mt1 h6 quiet'>
-            <a href='https://documentation.js.org/reading-documentation.html'>Need help reading this?</a>
-          </div>
-        </div>
-      </div>
-      <div id='split-right' class='relative overflow-auto height-viewport-100'>
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='multihash'>
-      multihash
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L6-L6'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Multihash implementation in JavaScript.</p>
-
-    <div class='pre p1 fill-light mt0'>multihash</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='codes'>
-      codes
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L23-L23'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  
-    <div class='pre p1 fill-light mt0'>codes</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='codes'>
-      codes
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L23-L23'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  
-    <div class='pre p1 fill-light mt0'>codes</div>
-  
-    <p>
-      Type:
-      (Record&#x3C;<a href="#hashcodes">HashCodes</a>, <a href="#hashnames">HashNames</a>> | {})
-    </p>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='tohexstring'>
-      toHexString
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L36-L42'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Convert the given multihash to a hex encoded string.</p>
-
-    <div class='pre p1 fill-light mt0'>toHexString(hash: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>hash</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='fromhexstring'>
-      fromHexString
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L50-L52'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Convert the given hex encoded string to a multihash.</p>
-
-    <div class='pre p1 fill-light mt0'>fromHexString(hash: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>hash</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='tob58string'>
-      toB58String
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L60-L66'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Convert the given multihash to a base58 encoded string.</p>
-
-    <div class='pre p1 fill-light mt0'>toB58String(hash: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>hash</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='fromb58string'>
-      fromB58String
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L74-L80'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Convert the given base58 encoded string to a multihash.</p>
-
-    <div class='pre p1 fill-light mt0'>fromB58String(hash: (<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>hash</span> <code class='quiet'>((<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String">string</a> | <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>))</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='decode'>
-      decode
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L88-L119'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Decode a hash from the given multihash.</p>
-
-    <div class='pre p1 fill-light mt0'>decode(bytes: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>): {code: <a href="#hashcodes">HashCodes</a>, name: <a href="#hashnames">HashNames</a>, length: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, digest: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>}</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>bytes</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>{code: <a href="#hashcodes">HashCodes</a>, name: <a href="#hashnames">HashNames</a>, length: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>, digest: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>}</code>:
-        result
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='encode'>
-      encode
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L131-L154'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Encode a hash digest along with the specified function code.</p>
-<blockquote>
-<p><strong>Note:</strong> the length is derived from the length of the digest itself.</p>
-</blockquote>
-
-    <div class='pre p1 fill-light mt0'>encode(digest: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>, code: (<a href="#hashnames">HashNames</a> | <a href="#hashcodes">HashCodes</a>), length: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>?): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>digest</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>code</span> <code class='quiet'>((<a href="#hashnames">HashNames</a> | <a href="#hashcodes">HashCodes</a>))</code>
-	    
-          </div>
-          
-        </div>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>length</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>?)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='coercecode'>
-      coerceCode
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L163-L182'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Converts a hash function name into the matching code.
-If passed a number it will return the number if it's a valid code.</p>
-
-    <div class='pre p1 fill-light mt0'>coerceCode(name: (<a href="#hashnames">HashNames</a> | <a href="#hashcodes">HashCodes</a>)): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>name</span> <code class='quiet'>((<a href="#hashnames">HashNames</a> | <a href="#hashcodes">HashCodes</a>))</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='isappcode'>
-      isAppCode
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L190-L192'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Checks wether a code is part of the app range</p>
-
-    <div class='pre p1 fill-light mt0'>isAppCode(code: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>code</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='isvalidcode'>
-      isValidCode
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L200-L210'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Checks whether a multihash code is valid.</p>
-
-    <div class='pre p1 fill-light mt0'>isValidCode(code: <a href="#hashcodes">HashCodes</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>code</span> <code class='quiet'>(<a href="#hashcodes">HashCodes</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='validate'>
-      validate
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L219-L221'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Check if the given buffer is a valid multihash. Throws an error if it is not valid.</p>
-
-    <div class='pre p1 fill-light mt0'>validate(multihash: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>): void</div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>multihash</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code>void</code>:
-        
-
-      
-    
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Throws</div>
-    <ul>
-      
-        <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: </li>
-      
-    </ul>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='prefix'>
-      prefix
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/index.js#L230-L234'>
-      <span>src/index.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Returns a prefix from a valid multihash. Throws an error if it is not valid.</p>
-
-    <div class='pre p1 fill-light mt0'>prefix(multihash: <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>): <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a></div>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Parameters</div>
-    <div class='prose'>
-      
-        <div class='space-bottom0'>
-          <div>
-            <span class='code bold'>multihash</span> <code class='quiet'>(<a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a>)</code>
-	    
-          </div>
-          
-        </div>
-      
-    </div>
-  
-
-  
-
-  
-    
-      <div class='py1 quiet mt1 prose-big'>Returns</div>
-      <code><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Uint8Array">Uint8Array</a></code>:
-        
-
-      
-    
-  
-
-  
-
-  
-    <div class='py1 quiet mt1 prose-big'>Throws</div>
-    <ul>
-      
-        <li><a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a>: </li>
-      
-    </ul>
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='hashnames'>
-      HashNames
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/constants.js#L4-L8'>
-      <span>src/constants.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Names for all available hashes</p>
-
-    <div class='pre p1 fill-light mt0'>HashNames</div>
-  
-    <p>
-      Type:
-      (<code>"identity"</code> | <code>"sha1"</code> | <code>"sha2-256"</code> | <code>"sha2-512"</code> | <code>"sha3-512"</code> | <code>"sha3-384"</code> | <code>"sha3-256"</code> | <code>"sha3-224"</code> | <code>"shake-128"</code> | <code>"shake-256"</code> | <code>"keccak-224"</code> | <code>"keccak-256"</code> | <code>"keccak-384"</code> | <code>"keccak-512"</code> | <code>"blake3"</code> | <code>"murmur3-128"</code> | <code>"murmur3-32"</code> | <code>"dbl-sha2-256"</code> | <code>"md4"</code> | <code>"md5"</code> | <code>"bmt"</code> | <code>"sha2-256-trunc254-padded"</code> | <code>"ripemd-128"</code> | <code>"ripemd-160"</code> | <code>"ripemd-256"</code> | <code>"ripemd-320"</code> | <code>"x11"</code> | <code>"kangarootwelve"</code> | <code>"sm3-256"</code> | <code>"blake2b-8"</code> | <code>"blake2b-16"</code> | <code>"blake2b-24"</code> | <code>"blake2b-32"</code> | <code>"blake2b-40"</code> | <code>"blake2b-48"</code> | <code>"blake2b-56"</code> | <code>"blake2b-64"</code> | <code>"blake2b-72"</code> | <code>"blake2b-80"</code> | <code>"blake2b-88"</code> | <code>"blake2b-96"</code> | <code>"blake2b-104"</code> | <code>"blake2b-112"</code> | <code>"blake2b-120"</code> | <code>"blake2b-128"</code> | <code>"blake2b-136"</code> | <code>"blake2b-144"</code> | <code>"blake2b-152"</code> | <code>"blake2b-160"</code> | <code>"blake2b-168"</code> | <code>"blake2b-176"</code> | <code>"blake2b-184"</code> | <code>"blake2b-192"</code> | <code>"blake2b-200"</code> | <code>"blake2b-208"</code> | <code>"blake2b-216"</code> | <code>"blake2b-224"</code> | <code>"blake2b-232"</code> | <code>"blake2b-240"</code> | <code>"blake2b-248"</code> | <code>"blake2b-256"</code> | <code>"blake2b-264"</code> | <code>"blake2b-272"</code> | <code>"blake2b-280"</code> | <code>"blake2b-288"</code> | <code>"blake2b-296"</code> | <code>"blake2b-304"</code> | <code>"blake2b-312"</code> | <code>"blake2b-320"</code> | <code>"blake2b-328"</code> | <code>"blake2b-336"</code> | <code>"blake2b-344"</code> | <code>"blake2b-352"</code> | <code>"blake2b-360"</code> | <code>"blake2b-368"</code> | <code>"blake2b-376"</code> | <code>"blake2b-384"</code> | <code>"blake2b-392"</code> | <code>"blake2b-400"</code> | <code>"blake2b-408"</code> | <code>"blake2b-416"</code> | <code>"blake2b-424"</code> | <code>"blake2b-432"</code> | <code>"blake2b-440"</code> | <code>"blake2b-448"</code> | <code>"blake2b-456"</code> | <code>"blake2b-464"</code> | <code>"blake2b-472"</code> | <code>"blake2b-480"</code> | <code>"blake2b-488"</code> | <code>"blake2b-496"</code> | <code>"blake2b-504"</code> | <code>"blake2b-512"</code> | <code>"blake2s-8"</code> | <code>"blake2s-16"</code> | <code>"blake2s-24"</code> | <code>"blake2s-32"</code> | <code>"blake2s-40"</code> | <code>"blake2s-48"</code> | <code>"blake2s-56"</code> | <code>"blake2s-64"</code> | <code>"blake2s-72"</code> | <code>"blake2s-80"</code> | <code>"blake2s-88"</code> | <code>"blake2s-96"</code> | <code>"blake2s-104"</code> | <code>"blake2s-112"</code> | <code>"blake2s-120"</code> | <code>"blake2s-128"</code> | <code>"blake2s-136"</code> | <code>"blake2s-144"</code> | <code>"blake2s-152"</code> | <code>"blake2s-160"</code> | <code>"blake2s-168"</code> | <code>"blake2s-176"</code> | <code>"blake2s-184"</code> | <code>"blake2s-192"</code> | <code>"blake2s-200"</code> | <code>"blake2s-208"</code> | <code>"blake2s-216"</code> | <code>"blake2s-224"</code> | <code>"blake2s-232"</code> | <code>"blake2s-240"</code> | <code>"blake2s-248"</code> | <code>"blake2s-256"</code> | <code>"skein256-8"</code> | <code>"skein256-16"</code> | <code>"skein256-24"</code> | <code>"skein256-32"</code> | <code>"skein256-40"</code> | <code>"skein256-48"</code> | <code>"skein256-56"</code> | <code>"skein256-64"</code> | <code>"skein256-72"</code> | <code>"skein256-80"</code> | <code>"skein256-88"</code> | <code>"skein256-96"</code> | <code>"skein256-104"</code> | <code>"skein256-112"</code> | <code>"skein256-120"</code> | <code>"skein256-128"</code> | <code>"skein256-136"</code> | <code>"skein256-144"</code> | <code>"skein256-152"</code> | <code>"skein256-160"</code> | <code>"skein256-168"</code> | <code>"skein256-176"</code> | <code>"skein256-184"</code> | <code>"skein256-192"</code> | <code>"skein256-200"</code> | <code>"skein256-208"</code> | <code>"skein256-216"</code> | <code>"skein256-224"</code> | <code>"skein256-232"</code> | <code>"skein256-240"</code> | <code>"skein256-248"</code> | <code>"skein256-256"</code> | <code>"skein512-8"</code> | <code>"skein512-16"</code> | <code>"skein512-24"</code> | <code>"skein512-32"</code> | <code>"skein512-40"</code> | <code>"skein512-48"</code> | <code>"skein512-56"</code> | <code>"skein512-64"</code> | <code>"skein512-72"</code> | <code>"skein512-80"</code> | <code>"skein512-88"</code> | <code>"skein512-96"</code> | <code>"skein512-104"</code> | <code>"skein512-112"</code> | <code>"skein512-120"</code> | <code>"skein512-128"</code> | <code>"skein512-136"</code> | <code>"skein512-144"</code> | <code>"skein512-152"</code> | <code>"skein512-160"</code> | <code>"skein512-168"</code> | <code>"skein512-176"</code> | <code>"skein512-184"</code> | <code>"skein512-192"</code> | <code>"skein512-200"</code> | <code>"skein512-208"</code> | <code>"skein512-216"</code> | <code>"skein512-224"</code> | <code>"skein512-232"</code> | <code>"skein512-240"</code> | <code>"skein512-248"</code> | <code>"skein512-256"</code> | <code>"skein512-264"</code> | <code>"skein512-272"</code> | <code>"skein512-280"</code> | <code>"skein512-288"</code> | <code>"skein512-296"</code> | <code>"skein512-304"</code> | <code>"skein512-312"</code> | <code>"skein512-320"</code> | <code>"skein512-328"</code> | <code>"skein512-336"</code> | <code>"skein512-344"</code> | <code>"skein512-352"</code> | <code>"skein512-360"</code> | <code>"skein512-368"</code> | <code>"skein512-376"</code> | <code>"skein512-384"</code> | <code>"skein512-392"</code> | <code>"skein512-400"</code> | <code>"skein512-408"</code> | <code>"skein512-416"</code> | <code>"skein512-424"</code> | <code>"skein512-432"</code> | <code>"skein512-440"</code> | <code>"skein512-448"</code> | <code>"skein512-456"</code> | <code>"skein512-464"</code> | <code>"skein512-472"</code> | <code>"skein512-480"</code> | <code>"skein512-488"</code> | <code>"skein512-496"</code> | <code>"skein512-504"</code> | <code>"skein512-512"</code> | <code>"skein1024-8"</code> | <code>"skein1024-16"</code> | <code>"skein1024-24"</code> | <code>"skein1024-32"</code> | <code>"skein1024-40"</code> | <code>"skein1024-48"</code> | <code>"skein1024-56"</code> | <code>"skein1024-64"</code> | <code>"skein1024-72"</code> | <code>"skein1024-80"</code> | <code>"skein1024-88"</code> | <code>"skein1024-96"</code> | <code>"skein1024-104"</code> | <code>"skein1024-112"</code> | <code>"skein1024-120"</code> | <code>"skein1024-128"</code> | <code>"skein1024-136"</code> | <code>"skein1024-144"</code> | <code>"skein1024-152"</code> | <code>"skein1024-160"</code> | <code>"skein1024-168"</code> | <code>"skein1024-176"</code> | <code>"skein1024-184"</code> | <code>"skein1024-192"</code> | <code>"skein1024-200"</code> | <code>"skein1024-208"</code> | <code>"skein1024-216"</code> | <code>"skein1024-224"</code> | <code>"skein1024-232"</code> | <code>"skein1024-240"</code> | <code>"skein1024-248"</code> | <code>"skein1024-256"</code> | <code>"skein1024-264"</code> | <code>"skein1024-272"</code> | <code>"skein1024-280"</code> | <code>"skein1024-288"</code> | <code>"skein1024-296"</code> | <code>"skein1024-304"</code> | <code>"skein1024-312"</code> | <code>"skein1024-320"</code> | <code>"skein1024-328"</code> | <code>"skein1024-336"</code> | <code>"skein1024-344"</code> | <code>"skein1024-352"</code> | <code>"skein1024-360"</code> | <code>"skein1024-368"</code> | <code>"skein1024-376"</code> | <code>"skein1024-384"</code> | <code>"skein1024-392"</code> | <code>"skein1024-400"</code> | <code>"skein1024-408"</code> | <code>"skein1024-416"</code> | <code>"skein1024-424"</code> | <code>"skein1024-432"</code> | <code>"skein1024-440"</code> | <code>"skein1024-448"</code> | <code>"skein1024-456"</code> | <code>"skein1024-464"</code> | <code>"skein1024-472"</code> | <code>"skein1024-480"</code> | <code>"skein1024-488"</code> | <code>"skein1024-496"</code> | <code>"skein1024-504"</code> | <code>"skein1024-512"</code> | <code>"skein1024-520"</code> | <code>"skein1024-528"</code> | <code>"skein1024-536"</code> | <code>"skein1024-544"</code> | <code>"skein1024-552"</code> | <code>"skein1024-560"</code> | <code>"skein1024-568"</code> | <code>"skein1024-576"</code> | <code>"skein1024-584"</code> | <code>"skein1024-592"</code> | <code>"skein1024-600"</code> | <code>"skein1024-608"</code> | <code>"skein1024-616"</code> | <code>"skein1024-624"</code> | <code>"skein1024-632"</code> | <code>"skein1024-640"</code> | <code>"skein1024-648"</code> | <code>"skein1024-656"</code> | <code>"skein1024-664"</code> | <code>"skein1024-672"</code> | <code>"skein1024-680"</code> | <code>"skein1024-688"</code> | <code>"skein1024-696"</code> | <code>"skein1024-704"</code> | <code>"skein1024-712"</code> | <code>"skein1024-720"</code> | <code>"skein1024-728"</code> | <code>"skein1024-736"</code> | <code>"skein1024-744"</code> | <code>"skein1024-752"</code> | <code>"skein1024-760"</code> | <code>"skein1024-768"</code> | <code>"skein1024-776"</code> | <code>"skein1024-784"</code> | <code>"skein1024-792"</code> | <code>"skein1024-800"</code> | <code>"skein1024-808"</code> | <code>"skein1024-816"</code> | <code>"skein1024-824"</code> | <code>"skein1024-832"</code> | <code>"skein1024-840"</code> | <code>"skein1024-848"</code> | <code>"skein1024-856"</code> | <code>"skein1024-864"</code> | <code>"skein1024-872"</code> | <code>"skein1024-880"</code> | <code>"skein1024-888"</code> | <code>"skein1024-896"</code> | <code>"skein1024-904"</code> | <code>"skein1024-912"</code> | <code>"skein1024-920"</code> | <code>"skein1024-928"</code> | <code>"skein1024-936"</code> | <code>"skein1024-944"</code> | <code>"skein1024-952"</code> | <code>"skein1024-960"</code> | <code>"skein1024-968"</code> | <code>"skein1024-976"</code> | <code>"skein1024-984"</code> | <code>"skein1024-992"</code> | <code>"skein1024-1000"</code> | <code>"skein1024-1008"</code> | <code>"skein1024-1016"</code> | <code>"skein1024-1024"</code> | <code>"poseidon-bls12_381-a2-fc1"</code> | <code>"poseidon-bls12_381-a2-fc1-sc"</code>)
-    </p>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='hashcodes'>
-      HashCodes
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/constants.js#L9-L13'>
-      <span>src/constants.js</span>
-      </a>
-    
-  </div>
-  
-
-  <p>Codes for all available hashes</p>
-
-    <div class='pre p1 fill-light mt0'>HashCodes</div>
-  
-    <p>
-      Type:
-      (<code>0</code> | <code>17</code> | <code>18</code> | <code>19</code> | <code>20</code> | <code>21</code> | <code>22</code> | <code>23</code> | <code>24</code> | <code>25</code> | <code>26</code> | <code>27</code> | <code>28</code> | <code>29</code> | <code>30</code> | <code>34</code> | <code>35</code> | <code>86</code> | <code>212</code> | <code>213</code> | <code>214</code> | <code>4114</code> | <code>4178</code> | <code>4179</code> | <code>4180</code> | <code>4181</code> | <code>4352</code> | <code>7425</code> | <code>21325</code> | <code>45569</code> | <code>45570</code> | <code>45571</code> | <code>45572</code> | <code>45573</code> | <code>45574</code> | <code>45575</code> | <code>45576</code> | <code>45577</code> | <code>45578</code> | <code>45579</code> | <code>45580</code> | <code>45581</code> | <code>45582</code> | <code>45583</code> | <code>45584</code> | <code>45585</code> | <code>45586</code> | <code>45587</code> | <code>45588</code> | <code>45589</code> | <code>45590</code> | <code>45591</code> | <code>45592</code> | <code>45593</code> | <code>45594</code> | <code>45595</code> | <code>45596</code> | <code>45597</code> | <code>45598</code> | <code>45599</code> | <code>45600</code> | <code>45601</code> | <code>45602</code> | <code>45603</code> | <code>45604</code> | <code>45605</code> | <code>45606</code> | <code>45607</code> | <code>45608</code> | <code>45609</code> | <code>45610</code> | <code>45611</code> | <code>45612</code> | <code>45613</code> | <code>45614</code> | <code>45615</code> | <code>45616</code> | <code>45617</code> | <code>45618</code> | <code>45619</code> | <code>45620</code> | <code>45621</code> | <code>45622</code> | <code>45623</code> | <code>45624</code> | <code>45625</code> | <code>45626</code> | <code>45627</code> | <code>45628</code> | <code>45629</code> | <code>45630</code> | <code>45631</code> | <code>45632</code> | <code>45633</code> | <code>45634</code> | <code>45635</code> | <code>45636</code> | <code>45637</code> | <code>45638</code> | <code>45639</code> | <code>45640</code> | <code>45641</code> | <code>45642</code> | <code>45643</code> | <code>45644</code> | <code>45645</code> | <code>45646</code> | <code>45647</code> | <code>45648</code> | <code>45649</code> | <code>45650</code> | <code>45651</code> | <code>45652</code> | <code>45653</code> | <code>45654</code> | <code>45655</code> | <code>45656</code> | <code>45657</code> | <code>45658</code> | <code>45659</code> | <code>45660</code> | <code>45661</code> | <code>45662</code> | <code>45663</code> | <code>45664</code> | <code>45825</code> | <code>45826</code> | <code>45827</code> | <code>45828</code> | <code>45829</code> | <code>45830</code> | <code>45831</code> | <code>45832</code> | <code>45833</code> | <code>45834</code> | <code>45835</code> | <code>45836</code> | <code>45837</code> | <code>45838</code> | <code>45839</code> | <code>45840</code> | <code>45841</code> | <code>45842</code> | <code>45843</code> | <code>45844</code> | <code>45845</code> | <code>45846</code> | <code>45847</code> | <code>45848</code> | <code>45849</code> | <code>45850</code> | <code>45851</code> | <code>45852</code> | <code>45853</code> | <code>45854</code> | <code>45855</code> | <code>45856</code> | <code>45857</code> | <code>45858</code> | <code>45859</code> | <code>45860</code> | <code>45861</code> | <code>45862</code> | <code>45863</code> | <code>45864</code> | <code>45865</code> | <code>45866</code> | <code>45867</code> | <code>45868</code> | <code>45869</code> | <code>45870</code> | <code>45871</code> | <code>45872</code> | <code>45873</code> | <code>45874</code> | <code>45875</code> | <code>45876</code> | <code>45877</code> | <code>45878</code> | <code>45879</code> | <code>45880</code> | <code>45881</code> | <code>45882</code> | <code>45883</code> | <code>45884</code> | <code>45885</code> | <code>45886</code> | <code>45887</code> | <code>45888</code> | <code>45889</code> | <code>45890</code> | <code>45891</code> | <code>45892</code> | <code>45893</code> | <code>45894</code> | <code>45895</code> | <code>45896</code> | <code>45897</code> | <code>45898</code> | <code>45899</code> | <code>45900</code> | <code>45901</code> | <code>45902</code> | <code>45903</code> | <code>45904</code> | <code>45905</code> | <code>45906</code> | <code>45907</code> | <code>45908</code> | <code>45909</code> | <code>45910</code> | <code>45911</code> | <code>45912</code> | <code>45913</code> | <code>45914</code> | <code>45915</code> | <code>45916</code> | <code>45917</code> | <code>45918</code> | <code>45919</code> | <code>45920</code> | <code>45921</code> | <code>45922</code> | <code>45923</code> | <code>45924</code> | <code>45925</code> | <code>45926</code> | <code>45927</code> | <code>45928</code> | <code>45929</code> | <code>45930</code> | <code>45931</code> | <code>45932</code> | <code>45933</code> | <code>45934</code> | <code>45935</code> | <code>45936</code> | <code>45937</code> | <code>45938</code> | <code>45939</code> | <code>45940</code> | <code>45941</code> | <code>45942</code> | <code>45943</code> | <code>45944</code> | <code>45945</code> | <code>45946</code> | <code>45947</code> | <code>45948</code> | <code>45949</code> | <code>45950</code> | <code>45951</code> | <code>45952</code> | <code>45953</code> | <code>45954</code> | <code>45955</code> | <code>45956</code> | <code>45957</code> | <code>45958</code> | <code>45959</code> | <code>45960</code> | <code>45961</code> | <code>45962</code> | <code>45963</code> | <code>45964</code> | <code>45965</code> | <code>45966</code> | <code>45967</code> | <code>45968</code> | <code>45969</code> | <code>45970</code> | <code>45971</code> | <code>45972</code> | <code>45973</code> | <code>45974</code> | <code>45975</code> | <code>45976</code> | <code>45977</code> | <code>45978</code> | <code>45979</code> | <code>45980</code> | <code>45981</code> | <code>45982</code> | <code>45983</code> | <code>45984</code> | <code>45985</code> | <code>45986</code> | <code>45987</code> | <code>45988</code> | <code>45989</code> | <code>45990</code> | <code>45991</code> | <code>45992</code> | <code>45993</code> | <code>45994</code> | <code>45995</code> | <code>45996</code> | <code>45997</code> | <code>45998</code> | <code>45999</code> | <code>46000</code> | <code>46001</code> | <code>46002</code> | <code>46003</code> | <code>46004</code> | <code>46005</code> | <code>46006</code> | <code>46007</code> | <code>46008</code> | <code>46009</code> | <code>46010</code> | <code>46011</code> | <code>46012</code> | <code>46013</code> | <code>46014</code> | <code>46015</code> | <code>46016</code> | <code>46017</code> | <code>46018</code> | <code>46019</code> | <code>46020</code> | <code>46021</code> | <code>46022</code> | <code>46023</code> | <code>46024</code> | <code>46025</code> | <code>46026</code> | <code>46027</code> | <code>46028</code> | <code>46029</code> | <code>46030</code> | <code>46031</code> | <code>46032</code> | <code>46033</code> | <code>46034</code> | <code>46035</code> | <code>46036</code> | <code>46037</code> | <code>46038</code> | <code>46039</code> | <code>46040</code> | <code>46041</code> | <code>46042</code> | <code>46043</code> | <code>46044</code> | <code>46045</code> | <code>46046</code> | <code>46047</code> | <code>46048</code> | <code>46081</code> | <code>46082</code>)
-    </p>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-          
-          <section class='p2 mb2 clearfix bg-white minishadow'>
-
-  
-  <div class='clearfix'>
-    
-    <h3 class='fl m0' id='names'>
-      names
-    </h3>
-    
-    
-      <a class='fr fill-darken0 round round pad1x quiet h5' href='https://github.com/multiformats/js-multihash/blob/167eae7e2d0d1e940d88876919b981bbd3170a05/src/constants.js#L18-L370'>
-      <span>src/constants.js</span>
-      </a>
-    
-  </div>
-  
-
-  
-    <div class='pre p1 fill-light mt0'>names</div>
-  
-    <p>
-      Type:
-      <a href="https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a>&#x3C;<a href="#hashnames">HashNames</a>, <a href="#hashcodes">HashCodes</a>>
-    </p>
-  
-  
-
-  
-  
-  
-  
-  
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-</section>
-
-          
-        
-      </div>
-    </div>
-  <script src='assets/anchor.js'></script>
-  <script src='assets/split.js'></script>
-  <script src='assets/site.js'></script>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="toolbar-icon toolbar-icon-search"><i class="gg-search"></i></label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">multihashes - v3.0.1</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<a href="#" class="toolbar-icon toolbar-icon-menu" data-toggle="menu"><i class="gg-menu"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+			</ul>
+			<h1>multihashes - v3.0.1</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#js-multihash-" id="js-multihash-" style="color: inherit; text-decoration: none;">
+					<h1>js-multihash <!-- omit in toc --></h1>
+				</a>
+				<p><a href="http://ipn.io"><img src="https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square" alt=""></a>
+					<a href="https://github.com/multiformats/multiformats"><img src="https://img.shields.io/badge/project-multiformats-blue.svg?style=flat-square" alt=""></a>
+					<a href="https://webchat.freenode.net/?channels=%23ipfs"><img src="https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square" alt=""></a>
+					<a href="https://coveralls.io/github/multiformats/js-multihash?branch=master"><img src="https://coveralls.io/repos/github/multiformats/js-multihash/badge.svg?branch=master" alt="Coverage Status"></a>
+					<a href="https://travis-ci.org/multiformats/js-multihash"><img src="https://img.shields.io/travis/multiformats/js-multihash.svg?style=flat-square&branch=master" alt="Travis CI"></a>
+					<a href="https://david-dm.org/multiformats/js-multihash"><img src="https://david-dm.org/multiformats/js-multihash.svg?style=flat-square" alt="Dependency Status"></a>
+					<a href="https://github.com/feross/standard"><img src="https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square" alt="js-standard-style"></a>
+				<a href="https://github.com/RichardLitt/standard-readme"><img src="https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square" alt=""></a></p>
+				<blockquote>
+					<p>multihash implementation in node.js</p>
+				</blockquote>
+				<p>This is the <a href="//github.com/multiformats/multihash">multihash</a> implementation in Node.
+					It is extended by <a href="https://github.com/multiformats/js-multihashing">js-multihashing</a>
+					and <a href="https://github.com/multiformats/js-multihashing-async">js-multihashing-async</a>,
+				so give those a look as well.</p>
+				<a href="#lead-maintainer-" id="lead-maintainer-" style="color: inherit; text-decoration: none;">
+					<h2>Lead Maintainer <!-- omit in toc --></h2>
+				</a>
+				<p><a href="http://github.com/hugomrdias/">Hugo Dias</a></p>
+				<a href="#table-of-contents-" id="table-of-contents-" style="color: inherit; text-decoration: none;">
+					<h2>Table of Contents <!-- omit in toc --></h2>
+				</a>
+				<ul>
+					<li><a href="#install">Install</a><ul>
+							<li><a href="#using-npm">Using npm</a></li>
+							<li><a href="#using-a-script-tag">Using a <code>&lt;script&gt;</code> tag</a></li>
+						</ul>
+					</li>
+					<li><a href="#usage">Usage</a></li>
+					<li><a href="#api">API</a></li>
+					<li><a href="#update-constants">Update Constants</a></li>
+					<li><a href="#contribute">Contribute</a></li>
+					<li><a href="#license">License</a></li>
+				</ul>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
+				<a href="#using-npm" id="using-npm" style="color: inherit; text-decoration: none;">
+					<h3>Using npm</h3>
+				</a>
+				<pre><code class="language-bash">&gt; npm install multihashes <span class="hljs-comment"># node the name of the module is multihashes</span></code></pre>
+				<p>Once the install is complete, you can require it as a normal dependency</p>
+				<pre><code class="language-js"><span class="hljs-keyword">const</span> multihashes = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;multihashes&#x27;</span>)</code></pre>
+				<p>You can require it and use with your favourite bundler to bundle this package in a browser compatible code.</p>
+				<a href="#using-a-ltscriptgt-tag" id="using-a-ltscriptgt-tag" style="color: inherit; text-decoration: none;">
+					<h3>Using a <code>&lt;script&gt;</code> tag</h3>
+				</a>
+				<p>Loading this module through a script tag will make the <code>Multihashes</code> obj available in the global namespace.</p>
+				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;https://unpkg.com/multihashes/dist/index.min.js&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<pre><code class="language-js">&gt; <span class="hljs-keyword">var</span> multihash = <span class="hljs-built_in">require</span>(<span class="hljs-string">&#x27;multihashes&#x27;</span>)
+&gt; <span class="hljs-keyword">var</span> bytes = <span class="hljs-built_in">Uint8Array</span>.from([<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3.</span>..])
+
+&gt; <span class="hljs-keyword">var</span> encoded = multihash.encode(bytes, <span class="hljs-string">&#x27;sha1&#x27;</span>)
+&gt; <span class="hljs-built_in">console</span>.log(encoded)
+&lt;<span class="hljs-built_in">Uint8Array</span> <span class="hljs-number">11</span> <span class="hljs-number">14</span> <span class="hljs-number">0</span>b ee c7 b5 ea <span class="hljs-number">3</span>f <span class="hljs-number">0</span>f db c9 <span class="hljs-number">5</span>d <span class="hljs-number">0</span>d d4 <span class="hljs-number">7</span>f <span class="hljs-number">3</span>c <span class="hljs-number">5</span>b c2 <span class="hljs-number">75</span> da <span class="hljs-number">8</span>a <span class="hljs-number">33</span>&gt;
+
+&gt; multihash.decode(encoded)
+{ <span class="hljs-attr">code</span>: <span class="hljs-number">17</span>,
+  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;sha1&#x27;</span>,
+  <span class="hljs-attr">length</span>: <span class="hljs-number">20</span>,
+  <span class="hljs-attr">digest</span>: <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Uint8Array</span> <span class="hljs-attr">0b</span> <span class="hljs-attr">ee</span> <span class="hljs-attr">c7</span> <span class="hljs-attr">b5</span> <span class="hljs-attr">ea</span> <span class="hljs-attr">3f</span> <span class="hljs-attr">0f</span> <span class="hljs-attr">db</span> <span class="hljs-attr">c9</span> <span class="hljs-attr">5d</span> <span class="hljs-attr">0d</span> <span class="hljs-attr">d4</span> <span class="hljs-attr">7f</span> <span class="hljs-attr">3c</span> <span class="hljs-attr">5b</span> <span class="hljs-attr">c2</span> <span class="hljs-attr">75</span> <span class="hljs-attr">da</span> <span class="hljs-attr">8a</span> <span class="hljs-attr">33</span>&gt;</span> }</span></code></pre>
+				<a href="#api" id="api" style="color: inherit; text-decoration: none;">
+					<h2>API</h2>
+				</a>
+				<p><a href="https://multiformats.github.io/js-multihash/">https://multiformats.github.io/js-multihash/</a></p>
+				<a href="#update-constants" id="update-constants" style="color: inherit; text-decoration: none;">
+					<h2>Update Constants</h2>
+				</a>
+				<p>To update the constants table run the command below. This will fetch the main codec list from <a href="https://raw.githubusercontent.com/multiformats/multicodec/master/table.csv">https://raw.githubusercontent.com/multiformats/multicodec/master/table.csv</a> and filter only the multihash codecs and update the <code>constants.js</code> file in this repo.</p>
+				<pre><code class="language-sh">npm run update-constants</code></pre>
+				<a href="#contribute" id="contribute" style="color: inherit; text-decoration: none;">
+					<h2>Contribute</h2>
+				</a>
+				<p>Contributions welcome. Please check out <a href="https://github.com/multiformats/js-multihash/issues">the issues</a>.</p>
+				<p>Check out our <a href="https://github.com/multiformats/multiformats/blob/master/contributing.md">contributing document</a> for more information on how we work, and about contributing in general. Please be aware that all interactions related to multiformats are subject to the IPFS <a href="https://github.com/ipfs/community/blob/master/code-of-conduct.md">Code of Conduct</a>.</p>
+				<p>Small note: If editing the README, please conform to the <a href="https://github.com/RichardLitt/standard-readme">standard-readme</a> specification.</p>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<p><a href="LICENSE">MIT</a> © Protocol Labs Inc.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" tsd-kind-module">
+						<a href="modules/__multihashes_.html"> multihashes</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/_constants_.html">constants</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer>
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>
