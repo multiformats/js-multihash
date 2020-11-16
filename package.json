@@ -36,7 +36,7 @@
     "varint": "^5.0.0"
   },
   "devDependencies": {
-    "aegir": "^25.0.0",
+    "aegir": "^28.2.0",
     "ipfs-utils": "^2.3.1"
   },
   "contributors": [
