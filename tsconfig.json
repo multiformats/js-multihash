@@ -1,0 +1,10 @@
+{
+    "extends": "./node_modules/aegir/src/config/tsconfig.aegir.json",
+    "compilerOptions": {
+        "outDir": "dist"
+    },
+    "include": [
+      "test", // remove this line if you don't want to type-check tests
+      "src"
+    ]
+}
