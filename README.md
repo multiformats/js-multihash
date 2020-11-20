@@ -3,11 +3,8 @@
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](http://ipn.io)
 [![](https://img.shields.io/badge/project-multiformats-blue.svg?style=flat-square)](https://github.com/multiformats/multiformats)
 [![](https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square)](https://webchat.freenode.net/?channels=%23ipfs)
-[![Coverage Status](https://coveralls.io/repos/github/multiformats/js-multihash/badge.svg?branch=master)](https://coveralls.io/github/multiformats/js-multihash?branch=master)
-[![Travis CI](https://img.shields.io/travis/multiformats/js-multihash.svg?style=flat-square&branch=master)](https://travis-ci.org/multiformats/js-multihash)
-[![Dependency Status](https://david-dm.org/multiformats/js-multihash.svg?style=flat-square)](https://david-dm.org/multiformats/js-multihash)
-[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/feross/standard)
-[![](https://img.shields.io/badge/readme%20style-standard-brightgreen.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
+[![codecov](https://img.shields.io/codecov/c/github/multiformats/js-multihash.svg?style=flat-square)](https://codecov.io/gh/multiformats/js-multihash)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/multiformats/js-multihash/ci?label=ci&style=flat-square)](https://github.com/multiformats/js-multihash/actions?query=branch%3Amaster+workflow%3Aci+)
 
 > multihash implementation in node.js
 
@@ -36,20 +33,12 @@ so give those a look as well.
 ### Using npm
 
 ```bash
-> npm install multihashes # node the name of the module is multihashes
+> npm install multihashes # NOTE: The name of the module is multihashes!
 ```
-
-Once the install is complete, you can require it as a normal dependency
-
-```js
-const multihashes = require('multihashes')
-```
-
-You can require it and use with your favourite bundler to bundle this package in a browser compatible code.
 
 ### Using a `<script>` tag
 
-Loading this module through a script tag will make the ```Multihashes``` obj available in the global namespace.
+Loading this module through a script tag will make the `Multihashes` obj available in the global namespace.
 
 ```html
 <script src="https://unpkg.com/multihashes/dist/index.min.js"></script>
