@@ -45,7 +45,7 @@
     "varint": "^6.0.0"
   },
   "devDependencies": {
-    "aegir": "github:ipfs/aegir#fix/ts-docs-update",
+    "aegir": "^29.0.1",
     "ipfs-utils": "^5.0.0"
   },
   "eslintConfig": {
