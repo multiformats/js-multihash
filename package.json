@@ -40,7 +40,7 @@
   },
   "repository": "github:multiformats/js-multihash",
   "dependencies": {
-    "multibase": "^3.0.0",
+    "multibase": "^3.1.0",
     "uint8arrays": "^1.0.0",
     "varint": "^6.0.0"
   },
