@@ -1,3 +1,12 @@
+# [3.1.0](https://github.com/multiformats/js-multihash/compare/v3.0.1...v3.1.0) (2020-11-24)
+
+
+### Features
+
+* add ts types ([#104](https://github.com/multiformats/js-multihash/issues/104)) ([5a1e7d7](https://github.com/multiformats/js-multihash/commit/5a1e7d73bfd377477a0853d41657c000fd84a4ae))
+
+
+
 <a name="3.0.1"></a>
 ## [3.0.1](https://github.com/multiformats/js-multihash/compare/v3.0.0...v3.0.1) (2020-08-03)
 
