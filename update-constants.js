@@ -8,6 +8,8 @@ const url = 'https://raw.githubusercontent.com/multiformats/multicodec/master/ta
 const run = async () => {
   const rsp = await http.get(url)
   const lines = (await rsp.text()).split('\n')
+  const names = []
+  const codes = []
   const processed = lines
     .slice(1, lines.length - 1)
     .map(l => {
@@ -16,6 +18,8 @@ const run = async () => {
     })
     .filter(l => l[1] === 'multihash')
     .reduce((acc, l, index, arr) => {
+      names.push(`"${l[0]}"`)
+      codes.push(`${l[2].replace('\'', '')}`)
       acc += `  '${l[0]}': ${l[2].replace('\'', '')}`
 
       if (index !== arr.length - 1) {
@@ -27,6 +31,20 @@ const run = async () => {
   const template = `/* eslint quote-props: off */
 'use strict'
 
+/**
+ * Names for all available hashes
+ *
+ * @typedef { ${names.join(' | ')} } HashName
+ */
+/**
+ * Codes for all available hashes
+ *
+ * @typedef { ${codes.join(' | ')} } HashCode
+ */
+
+/**
+ * @type { Object<HashName,HashCode> }
+ */
 const names = Object.freeze({
 ${processed}
 })

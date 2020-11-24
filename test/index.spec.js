@@ -34,7 +34,7 @@ describe('multihash', () => {
   describe('toHexString', () => {
     they('valid', ({ encodeHex }) => {
       validCases.forEach((test) => {
-        const code = test.encoding.code
+        const code = /** @type { import("../src/constants").HashCode} */(test.encoding.code)
         const buf = mh.encode(encodeHex(test.hex), code)
         expect(
           mh.toHexString(buf)
@@ -46,6 +46,7 @@ describe('multihash', () => {
 
     it('invalid', () => {
       expect(
+        // @ts-ignore
         () => mh.toHexString('hello world')
       ).to.throw(
         /must be passed a Uint8Array/
@@ -82,6 +83,7 @@ describe('multihash', () => {
 
     it('invalid', () => {
       expect(
+        // @ts-expect-error
         () => mh.toB58String('hello world')
       ).to.throw(
         /must be passed a Uint8Array/
@@ -129,6 +131,7 @@ describe('multihash', () => {
 
     it('invalid', () => {
       expect(
+        // @ts-expect-error
         () => mh.decode('hello')
       ).to.throw(
         /multihash must be a Uint8Array/
@@ -159,12 +162,14 @@ describe('multihash', () => {
 
     they('invalid', ({ encodeText }) => {
       expect(
+        // @ts-expect-error
         () => mh.encode()
       ).to.throw(
         /requires at least two args/
       )
 
       expect(
+        // @ts-expect-error
         () => mh.encode('hello', 0x11)
       ).to.throw(
         /digest should be a Uint8Array/
@@ -204,6 +209,7 @@ describe('multihash', () => {
   describe('isValidCode', () => {
     it('valid', () => {
       expect(
+        // @ts-expect-error - app code
         mh.isValidCode(2)
       ).to.be.eql(
         true
@@ -218,12 +224,14 @@ describe('multihash', () => {
 
     it('invalid', () => {
       expect(
+        // @ts-expect-error
         mh.isValidCode(0x10)
       ).to.be.eql(
         false
       )
 
       expect(
+        // @ts-expect-error
         mh.isValidCode(0x90)
       ).to.be.eql(
         false
@@ -261,6 +269,7 @@ describe('multihash', () => {
 
   describe('coerceCode', () => {
     it('valid', () => {
+      /** @type {Partial<Record<import('../src/constants').HashName, import('../src/constants').HashCode>> } */
       const names = {
         sha1: 0x11,
         'sha2-256': 0x12,
@@ -270,7 +279,7 @@ describe('multihash', () => {
 
       Object.keys(names).forEach((name) => {
         expect(
-          mh.coerceCode(name)
+          mh.coerceCode(/** @type {import('../src/constants.js').HashName} */(name))
         ).to.be.eql(
           names[name]
         )
@@ -292,6 +301,7 @@ describe('multihash', () => {
 
       invalidNames.forEach((name) => {
         expect(
+          // @ts-ignore
           () => mh.coerceCode(name)
         ).to.throw(
           `Unrecognized hash function named: ${name}`

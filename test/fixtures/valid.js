@@ -1,5 +1,10 @@
 'use strict'
 
+/**
+ * @typedef {import('../../src/constants').HashCode} HashCode
+ * @typedef {import('../../src/constants').HashName} HashName
+ */
+/** @type {Array<{encoding: {code: HashCode, name: HashName, varint?: string}, hex: string, size: number }>} */
 module.exports = [
   {
     encoding: {
@@ -8,28 +13,32 @@ module.exports = [
     },
     hex: '0beec7b5ea3f0fdbc95d0dd47f3c5bc275da8a33',
     size: 20
-  }, {
+  },
+  {
     encoding: {
       code: 0x11,
       name: 'sha1'
     },
     hex: '0beec7b8',
     size: 4
-  }, {
+  },
+  {
     encoding: {
       code: 0x12,
       name: 'sha2-256'
     },
     hex: '2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae',
     size: 32
-  }, {
+  },
+  {
     encoding: {
       code: 0x12,
       name: 'sha2-256'
     },
     hex: '2c26b46b',
     size: 4
-  }, {
+  },
+  {
     encoding: {
       code: 0x0,
       name: 'identity'
@@ -99,7 +108,8 @@ module.exports = [
       code: 0x19,
       name: 'shake-256'
     },
-    hex: '1af97f7818a28edfdfce5ec66dbdc7e871813816d7d585fe1f12475ded5b6502b7723b74e2ee36f2651a10a8eaca72aa9148c3c761aaceac8f6d6cc64381ed39',
+    hex:
+            '1af97f7818a28edfdfce5ec66dbdc7e871813816d7d585fe1f12475ded5b6502b7723b74e2ee36f2651a10a8eaca72aa9148c3c761aaceac8f6d6cc64381ed39',
     size: 64
   },
   {
@@ -107,7 +117,8 @@ module.exports = [
       code: 0x14,
       name: 'sha3-512'
     },
-    hex: '4bca2b137edc580fe50a88983ef860ebaca36c857b1f492839d6d7392452a63c82cbebc68e3b70a2a1480b4bb5d437a7cba6ecf9d89f9ff3ccd14cd6146ea7e7',
+    hex:
+            '4bca2b137edc580fe50a88983ef860ebaca36c857b1f492839d6d7392452a63c82cbebc68e3b70a2a1480b4bb5d437a7cba6ecf9d89f9ff3ccd14cd6146ea7e7',
     size: 64
   },
   {
