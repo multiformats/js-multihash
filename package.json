@@ -17,10 +17,10 @@
     "dist"
   ],
   "scripts": {
+    "prepare": "aegir build",
     "lint": "aegir lint",
     "test:browser": "aegir test --target browser",
     "test:node": "aegir test --target node",
-    "build": "aegir build",
     "test": "aegir test",
     "docs": "aegir docs",
     "release": "aegir release --docs",
