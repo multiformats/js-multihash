@@ -16,7 +16,8 @@ const codes = /** @type {import('./types').CodeNameMap} */({})
 
 // eslint-disable-next-line guard-for-in
 for (const key in names) {
-  codes[names[key]] = key
+  const name = /** @type {HashName} */(key)
+  codes[names[name]] = name
 }
 
 /**
@@ -86,7 +87,7 @@ function decode (bytes) {
     throw new Error('multihash too short. must be > 2 bytes.')
   }
 
-  const code = varint.decode(bytes)
+  const code = /** @type {HashCode} */(varint.decode(bytes))
   if (!isValidCode(code)) {
     throw new Error(`multihash unknown function code: 0x${code.toString(16)}`)
   }
@@ -166,6 +167,7 @@ function coerceCode (name) {
     throw new Error(`Hash function code should be a number. Got: ${code}`)
   }
 
+  // @ts-ignore
   if (codes[code] === undefined && !isAppCode(code)) {
     throw new Error(`Unrecognized function code: ${code}`)
   }
