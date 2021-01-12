@@ -308,9 +308,6 @@ describe('multihash', () => {
           names[/** @type {keyof typeof names} */(name)]
         )
       }
-
-      Object.keys(names).forEach((name) => {
-      })
     })
 
     they('invalid', ({ encodeText }) => {
