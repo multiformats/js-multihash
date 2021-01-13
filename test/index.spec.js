@@ -286,26 +286,26 @@ describe('multihash', () => {
 
   describe('coerceCode', () => {
     it('valid', () => {
-      /** @type {Partial<Record<HashName, HashCode>> } */
       const names = {
         sha1: 0x11,
         'sha2-256': 0x12,
         'sha2-512': 0x13,
         'sha3-512': 0x14
       }
-
+      /** @type {keyof typeof names} */
+      let name
       // eslint-disable-next-line guard-for-in
-      for (const name in names) {
+      for (name in names) {
         expect(
-          mh.coerceCode(/** @type {keyof typeof names} */(name))
+          mh.coerceCode(name)
         ).to.be.eql(
-          names[/** @type {keyof typeof names} */(name)]
+          names[name]
         )
 
         expect(
-          mh.coerceCode(/** @type {HashCode} */(names[/** @type {HashName} */(name)]))
+          mh.coerceCode(names[name])
         ).to.be.eql(
-          names[/** @type {keyof typeof names} */(name)]
+          names[name]
         )
       }
     })
