@@ -17,7 +17,7 @@
     "dist"
   ],
   "scripts": {
-    "prepare": "aegir build",
+    "prepare": "aegir build --no-bundle",
     "lint": "aegir lint",
     "test:browser": "aegir test --target browser",
     "test:node": "aegir test --target node",
@@ -41,12 +41,12 @@
   "repository": "github:multiformats/js-multihash",
   "dependencies": {
     "multibase": "^3.1.0",
-    "uint8arrays": "^1.0.0",
+    "uint8arrays": "^2.0.5",
     "varint": "^6.0.0"
   },
   "devDependencies": {
-    "aegir": "^29.0.1",
-    "ipfs-utils": "^5.0.0"
+    "aegir": "^30.3.0",
+    "ipfs-utils": "^5.0.1"
   },
   "eslintConfig": {
     "extends": "ipfs"

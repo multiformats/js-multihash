@@ -12,7 +12,20 @@ const uint8ArrayToString = require('uint8arrays/to-string')
 const uint8ArrayFromString = require('uint8arrays/from-string')
 const uint8ArrayEquals = require('uint8arrays/equals')
 
+/**
+ * @typedef {import('../src/constants.js').HashName} HashName
+ * @typedef {import('../src/constants.js').HashCode} HashCode
+ */
+
+/**
+ * @param {string | number} code
+ * @param {number} size
+ * @param {string} hex
+ */
 function sample (code, size, hex) {
+  /**
+   * @param {number | string} i
+   */
   const toHex = (i) => {
     if (typeof i === 'string') {
       return i
@@ -23,6 +36,10 @@ function sample (code, size, hex) {
   return uint8ArrayFromString(`${toHex(code)}${toHex(size)}${hex}`, 'base16')
 }
 
+/**
+ * @param {string} description
+ * @param {(test: { encodeText: (text: string) => Uint8Array, encodeHex: (text: string) => Uint8Array }) => void} test
+ */
 const they = (description, test) => {
   it(description, () => test({
     encodeText: (text) => uint8ArrayFromString(text),
@@ -195,7 +212,7 @@ describe('multihash', () => {
     it('invalid', () => {
       invalidCases.forEach((test) => {
         expect(
-          () => mh.validate(sample(test.encoding.varint || test.code, test.size, test.hex))
+          () => mh.validate(sample(test.code, test.size, test.hex))
         ).to.throw()
       })
 
@@ -257,7 +274,7 @@ describe('multihash', () => {
         false
       )
 
-      for (var m = 0x10; m <= 0xff; m++) {
+      for (let m = 0x10; m <= 0xff; m++) {
         expect(
           mh.isAppCode(m)
         ).to.equal(
@@ -269,17 +286,18 @@ describe('multihash', () => {
 
   describe('coerceCode', () => {
     it('valid', () => {
-      /** @type {Partial<Record<import('../src/constants').HashName, import('../src/constants').HashCode>> } */
       const names = {
         sha1: 0x11,
         'sha2-256': 0x12,
         'sha2-512': 0x13,
         'sha3-512': 0x14
       }
-
-      Object.keys(names).forEach((name) => {
+      /** @type {keyof typeof names} */
+      let name
+      // eslint-disable-next-line guard-for-in
+      for (name in names) {
         expect(
-          mh.coerceCode(/** @type {import('../src/constants.js').HashName} */(name))
+          mh.coerceCode(name)
         ).to.be.eql(
           names[name]
         )
@@ -289,7 +307,7 @@ describe('multihash', () => {
         ).to.be.eql(
           names[name]
         )
-      })
+      }
     })
 
     they('invalid', ({ encodeText }) => {
@@ -309,6 +327,7 @@ describe('multihash', () => {
       })
 
       expect(
+        // @ts-expect-error
         () => mh.coerceCode(encodeText('hello'))
       ).to.throw(
         /should be a number/

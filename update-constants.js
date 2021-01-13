@@ -43,7 +43,7 @@ const run = async () => {
  */
 
 /**
- * @type { Object<HashName,HashCode> }
+ * @type { Record<HashName,HashCode> }
  */
 const names = Object.freeze({
 ${processed}
