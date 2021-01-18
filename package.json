@@ -46,7 +46,7 @@
   },
   "devDependencies": {
     "aegir": "^30.3.0",
-    "ipfs-utils": "^5.0.1"
+    "ipfs-utils": "^6.0.0"
   },
   "eslintConfig": {
     "extends": "ipfs"
