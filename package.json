@@ -35,6 +35,9 @@
       "src/*": [
         "dist/src/*",
         "dist/src/*/index"
+      ],
+      "src/": [
+        "dist/src/index"
       ]
     }
   },
