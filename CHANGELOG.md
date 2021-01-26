@@ -1,3 +1,12 @@
+## [3.1.2](https://github.com/multiformats/js-multihash/compare/v3.1.1...v3.1.2) (2021-01-26)
+
+
+### Bug Fixes
+
+* temp fix for types ([#113](https://github.com/multiformats/js-multihash/issues/113)) ([241efe9](https://github.com/multiformats/js-multihash/commit/241efe9c4648e054f9c6fc0aacff585764284ebf))
+
+
+
 ## [3.1.1](https://github.com/multiformats/js-multihash/compare/v3.1.0...v3.1.1) (2021-01-13)
 
 
