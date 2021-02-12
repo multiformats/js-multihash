@@ -42,6 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: microsoft/playwright-github-action@v1
       - run: npm install
       - run: npx aegir test -t browser -t webworker --bail
   test-firefox:
@@ -49,6 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: microsoft/playwright-github-action@v1
       - run: npm install
       - run: npx aegir test -t browser -t webworker --bail -- --browser firefox
   test-webkit:
@@ -56,6 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: microsoft/playwright-github-action@v1
       - run: npm install
       - run: npx aegir test -t browser -t webworker --bail -- --browser webkit
   test-electron-main:
