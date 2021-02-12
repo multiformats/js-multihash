@@ -54,7 +54,7 @@
   "eslintConfig": {
     "extends": "ipfs"
   },
-  "aegir" : {
+  "aegir": {
     "build": {
       "bundlesizeMax": "5.8kB"
     }
