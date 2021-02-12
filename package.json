@@ -54,6 +54,11 @@
   "eslintConfig": {
     "extends": "ipfs"
   },
+  "aegir" : {
+    "build": {
+      "bundlesizeMax": "5.8kB"
+    }
+  },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
     "Hugo Dias <hugomrdias@gmail.com>",
