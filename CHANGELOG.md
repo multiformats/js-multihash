@@ -1,3 +1,7 @@
+## [3.1.3-0](https://github.com/multiformats/js-multihash/compare/v3.1.2...v3.1.3-0) (2021-02-13)
+
+
+
 ## [3.1.2](https://github.com/multiformats/js-multihash/compare/v3.1.1...v3.1.2) (2021-01-26)
 
 
