@@ -1,3 +1,12 @@
+## [3.1.3-next.0](https://github.com/multiformats/js-multihash/compare/v3.1.2...v3.1.3-next.0) (2021-02-15)
+
+
+### Bug Fixes
+
+* use new aegir ([532a634](https://github.com/multiformats/js-multihash/commit/532a6349f40e5c24f3a30555fff33b2f42c8ad52))
+
+
+
 ## [3.1.3-0](https://github.com/multiformats/js-multihash/compare/v3.1.2...v3.1.3-0) (2021-02-13)
 
 
