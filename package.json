@@ -30,26 +30,15 @@
   },
   "main": "src/index.js",
   "types": "dist/src/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "src/*": [
-        "dist/src/*",
-        "dist/src/*/index"
-      ],
-      "src/": [
-        "dist/src/index"
-      ]
-    }
-  },
   "repository": "github:multiformats/js-multihash",
   "dependencies": {
-    "multibase": "^3.1.0",
-    "uint8arrays": "^2.0.5",
+    "multibase": "^3.1.1",
+    "uint8arrays": "^2.1.2",
     "varint": "^6.0.0"
   },
   "devDependencies": {
     "aegir": "ipfs/aegir#feat/remove-webpack-karma",
-    "ipfs-utils": "^5.0.1"
+    "ipfs-utils": "^6.0.1"
   },
   "eslintConfig": {
     "extends": "ipfs"

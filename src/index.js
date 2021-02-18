@@ -1,7 +1,5 @@
 /**
  * Multihash implementation in JavaScript.
- *
- * @module multihash
  */
 'use strict'
 
@@ -19,6 +17,7 @@ for (const key in names) {
   const name = /** @type {HashName} */(key)
   codes[names[name]] = name
 }
+Object.freeze(codes)
 
 /**
  * Convert the given multihash to a hex encoded string.
@@ -229,7 +228,7 @@ function prefix (multihash) {
 
 module.exports = {
   names,
-  codes: Object.freeze(codes),
+  codes,
   toHexString,
   fromHexString,
   toB58String,
