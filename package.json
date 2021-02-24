@@ -37,7 +37,7 @@
     "varint": "^6.0.0"
   },
   "devDependencies": {
-    "aegir": "ipfs/aegir#feat/remove-webpack-karma",
+    "aegir": "^31.0.0",
     "ipfs-utils": "^6.0.1"
   },
   "eslintConfig": {
