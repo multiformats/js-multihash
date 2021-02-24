@@ -32,7 +32,7 @@
   "types": "dist/src/index.d.ts",
   "repository": "github:multiformats/js-multihash",
   "dependencies": {
-    "multibase": "^3.1.1",
+    "multibase": "multiformats/js-multibase#feat/remove-types-versions",
     "uint8arrays": "^2.1.2",
     "varint": "^6.0.0"
   },
@@ -73,7 +73,7 @@
     "Alan Shaw <alan@tableflip.io>"
   ],
   "engines": {
-    "node": ">=10.0.0",
+    "node": ">=14.0.0",
     "npm": ">=6.0.0"
   }
 }
