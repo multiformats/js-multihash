@@ -32,7 +32,7 @@
   "types": "dist/src/index.d.ts",
   "repository": "github:multiformats/js-multihash",
   "dependencies": {
-    "multibase": "multiformats/js-multibase#feat/remove-types-versions",
+    "multibase": "^4.0.1",
     "uint8arrays": "^2.1.2",
     "varint": "^6.0.0"
   },
