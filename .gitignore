@@ -36,3 +36,4 @@ node_modules
 dist
 docs
 yarn.lock
+.nyc_output

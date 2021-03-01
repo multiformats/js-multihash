@@ -18,7 +18,6 @@ jobs:
     - run: npx aegir build
     - run: npx aegir dep-check
     - uses: ipfs/aegir/actions/bundle-size@master
-      name: size
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
   test-node:
@@ -27,7 +26,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        node: [12, 14]
+        node: [14, 15]
       fail-fast: true
     steps:
       - uses: actions/checkout@v2
@@ -35,22 +34,33 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
       - run: npm install
-      - run: npx nyc --reporter=lcov aegir test -t node -- --bail
+      - run: npx aegir test -t node --bail --cov
       - uses: codecov/codecov-action@v1
   test-chrome:
     needs: check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: microsoft/playwright-github-action@v1
       - run: npm install
-      - run: npx aegir test -t browser -t webworker --bail
+      - run: npx aegir test -t browser -t webworker --bail --cov
+      - uses: codecov/codecov-action@v1
   test-firefox:
     needs: check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: microsoft/playwright-github-action@v1
       - run: npm install
-      - run: npx aegir test -t browser -t webworker --bail -- --browsers FirefoxHeadless
+      - run: npx aegir test -t browser -t webworker --bail -- --browser firefox
+  test-webkit:
+    needs: check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: microsoft/playwright-github-action@v1
+      - run: npm install
+      - run: npx aegir test -t browser -t webworker --bail -- --browser webkit
   test-electron-main:
     needs: check
     runs-on: ubuntu-latest

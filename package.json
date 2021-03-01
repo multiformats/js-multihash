@@ -30,29 +30,23 @@
   },
   "main": "src/index.js",
   "types": "dist/src/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "src/*": [
-        "dist/src/*",
-        "dist/src/*/index"
-      ],
-      "src/": [
-        "dist/src/index"
-      ]
-    }
-  },
   "repository": "github:multiformats/js-multihash",
   "dependencies": {
-    "multibase": "^3.1.0",
-    "uint8arrays": "^2.0.5",
+    "multibase": "^4.0.1",
+    "uint8arrays": "^2.1.3",
     "varint": "^6.0.0"
   },
   "devDependencies": {
-    "aegir": "^30.3.0",
-    "ipfs-utils": "^5.0.1"
+    "aegir": "^31.0.0",
+    "ipfs-utils": "^6.0.1"
   },
   "eslintConfig": {
     "extends": "ipfs"
+  },
+  "aegir": {
+    "build": {
+      "bundlesizeMax": "5.8kB"
+    }
   },
   "contributors": [
     "David Dias <daviddias.p@gmail.com>",
@@ -79,7 +73,7 @@
     "Alan Shaw <alan@tableflip.io>"
   ],
   "engines": {
-    "node": ">=10.0.0",
+    "node": ">=14.0.0",
     "npm": ">=6.0.0"
   }
 }
