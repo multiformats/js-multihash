@@ -1,3 +1,17 @@
+# [4.0.0](https://github.com/multiformats/js-multihash/compare/v3.1.2...v4.0.0) (2021-03-01)
+
+
+### Bug Fixes
+
+* update to new aegir ([#115](https://github.com/multiformats/js-multihash/issues/115)) ([1d8348d](https://github.com/multiformats/js-multihash/commit/1d8348d11d7c8b5cebd22b74ffbd9cf4a69ac786))
+
+
+### BREAKING CHANGES
+
+* No longer supports deep type imports only from the entrypoint.
+
+
+
 ## [3.1.3-0](https://github.com/multiformats/js-multihash/compare/v3.1.2...v3.1.3-0) (2021-02-13)
 
 
