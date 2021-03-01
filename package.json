@@ -34,7 +34,7 @@
   "dependencies": {
     "multibase": "^4.0.1",
     "uint8arrays": "^2.1.3",
-    "varint": "^6.0.0"
+    "varint": "^5.0.2"
   },
   "devDependencies": {
     "aegir": "^31.0.0",
