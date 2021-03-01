@@ -1,3 +1,12 @@
+## [4.0.1](https://github.com/multiformats/js-multihash/compare/v4.0.0...v4.0.1) (2021-03-01)
+
+
+### Bug Fixes
+
+* downgrade varint ([#118](https://github.com/multiformats/js-multihash/issues/118)) ([e84aabb](https://github.com/multiformats/js-multihash/commit/e84aabbd906fa7a5cdea69c4633d4bb87e01a898))
+
+
+
 # [4.0.0](https://github.com/multiformats/js-multihash/compare/v3.1.2...v4.0.0) (2021-03-01)
 
 
