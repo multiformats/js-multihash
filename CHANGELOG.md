@@ -1,3 +1,12 @@
+## [4.0.2](https://github.com/multiformats/js-multihash/compare/v4.0.1...v4.0.2) (2021-03-03)
+
+
+### Bug Fixes
+
+* revert to node12 ([adf5a6c](https://github.com/multiformats/js-multihash/commit/adf5a6c1af5176ef2ba7dd6bb9d429b043c7c88d))
+
+
+
 ## [4.0.1](https://github.com/multiformats/js-multihash/compare/v4.0.0...v4.0.1) (2021-03-01)
 
 
