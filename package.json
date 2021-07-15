@@ -37,7 +37,7 @@
     "varint": "^5.0.2"
   },
   "devDependencies": {
-    "aegir": "^31.0.0",
+    "aegir": "^34.0.3",
     "ipfs-utils": "^6.0.1"
   },
   "eslintConfig": {
