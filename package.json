@@ -1,6 +1,6 @@
 {
   "name": "multihashes",
-  "version": "4.0.2",
+  "version": "4.0.3",
   "description": "multihash implementation",
   "keywords": [
     "multihash",
@@ -59,19 +59,20 @@
     "ᴠɪᴄᴛᴏʀ ʙᴊᴇʟᴋʜᴏʟᴍ <victorbjelkholm@gmail.com>",
     "Rod Vagg <rod@vagg.org>",
     "Pedro Teixeira <i@pgte.me>",
+    "Alex Potsides <alex@achingbrain.net>",
     "kumavis <aaron@kumavis.me>",
     "Linus Unnebäck <linus@folkdatorn.se>",
-    "Alex Potsides <alex@achingbrain.net>",
-    "Irakli Gozalishvili <contact@gozala.io>",
-    "Donald Tsang <brandonknlee@gmail.com>",
-    "Trond Arne Bråthen <tabrath@gmail.com>",
     "Vasco Santos <vasco.santos@moxy.studio>",
+    "Irakli Gozalishvili <contact@gozala.io>",
+    "Trond Arne Bråthen <tabrath@gmail.com>",
     "Volker Mische <volker.mische@gmail.com>",
     "William Cotton <williamcotton@gmail.com>",
     "nginnever <ginneversource@gmail.com>",
     "Fil <fil@rezo.net>",
+    "Lars Gierth <lgierth@users.noreply.github.com>",
     "Nate Foss <npfoss@gmail.com>",
-    "Alan Shaw <alan@tableflip.io>"
+    "Alan Shaw <alan@tableflip.io>",
+    "Donald Tsang <brandonknlee@gmail.com>"
   ],
   "engines": {
     "node": ">=12.0.0",
