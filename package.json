@@ -46,7 +46,7 @@
   },
   "aegir": {
     "build": {
-      "bundlesizeMax": "5.8kB"
+      "bundlesizeMax": "10.3kB"
     }
   },
   "contributors": [
