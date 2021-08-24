@@ -3,7 +3,6 @@
  */
 'use strict'
 
-// @ts-ignore no types
 const multibase = require('multibase')
 const varint = require('varint')
 const { names } = require('./constants')
