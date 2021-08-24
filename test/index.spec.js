@@ -8,9 +8,9 @@ const mh = require('../src')
 const constants = require('../src/constants')
 const validCases = require('./fixtures/valid')
 const invalidCases = require('./fixtures/invalid')
-const uint8ArrayToString = require('uint8arrays/to-string')
-const uint8ArrayFromString = require('uint8arrays/from-string')
-const uint8ArrayEquals = require('uint8arrays/equals')
+const { toString: uint8ArrayToString } = require('uint8arrays/to-string')
+const { fromString: uint8ArrayFromString } = require('uint8arrays/from-string')
+const { equals: uint8ArrayEquals } = require('uint8arrays/equals')
 
 /**
  * @typedef {import('../src/constants.js').HashName} HashName
