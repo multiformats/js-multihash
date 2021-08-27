@@ -1,0 +1,23 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+    time: "11:00"
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: aegir
+    versions:
+    - 31.0.0
+    - 31.0.1
+    - 32.0.2
+    - 32.1.0
+    - 32.2.0
+    - 33.0.0
+    - 33.1.0
+    - 33.1.1
+  - dependency-name: ipfs-utils
+    versions:
+    - 6.0.0
+    - 6.0.1
